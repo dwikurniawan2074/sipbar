@@ -6,6 +6,11 @@ class Home extends BaseController
 {
     public function index()
     {
+        return view('login');
+    }
+
+    public function halaman_dashboard()
+    {
         return view('template/template_dashboard');
     }
 }
