@@ -42,6 +42,12 @@ $routes->get('/admin/input_data', 'AdminController::input_data');
 // Routes Pegawai
 
 // Routes Operator Persediaan
+$routes->get('/operator/', 'OperatorController::halaman_operator');
+$routes->get('/operator/halaman_operator', 'OperatorController::halaman_operator');
+$routes->get('/operator/halaman_permintaan', 'OperatorController::halaman_permintaan');
+$routes->get('/operator/halaman_input_barang', 'OperatorController::halaman_input_barang');
+$routes->get('/operator/halaman_stok_barang', 'OperatorController::halaman_stok_barang');
+
 
 // Routes Kabag
 

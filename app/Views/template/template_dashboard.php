@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/skydash/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
     <link rel="stylesheet" href="/skydash/vendors/ti-icons/css/themify-icons.css">
     <link rel="stylesheet" type="text/css" href="/skydash/js/select.dataTables.min.css">
+    <link rel="stylesheet" href="/skydash/vendors/mdi/css/materialdesignicons.min.css">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="/skydash/css/vertical-layout-light/style.css">
@@ -384,6 +385,7 @@
     <!-- Custom js for this page-->
     <script src="/skydash/js/dashboard.js"></script>
     <script src="/skydash/js/Chart.roundedBarCharts.js"></script>
+
     <!-- End custom js for this page-->
 </body>
 
