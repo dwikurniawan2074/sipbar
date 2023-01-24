@@ -33,6 +33,11 @@ $routes->get('/', 'Home::index');
 $routes->get('/template/dashboard', 'Home::halaman_dashboard');
 
 // Routes Admin
+$routes->get('/admin/', 'AdminController::halaman_admin');
+$routes->get('/admin/halaman_admin', 'AdminController::halaman_admin');
+$routes->get('/admin/data_akun', 'AdminController::data_akun');
+$routes->get('/admin/input_data', 'AdminController::input_data');
+
 
 // Routes Pegawai
 
