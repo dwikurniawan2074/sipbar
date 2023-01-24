@@ -32,6 +32,16 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('/template/dashboard', 'Home::halaman_dashboard');
 
+// Routes Admin
+
+// Routes Pegawai
+
+// Routes Operator Persediaan
+
+// Routes Kabag
+
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
