@@ -5,21 +5,27 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link" href="/subkor/halaman_subkor">
+            <a class="nav-link" href="/pegawai/halaman_pegawai">
                 <i class="icon-grid menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/subkor/halaman_permintaan">
-                <i class="icon-grid-2 menu-icon"></i>
-                <span class="menu-title">Data Permintaan</span>
+            <a class="nav-link" href="/pegawai/halaman_stok_barang">
+                <i class="icon-bar-graph menu-icon"></i>
+                <span class="menu-title">Data Stok Barang</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/subkor/halaman_stok_barang">
-                <i class="icon-bar-graph menu-icon"></i>
-                <span class="menu-title">Stok Barang</span>
+            <a class="nav-link" href="/pegawai/halaman_input_permintaan">
+                <i class="icon-layout menu-icon"></i>
+                <span class="menu-title">Input Permintaan</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/pegawai/halaman_permintaan">
+                <i class="icon-grid-2 menu-icon"></i>
+                <span class="menu-title">Data Permintaan</span>
             </a>
         </li>
     </ul>
@@ -30,10 +36,11 @@
 <?= $this->section('content'); ?>
 <div class="content-wrapper">
     <div class="row">
+
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Data Stok Barang</h4>
+                    <h4 class="card-title">Data Pengajuan Permintaan Barang Pegawai</h4>
                     <div class="table-responsive pt-3">
                         <table class="table table-bordered">
                             <thead>
@@ -42,13 +49,19 @@
                                         No.
                                     </th>
                                     <th>
-                                        Kode Barang
+                                        Kode Permintaan
                                     </th>
                                     <th>
-                                        Nama Barang
+                                        Nama Pegawai
                                     </th>
                                     <th>
-                                        Stok
+                                        Barang Yang Diminta
+                                    </th>
+                                    <th>
+                                        Bidang
+                                    </th>
+                                    <th>
+                                        Pangkat Golongan
                                     </th>
                                 </tr>
                             </thead>
@@ -66,6 +79,12 @@
                                     <td>
                                         Kepala Bagian
                                     </td>
+                                    <td>
+                                        IPP
+                                    </td>
+                                    <td>
+                                        May 15, 2015
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -78,6 +97,12 @@
                                     </td>
                                     <td>
                                         Subkor
+                                    </td>
+                                    <td>
+                                        APD
+                                    </td>
+                                    <td>
+                                        July 1, 2015
                                     </td>
                                 </tr>
                                 <tr>
@@ -92,6 +117,12 @@
                                     <td>
                                         Pegawai
                                     </td>
+                                    <td>
+                                        Akuntan Negara
+                                    </td>
+                                    <td>
+                                        July 1, 2015
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -104,6 +135,12 @@
                                     </td>
                                     <td>
                                         Subkor
+                                    </td>
+                                    <td>
+                                        Kepegawaian
+                                    </td>
+                                    <td>
+                                        July 1, 2015
                                     </td>
                                 </tr>
                                 <tr>
@@ -118,6 +155,12 @@
                                     <td>
                                         Pegawai
                                     </td>
+                                    <td>
+                                        Keuangan
+                                    </td>
+                                    <td>
+                                        July 1, 2015
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -131,6 +174,12 @@
                                     <td>
                                         Subkor
                                     </td>
+                                    <td>
+                                        Kearsipan
+                                    </td>
+                                    <td>
+                                        July 1, 2015
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -143,6 +192,12 @@
                                     </td>
                                     <td>
                                         Kabag
+                                    </td>
+                                    <td>
+                                        Kepgeawaian
+                                    </td>
+                                    <td>
+                                        July 1, 2015
                                     </td>
                                 </tr>
                             </tbody>

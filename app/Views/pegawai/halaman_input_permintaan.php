@@ -1,34 +1,36 @@
 <?= $this->extend('template/template_dashboard'); ?>
 
 <?= $this->section('sidebar'); ?>
+
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link" href="/operator/halaman_operator">
+            <a class="nav-link" href="/pegawai/halaman_pegawai">
                 <i class="icon-grid menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/operator/halaman_input_barang">
-                <i class="icon-layout menu-icon"></i>
-                <span class="menu-title">Input Data Barang</span>
+            <a class="nav-link" href="/pegawai/halaman_stok_barang">
+                <i class="icon-bar-graph menu-icon"></i>
+                <span class="menu-title">Data Stok Barang</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/operator/halaman_permintaan">
+            <a class="nav-link" href="/pegawai/halaman_input_permintaan">
+                <i class="icon-layout menu-icon"></i>
+                <span class="menu-title">Input Permintaan</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/pegawai/halaman_permintaan">
                 <i class="icon-grid-2 menu-icon"></i>
                 <span class="menu-title">Data Permintaan</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/operator/halaman_laporan_stok">
-                <i class="icon-bar-graph menu-icon"></i>
-                <span class="menu-title">Laporan Stok Barang</span>
-            </a>
-        </li>
     </ul>
 </nav>
+
 <?= $this->endSection(); ?>
 
 <?= $this->section('content'); ?>
@@ -37,9 +39,9 @@
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Input Data Barang</h4>
+                    <h4 class="card-title">Input Permintaan Barang</h4>
                     <p class="card-description">
-                        Silahkan masukkan data barang yang sesuai
+                        Silahkan masukkand data barang yang sesuai
                     </p>
                     <form class="forms-sample">
                         <div class="form-group">
@@ -55,7 +57,7 @@
                             <input type="text" class="form-control" id="exampleInputName1" placeholder="Stok Awal">
                         </div>
                         <div class="form-group">
-                            <label for="exampleSelectGender">Keterangan</label>
+                            <label for="exampleSelectGender">Status Opname</label>
                             <select class="form-control" id="exampleSelectGender">
                                 <option>Sudah Opname</option>
                                 <option>Belum Opname</option>
