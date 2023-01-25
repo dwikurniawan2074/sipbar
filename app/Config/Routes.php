@@ -66,7 +66,7 @@ $routes->get('/operator/halaman_laporan_stok', 'OperatorController::halaman_lapo
 // Routes Kabag
 $routes->get('/kabag/', 'KabagController::halaman_kabag');
 $routes->get('/kabag/halaman_kabag', 'KabagController::halaman_kabag');
-$routes->get('/kabag/halaman_permintaaan', 'KabagController::halaman_permintaan');
+$routes->get('/kabag/halaman_permintaan', 'KabagController::halaman_permintaan');
 $routes->get('/kabag/halaman_stok_barang', 'KabagController::halaman_stok_barang');
 
 
