@@ -45,7 +45,10 @@ $routes->get('/pegawai/halaman_pegawai', 'PegawaiController::halaman_pegawai');
 
 
 // Routes Subkor
+$routes->get('/subkor/', 'SubkorController::halaman_subkor');
 $routes->get('/subkor/halaman_subkor', 'SubkorController::halaman_subkor');
+$routes->get('/subkor/halaman_permintaan', 'SubkorController::halaman_permintaan');
+$routes->get('/subkor/halaman_stok_barang', 'SubkorController::halaman_stok_barang');
 
 
 // Routes Operator Persediaan
@@ -53,7 +56,7 @@ $routes->get('/operator/', 'OperatorController::halaman_operator');
 $routes->get('/operator/halaman_operator', 'OperatorController::halaman_operator');
 $routes->get('/operator/halaman_permintaan', 'OperatorController::halaman_permintaan');
 $routes->get('/operator/halaman_input_barang', 'OperatorController::halaman_input_barang');
-$routes->get('/operator/halaman_stok_barang', 'OperatorController::halaman_stok_barang');
+$routes->get('/operator/halaman_laporan_stok', 'OperatorController::halaman_laporan_stok');
 
 
 // Routes Kabag

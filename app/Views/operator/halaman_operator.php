@@ -23,7 +23,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/operator/halaman_stok_barang">
+            <a class="nav-link" href="/operator/halaman_laporan_stok">
                 <i class="icon-bar-graph menu-icon"></i>
                 <span class="menu-title">Laporan Stok Barang</span>
             </a>
