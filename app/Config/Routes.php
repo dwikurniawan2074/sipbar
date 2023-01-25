@@ -40,7 +40,11 @@ $routes->get('/admin/input_data', 'AdminController::input_data');
 
 
 // Routes Pegawai
+$routes->get('/pegawai/', 'PegawaiController::halaman_pegawai');
 $routes->get('/pegawai/halaman_pegawai', 'PegawaiController::halaman_pegawai');
+$routes->get('/pegawai/halaman_input_permintaan', 'PegawaiController::halaman_input_permintaan');
+$routes->get('/pegawai/halaman_permintaan', 'PegawaiController::halaman_permintaan');
+$routes->get('/pegawai/halaman_stok_barang', 'PegawaiController::halaman_stok_barang');
 
 
 
@@ -60,7 +64,10 @@ $routes->get('/operator/halaman_laporan_stok', 'OperatorController::halaman_lapo
 
 
 // Routes Kabag
+$routes->get('/kabag/', 'KabagController::halaman_kabag');
 $routes->get('/kabag/halaman_kabag', 'KabagController::halaman_kabag');
+$routes->get('/kabag/halaman_permintaaan', 'KabagController::halaman_permintaan');
+$routes->get('/kabag/halaman_stok_barang', 'KabagController::halaman_stok_barang');
 
 
 /*
