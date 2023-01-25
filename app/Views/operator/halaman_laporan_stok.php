@@ -1,6 +1,7 @@
 <?= $this->extend('template/template_dashboard'); ?>
 
 <?= $this->section('sidebar'); ?>
+
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item">
@@ -37,33 +38,24 @@
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Input Data Barang</h4>
+                    <h4 class="card-title">Laporan Stok Barang</h4>
                     <p class="card-description">
-                        Silahkan masukkand data barang yang sesuai
+                        Silahkan masukkan rentang waktu dari laporan yang akan di generate
                     </p>
-                    <form class="forms-sample">
-                        <div class="form-group">
-                            <label for="exampleInputName1">Kode Barang</label>
-                            <input type="text" class="form-control" id="exampleInputName1" placeholder="Kode Barang">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputName1">Nama Barang</label>
-                            <input type="text" class="form-control" id="exampleInputName1" placeholder="Nama Barang">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputName1">Stok Awal</label>
-                            <input type="text" class="form-control" id="exampleInputName1" placeholder="Stok Awal">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleSelectGender">Status Opname</label>
-                            <select class="form-control" id="exampleSelectGender">
-                                <option>Sudah Opname</option>
-                                <option>Belum Opname</option>
-                            </select>
+                    <form class="form-inline">
+                        <div class="col-3">
+                            Dari Tanggal : &nbsp;
+                            <input type="date" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe">
+
                         </div>
 
-                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                        <div class="col-3">
+                            Sampai Tanggal : &nbsp;
+                            <input type="date" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe">
 
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mb-2">Generate</button>
                     </form>
                 </div>
             </div>
