@@ -5,7 +5,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link" href="/operator/halaman_operator">
+            <a class="nav-link" href="/operator/halaman_subkor">
                 <i class="icon-grid menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
             </a>
@@ -39,7 +39,7 @@
         <div class="col-md-12 grid-margin">
             <div class="row">
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                    <h3 class="font-weight-bold">Halaman Stok Barang</h3>
+                    <h3 class="font-weight-bold">Halaman Operator</h3>
                 </div>
             </div>
         </div>

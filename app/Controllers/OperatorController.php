@@ -21,6 +21,6 @@ class OperatorController extends BaseController
     }
     public function halaman_stok_barang()
     {
-        return view('operator/halaman_permintaan');
+        return view('operator/halaman_stok_barang');
     }
 }
