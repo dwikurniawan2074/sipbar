@@ -56,8 +56,18 @@ class LoginController extends BaseController
             }else{
                 $passwordUser = $cekUserLogin['user_password'];
                 
-                if(password_verify(json_encode($pass), $passwordUser)){
-                    
+                if(password_verify($pass, $passwordUser)){
+                    $idlevel = $cekUserLogin['user_level_id'];
+
+                    $simpan_session = [
+                        'iduser' => $idUser,
+                        'namauser' => $cekUserLogin['user_nama'],
+                        'idlevel' => $idlevel
+                    ];
+
+                    session()->set($simpan_session);
+
+                    return redirect()->to(site_url('/template/dashboard'));
                 }else{
                     $sessError = [
                         'errPassword' => 'Password Yang Anda Masukkan Salah',
