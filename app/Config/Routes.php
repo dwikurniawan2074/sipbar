@@ -46,6 +46,8 @@ $routes->get('/admin/input_data', 'AdminController::input_data');
 $routes->get('/pegawai/', 'PegawaiController::halaman_pegawai');
 $routes->get('/pegawai/halaman_pegawai', 'PegawaiController::halaman_pegawai');
 $routes->get('/pegawai/halaman_input_permintaan', 'PegawaiController::halaman_input_permintaan');
+$routes->post('/pegawai/simpan_permintaan', 'PegawaiController::save_permintaan');
+$routes->delete('/pegawai/delete_permintaan/(:num)', 'PegawaiController::delete_permintaan/$1');
 $routes->get('/pegawai/halaman_permintaan', 'PegawaiController::halaman_permintaan');
 $routes->get('/pegawai/halaman_stok_barang', 'PegawaiController::halaman_stok_barang');
 
