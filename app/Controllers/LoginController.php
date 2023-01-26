@@ -55,9 +55,9 @@ class LoginController extends BaseController
                 return redirect()->to('/');
             }else{
                 $passwordUser = $cekUserLogin['user_password'];
-
-                if(password_verify($pass, $passwordUser)){
-
+                
+                if(password_verify(json_encode($pass), $passwordUser)){
+                    
                 }else{
                     $sessError = [
                         'errPassword' => 'Password Yang Anda Masukkan Salah',
