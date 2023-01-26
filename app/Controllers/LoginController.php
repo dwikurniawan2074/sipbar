@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\ModelLogin;
 
 class LoginController extends BaseController
 {
@@ -35,14 +36,36 @@ class LoginController extends BaseController
             ]
         ]);
 
-        if(!$valid){
+        if (!$valid) {
             $sessError = [
                 'errIdUser' => $validation->getError('iduser'),
                 'errPassword' => $validation->getError('pass')
             ];
-
             session()->setFlashdata($sessError);
             return redirect()->to('/');
+        } else {
+            $modelLogin = new ModelLogin();
+
+            $cekUserLogin = $modelLogin->find($idUser);
+            if ($cekUserLogin == null) {
+                $sessError = [
+                    'errIdUser' => 'Maaf User Tidak Terdaftar',
+                ];
+                session()->setFlashdata($sessError);
+                return redirect()->to('/');
+            }else{
+                $passwordUser = $cekUserLogin['user_password'];
+
+                if(password_verify($pass, $passwordUser)){
+
+                }else{
+                    $sessError = [
+                        'errPassword' => 'Password Yang Anda Masukkan Salah',
+                    ];
+                    session()->setFlashdata($sessError);
+                    return redirect()->to('/');
+                }
+            }
         }
     }
 }
