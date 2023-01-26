@@ -49,19 +49,28 @@
                                         No.
                                     </th>
                                     <th>
-                                        Kode Permintaan
-                                    </th>
-                                    <th>
                                         Nama Pegawai
                                     </th>
                                     <th>
-                                        Barang Yang Diminta
+                                        Nama Barang
                                     </th>
                                     <th>
-                                        Bidang
+                                        Jumlah
                                     </th>
                                     <th>
-                                        Pangkat Golongan
+                                        Satuan
+                                    </th>
+                                    <th>
+                                        Keterangan
+                                    </th>
+                                    <th>
+                                        Tanggal Permintaan
+                                    </th>
+                                    <th>
+                                        Tanggal di Setujui
+                                    </th>
+                                    <th>
+                                        Status
                                     </th>
                                 </tr>
                             </thead>
@@ -71,133 +80,28 @@
                                         1
                                     </td>
                                     <td>
-                                        196609091990031001
-                                    </td>
-                                    <td>
                                         Achirsyah Moeis
                                     </td>
                                     <td>
-                                        Kepala Bagian
+                                        Kertas A4
                                     </td>
                                     <td>
-                                        IPP
+                                        1
                                     </td>
                                     <td>
-                                        May 15, 2015
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        2
+                                        Pack
                                     </td>
                                     <td>
-                                        196609091990031001 </td>
-                                    <td>
-                                        Achmad Faried Joesoef
+                                        Persediaan ATK di Bidang IPP
                                     </td>
                                     <td>
-                                        Subkor
+                                        Jan 26, 2023
                                     </td>
                                     <td>
-                                        APD
+                                        Jan 27, 2023
                                     </td>
                                     <td>
-                                        July 1, 2015
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        196609091990031001 </td>
-                                    <td>
-                                        Albert Suherman
-                                    </td>
-                                    <td>
-                                        Pegawai
-                                    </td>
-                                    <td>
-                                        Akuntan Negara
-                                    </td>
-                                    <td>
-                                        July 1, 2015
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        4
-                                    </td>
-                                    <td>
-                                        196609091990031001 </td>
-                                    <td>
-                                        Andreas Tjahjadi
-                                    </td>
-                                    <td>
-                                        Subkor
-                                    </td>
-                                    <td>
-                                        Kepegawaian
-                                    </td>
-                                    <td>
-                                        July 1, 2015
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        5
-                                    </td>
-                                    <td>
-                                        196609091990031001 </td>
-                                    <td>
-                                        Sutono Nitisastro
-                                    </td>
-                                    <td>
-                                        Pegawai
-                                    </td>
-                                    <td>
-                                        Keuangan
-                                    </td>
-                                    <td>
-                                        July 1, 2015
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        6
-                                    </td>
-                                    <td>
-                                        196609091990031001 </td>
-                                    <td>
-                                        Sutiadi Widjaya
-                                    </td>
-                                    <td>
-                                        Subkor
-                                    </td>
-                                    <td>
-                                        Kearsipan
-                                    </td>
-                                    <td>
-                                        July 1, 2015
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        7
-                                    </td>
-                                    <td>
-                                        196609091990031001 </td>
-                                    <td>
-                                        Sugiono Djauhari
-                                    </td>
-                                    <td>
-                                        Kabag
-                                    </td>
-                                    <td>
-                                        Kepgeawaian
-                                    </td>
-                                    <td>
-                                        July 1, 2015
+                                        di Setujui
                                     </td>
                                 </tr>
                             </tbody>
