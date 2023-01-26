@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="/skydash/css/vertical-layout-light/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="/Images/bpkp_logo.png" />
+    
 </head>
 
 <body>

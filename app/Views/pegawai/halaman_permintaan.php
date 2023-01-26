@@ -72,38 +72,71 @@
                                     <th>
                                         Status
                                     </th>
+                                    <th>
+                                        Aksi
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
+                            <?php $no = 1; 
+                                foreach($permintaan as $pr) : ?>
                                 <tr>
                                     <td>
-                                        1
+                                        <?= $no ?>
                                     </td>
                                     <td>
                                         Achirsyah Moeis
                                     </td>
                                     <td>
-                                        Kertas A4
+                                        <?= $pr['nama_barang'] ?>
                                     </td>
                                     <td>
-                                        1
+                                        <?= $pr['jumlah'] ?>
                                     </td>
                                     <td>
-                                        Pack
+                                        <?= $pr['satuan'] ?>
                                     </td>
                                     <td>
-                                        Persediaan ATK di Bidang IPP
+                                        <?= $pr['keterangan'] ?>
                                     </td>
                                     <td>
-                                        Jan 26, 2023
+                                        <?= $pr['tanggal_permintaan'] ?>
                                     </td>
                                     <td>
-                                        Jan 27, 2023
+                                    <?php if ($pr['tanggal_disetujui'] == NULL) { ?>
+                                            -
+                                        <?php } else {?>
+                                            <?= $pr['tanggal_disetujui'] ?>
+                                        <?php } ?>
+                                        
                                     </td>
                                     <td>
-                                        di Setujui
+                                        <?php if ($pr['status'] == "0") { ?>
+                                            Belum di Setujui
+                                        <?php } else {?>
+                                            di Setujui
+                                        <?php } ?>
+                                    </td>
+                                    <td>
+                                        <div class="container-fluid" style="display: flex;">
+                                        <?php if ($pr['status'] == "0") { ?>
+                                            <a class="btn btn-warning mr-2" href="/keluar/edit/<?= $pr['id'] ?>"><i class="mdi mdi-table-edit"></i></a>
+                                            <form action="/pegawai/delete_permintaan/<?= $pr['id'] ?>" method="post">
+                                                <input type="hidden" name="_method" value="DELETE" >
+                                                <button type="submit" class="btn btn-danger"><i class="mdi mdi-delete"></i></button>
+                                            </form> 
+                                        <?php } else {?> 
+                                            <a class="disabled btn btn-warning mr-2" href="/keluar/edit/<?= $pr['id'] ?>" ><i class="mdi mdi-table-edit"></i></a>
+                                            <form action="/pegawai/delete_permintaan/<?= $pr['id'] ?>" method="post">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <button type="submit" class="btn btn-danger" disabled><i class="mdi mdi-delete"></i></button>
+                                            </form> 
+                                        <?php } ?>
+                                        
+                                        </div>
                                     </td>
                                 </tr>
+                                <?php $no++; endforeach;?>
                             </tbody>
                         </table>
                     </div>
