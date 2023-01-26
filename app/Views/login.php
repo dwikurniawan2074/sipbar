@@ -5,18 +5,20 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Skydash Admin</title>
+  <title>SIPBAR LOGIN</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="/skydash/vendors/feather/feather.css">
   <link rel="stylesheet" href="/skydash/vendors/ti-icons/css/themify-icons.css">
   <link rel="stylesheet" href="/skydash/vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
   <!-- Plugin css for this page -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="/skydash/css/vertical-layout-light/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="/skydash/images/favicon.png" />
+  <link rel="shortcut icon" href="/Images/bpkp_logo.png" />
 </head>
 
 <body>
@@ -31,15 +33,46 @@
               </div>
               <h4>Selamat Datang di Web Sistem Informasi Permintaan Barang</h4>
               <h6 class="font-weight-light">Silahkan Login Menggunakan Akun Yang Anda Miliki</h6>
+              <?= form_open('login/cekUser'); ?>
+              <?= csrf_field(); ?>
               <form class="pt-3">
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username">
+                  <?php
+                  if (session()->getFlashdata('errIdUser')) {
+                    $isInvalidUser = 'is-invalid';
+                  } else {
+                    $isInvalidUser = '';
+                  }
+                  ?>
+                  <input type="text" class="form-control form-control-lg <?= $isInvalidUser ?>" name="iduser" id="exampleInputEmail1" placeholder="Username" autofocus>
+                  <?php
+                  if (session()->getFlashdata('errIdUser')) {
+                    echo '<div id="validationServer03Feedback" class="invalid-feedback">'
+                      . session()->getFlashdata('errIdUser') . '</div>';
+                  }
+                  ?>
                 </div>
+
+
                 <div class="form-group">
-                  <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                  <?php
+                  if (session()->getFlashdata('errPassword')) {
+                    $isInvalidPassword = 'is-invalid';
+                  } else {
+                    $isInvalidPassword = '';
+                  }
+                  ?>
+                  <input type="password" class="form-control form-control-lg <?= $isInvalidPassword; ?>" name="pass" id="exampleInputPassword1" placeholder="Password">
+                  <?php
+                  if (session()->getFlashdata('errPassword')) {
+                    echo '<div id="validationServer03Feedback" class="invalid-feedback">'
+                      . session()->getFlashdata('errPassword') . '</div>';
+                  }
+                  ?>
                 </div>
+
                 <div class="mt-3">
-                  <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="/template/dashboard">SIGN IN</a>
+                  <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">LOGIN</button>
                 </div>
                 <!-- <div class="my-2 d-flex justify-content-between align-items-center">
                   <div class="form-check">
@@ -54,6 +87,7 @@
                   Tidak mempunyai akun? <a href="https://wa.me/62895392795541" class="text-primary">Hubungi Admin</a>
                 </div>
               </form>
+              <?= form_close(); ?>
             </div>
           </div>
         </div>
