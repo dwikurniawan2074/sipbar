@@ -11,7 +11,7 @@ class Home extends BaseController
 
     public function halaman_dashboard()
     {
-        return view('template/dashboard_sementara');
+        return view('template/dashboard_user');
     }
     
 }

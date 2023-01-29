@@ -33,7 +33,8 @@ $routes->get('/', 'LoginController::index');
 $routes->get('/template/dashboard', 'Home::halaman_dashboard');
 
 // Routes Login
-$routes->post('login/cekUser', 'LoginController::cekUser');
+$routes->post('/login/cekUser', 'LoginController::cekUser');
+$routes->get('/login/keluar', 'LoginController::keluar');
 
 // Routes Admin
 $routes->get('/admin/', 'AdminController::halaman_admin');
