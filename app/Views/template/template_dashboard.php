@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="/skydash/css/vertical-layout-light/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="/Images/bpkp_logo.png" />
-    
+
 </head>
 
 <body>
@@ -49,7 +49,6 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav navbar-nav-right">
-
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                             <i class="icon-ellipsis"></i>
@@ -357,7 +356,7 @@
             <!-- menu utama -->
             <!-- partial -->
             <div class="main-panel">
-                <?= $this->renderSection('content'); ?>
+                <?= $this->renderSection('parentContent'); ?>
                 <!-- partial -->
             </div>
             <!-- main-panel ends -->
