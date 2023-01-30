@@ -53,10 +53,10 @@ class LoginController extends BaseController
                 ];
                 session()->setFlashdata($sessError);
                 return redirect()->to('/');
-            }else{
+            } else {
                 $passwordUser = $cekUserLogin['user_password'];
-                
-                if(password_verify($pass, $passwordUser)){
+
+                if (password_verify($pass, $passwordUser)) {
                     $idlevel = $cekUserLogin['user_level_id'];
 
                     $simpan_session = [
@@ -68,7 +68,7 @@ class LoginController extends BaseController
                     session()->set($simpan_session);
 
                     return redirect()->to(site_url('/template/dashboard'));
-                }else{
+                } else {
                     $sessError = [
                         'errPassword' => 'Password Yang Anda Masukkan Salah',
                     ];
@@ -77,5 +77,11 @@ class LoginController extends BaseController
                 }
             }
         }
+    }
+
+    public function keluar()
+    {
+        session()->destroy();
+        return redirect()->to('/');
     }
 }
