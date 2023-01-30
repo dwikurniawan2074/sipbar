@@ -41,7 +41,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Input Permintaan Barang</h4>
                     <p class="card-description">
-                        Silahkan masukkand data barang yang sesuai
+                        Silahkan masukkan data barang yang sesuai
                     </p>
                     <form action="/pegawai/simpan_permintaan" method="POST" class="forms-sample">
                         <div class="form-group disabled">
@@ -80,5 +80,6 @@
             </div>
         </div>
     </div>
+    
 </div>
 <?= $this->endSection(); ?>
