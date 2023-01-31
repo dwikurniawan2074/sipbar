@@ -74,6 +74,7 @@ class LoginController extends BaseController
                     ];
                     session()->setFlashdata($sessError);
                     return redirect()->to('/');
+                    
                 }
             }
         }
