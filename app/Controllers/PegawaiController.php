@@ -33,6 +33,23 @@ class PegawaiController extends BaseController
         return view('pegawai/halaman_pegawai');
     } 
 
+    public function saveSementara_permintaan()
+    {
+        $permintaan = new Permintaan();
+
+        $data = [
+            'nama_barang' => $this->request->getPost('nama_barang'),
+            'jumlah' => $this->request->getPost('jumlah'),
+            'satuan' => $this->request->getPost('satuan'),
+            'keterangan' => $this->request->getPost('keterangan'),
+            'tanggal_permintaan' => $this->request->getPost('tanggal_permintaan'),
+            'status' => '0'
+        ];
+
+        $permintaan->insert($data);
+        return view('pegawai/halaman_pegawai');
+    } 
+
     public function delete_permintaan($id){
         $permintaan = new Permintaan();
         $permintaan->delete($id);
