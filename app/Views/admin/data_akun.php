@@ -22,151 +22,49 @@
                                         Nama Pegawai
                                     </th>
                                     <th>
-                                        Jabatan
+                                        Pangkat Golongan
                                     </th>
                                     <th>
                                         Bidang
                                     </th>
                                     <th>
-                                        Pangkat Golongan
+                                        Jabatan
+                                    </th>
+                                    <th>
+                                        Role Sistem
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>
-                                        196609091990031001
-                                    </td>
-                                    <td>
-                                        Achirsyah Moeis
-                                    </td>
-                                    <td>
-                                        Kepala Bagian   
-                                    </td>
-                                    <td>
-                                        IPP
-                                    </td>
-                                    <td>
-                                        May 15, 2015
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        2
-                                    </td>
-                                    <td>
-                                        196609091990031001 </td>
-                                    <td>
-                                        Achmad Faried Joesoef
-                                    </td>
-                                    <td>
-                                        Subkor
-                                    </td>
-                                    <td>
-                                        APD
-                                    </td>
-                                    <td>
-                                        July 1, 2015
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        196609091990031001 </td>
-                                    <td>
-                                        Albert Suherman
-                                    </td>
-                                    <td>
-                                        Pegawai
-                                    </td>
-                                    <td>
-                                        Akuntan Negara
-                                    </td>
-                                    <td>
-                                        July 1, 2015
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        4
-                                    </td>
-                                    <td>
-                                        196609091990031001 </td>
-                                    <td>
-                                        Andreas Tjahjadi
-                                    </td>
-                                    <td>
-                                        Subkor
-                                    </td>
-                                    <td>
-                                        Kepegawaian
-                                    </td>
-                                    <td>
-                                        July 1, 2015
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        5
-                                    </td>
-                                    <td>
-                                        196609091990031001 </td>
-                                    <td>
-                                        Sutono Nitisastro
-                                    </td>
-                                    <td>
-                                        Pegawai
-                                    </td>
-                                    <td>
-                                        Keuangan
-                                    </td>
-                                    <td>
-                                        July 1, 2015
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        6
-                                    </td>
-                                    <td>
-                                        196609091990031001 </td>
-                                    <td>
-                                        Sutiadi Widjaya
-                                    </td>
-                                    <td>
-                                       Subkor
-                                    </td>
-                                    <td>
-                                        Kearsipan
-                                    </td>
-                                    <td>
-                                        July 1, 2015
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        7
-                                    </td>
-                                    <td>
-                                        196609091990031001 </td>
-                                    <td>
-                                        Sugiono Djauhari
-                                    </td>
-                                    <td>
-                                        Kabag
-                                    </td>
-                                    <td>
-                                        Kepgeawaian
-                                    </td>
-                                    <td>
-                                        July 1, 2015
-                                    </td>
-                                </tr>
+                                <?php
+                                $no = 1;
+                                foreach ($pegawai as $peg) : ?>
+                                    <tr>
+                                        <td>
+                                            <?= $no; ?>
+                                        </td>
+                                        <td>
+                                            <?= $peg['nip']; ?>
+                                        </td>
+                                        <td>
+                                            <?= $peg['nama']; ?>
+                                        </td>
+                                        <td>
+                                            <?= $peg['pangkat']; ?>
+                                        </td>
+                                        <td>
+                                            <?= $peg['bidang']; ?>
+                                        </td>
+                                        <td>
+                                            <?= $peg['jabatan']; ?>
+                                        </td>
+                                        <td>
+                                            <?= $peg['role']; ?>
+                                        </td>
+                                    </tr>
+                                <?php
+                                    $no++;
+                                endforeach; ?>
                             </tbody>
                         </table>
                     </div>
