@@ -9,6 +9,7 @@ use CodeIgniter\Filters\Honeypot;
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\SecureHeaders;
 
+
 class Filters extends BaseConfig
 {
     /**
@@ -21,6 +22,11 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
+        'filterAdmin'   => \App\Filters\FilterAdmin::class,
+        'filterKabag'   => \App\Filters\FilterKabag::class,
+        'filterOperator'   => \App\Filters\FilterOperator::class,
+        'filterPegawai'   => \App\Filters\FilterPegawai::class,
+        'filterSubkor'   => \App\Filters\FilterSubkor::class,
     ];
 
     /**
@@ -29,11 +35,41 @@ class Filters extends BaseConfig
      */
     public array $globals = [
         'before' => [
-            // 'honeypot',
-            // 'csrf',
-            // 'invalidchars',
+            'honeypot',
+            'csrf',
+            'invalidchars',
+            'filterAdmin' => [
+                'except' => ['login/*']
+            ],
+            'filterKabag' => [
+                'except' => ['login/*', 'login']
+            ],
+            'filterOperator' => [
+                'except' => ['login/*', 'login']
+            ],
+            'filterPegawai' => [
+                'except' => ['login/*', 'login']
+            ],
+            'filterSubkor' => [
+                'except' => ['login/*', 'login']
+            ],
         ],
         'after' => [
+            'filterAdmin' => [
+                'except' => ['admin/*']
+            ],
+            'filterKabag' => [
+                'except' => ['kabag/*']
+            ],
+            'filterOperator' => [
+                'except' => ['/operator/*']
+            ],
+            'filterPegawai' => [
+                'except' => ['pegawai/*']
+            ],
+            'filterSubkor' => [
+                'except' => ['subkor/*']
+            ],
             'toolbar',
             // 'honeypot',
             // 'secureheaders',
