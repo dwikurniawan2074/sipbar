@@ -44,26 +44,19 @@
                     $isInvalidUser = '';
                   }
                   ?>
-
-                  <select class="form-control <?= $isInvalidUser ?>" name="id_role" autofocus style="color: black;">
-                    <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pilih Login Sebagai</option>
-                    <?php foreach ($role as $key => $value) { ?>
-                      <option value="<?= $value['id']; ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value['nama_role']; ?></option>
-                    <?php }; ?>
-                  </select>
+                  <input type="text" class="form-control form-control-lg <?= $isInvalidUser ?>" name="iduser" id="exampleInputEmail1" placeholder="Username" autofocus>
                   <?php
                   if (session()->getFlashdata('errIdUser')) {
                     echo '<div id="validationServer03Feedback" class="invalid-feedback">'
                       . session()->getFlashdata('errIdUser') . '</div>';
                   }
                   ?>
-                  <!-- <input type="text" class="form-control form-control-lg " name="id_role" id="exampleInputEmail1" placeholder="Username" autofocus> -->
                 </div>
-                <!-- <div class="form-group">
+                <div class="form-group">
 
                   <input type="text" class="form-control form-control-lg " name="iduser" id="exampleInputEmail1" placeholder="Username" autofocus>
 
-                </div> -->
+                </div>
 
 
                 <div class="form-group">
