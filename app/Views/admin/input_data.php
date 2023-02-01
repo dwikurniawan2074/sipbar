@@ -11,7 +11,9 @@
                     <p class="card-description">
                         Silahkan masukkan data diri yang sesuai
                     </p>
-                    <form action="/admin/tambah_akun" method="POST" class="forms-sample">
+                    <?= form_open('admin/tambah_akun') ?>
+                    <?= csrf_field(); ?>
+                    <form class="forms-sample">
                         <div class="form-group">
                             <label for="exampleInputName1">NIP</label>
                             <input type="text" class="form-control" name="nip" id="exampleInputName1" placeholder="Nama">
@@ -26,16 +28,12 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleSelectGender">Bidang</label>
-                            <select class="form-control" id="exampleSelectGender" name="bidang">
-                                <option value="Instansi Pemerintah Pusat">IPP</option>
-                                <option value="APD">APD</option>
-                                <option value="Akuntan Negara">Akuntan Negara</option>
-                                <option value="Keuangan">Keuangan</option>
-                                <option value="Kearsipan">Kearsipan</option>
-                                <option value="Investigasi">Investigasi</option>
-                                <option value="Umum">Umum</option>
+                            <select class="form-control" id="exampleSelectGender" name="id_bidang">
+                                <?php foreach ($bidang as $key => $value) { ?>
+                                    <option value="<?= $value['id']; ?>"><?= $value['nama_bidang']; ?></option>
+                                <?php  }; ?>
                             </select>
-                        </div>  
+                        </div>
                         <div class="form-group">
                             <label for="exampleInputName1">Jabatan</label>
                             <input type="text" class="form-control" name="jabatan" id="exampleInputName1" placeholder="Jabatan">
@@ -54,6 +52,7 @@
                         
                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
                     </form>
+                    <?= form_close(); ?>
                 </div>
             </div>
         </div>
