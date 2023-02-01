@@ -10,14 +10,14 @@ class FilterSubkor implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        if(session()->idlevel == ''){
+        if(session()->id_role == ''){
             return redirect()->to('/login/index');
         }
     }
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        if(session()->idlevel == 2){
+        if(session()->id_role == '2'){
             return redirect()->to('/subkor/halaman_subkor');
         }
     }

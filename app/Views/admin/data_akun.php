@@ -122,7 +122,7 @@
                                                         <?= $peg['nip']; ?>
                                                     </td>
                                                     <td>
-                                                        <?= $peg['nama']; ?>
+                                                        <?= $peg['nama_pegawai']; ?>
                                                     </td>
                                                     <td>
                                                         <?= $peg['nama_pangkat']; ?>
@@ -134,7 +134,7 @@
                                                         <?= $peg['jabatan']; ?>
                                                     </td>
                                                     <td>
-                                                        <?= $peg['nama_role']; ?>
+                                                        <?= $peg['deskripsi_role']; ?>
                                                     </td>
                                                     <td class="sorting_1">
                                                         <div class="container-fluid" style="display: flex;">

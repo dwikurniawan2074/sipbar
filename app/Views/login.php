@@ -38,17 +38,22 @@
               <form class="pt-3">
                 <div class="form-group">
                   <?php
-                  if (session()->getFlashdata('errIdUser')) {
+                  if (session()->getFlashdata('errNamaRole')) {
                     $isInvalidUser = 'is-invalid';
                   } else {
                     $isInvalidUser = '';
                   }
                   ?>
-                  <input type="text" class="form-control form-control-lg <?= $isInvalidUser ?>" name="iduser" id="exampleInputEmail1" placeholder="Username" autofocus>
+                  <select class="form-control <?= $isInvalidUser ?>" name="nama_role" autofocus style="color: black;">
+                    <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pilih Login Sebagai</option>
+                    <?php foreach ($role as $key => $value) { ?>
+                      <option value="<?= $value['nama_role']; ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value['deskripsi_role']; ?></option>
+                    <?php }; ?>
+                  </select>
                   <?php
-                  if (session()->getFlashdata('errIdUser')) {
+                  if (session()->getFlashdata('errNamaRole')) {
                     echo '<div id="validationServer03Feedback" class="invalid-feedback">'
-                      . session()->getFlashdata('errIdUser') . '</div>';
+                      . session()->getFlashdata('errNamaRole') . '</div>';
                   }
                   ?>
                 </div>

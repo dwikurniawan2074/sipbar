@@ -36,19 +36,27 @@ class LoginController extends BaseController
 
     public function cekUser()
     {
-        $idUser = $this->request->getPost('iduser');
+        $namaRole = $this->request->getPost('nama_role');
+        // $idUser = $this->request->getPost('iduser');
         $pass = $this->request->getPost('pass');
 
         $validation = \Config\Services::validation();
 
         $valid = $this->validate([
-            'iduser' => [
-                'label' => 'ID User',
+            'nama_role' => [
+                'label' => 'User',
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} tidak boleh kosong'
                 ]
             ],
+            // 'iduser' => [
+            //     'label' => 'ID User',
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => '{field} tidak boleh kosong'
+            //     ]
+            // ],
             'pass' => [
                 'label' => 'Password',
                 'rules' => 'required',
@@ -60,32 +68,53 @@ class LoginController extends BaseController
 
         if (!$valid) {
             $sessError = [
-                'errIdUser' => $validation->getError('iduser'),
+
+                'errNamaRole' => $validation->getError('nama_role'),
+                // 'errIdUser' => $validation->getError('iduser'),
                 'errPassword' => $validation->getError('pass')
             ];
             session()->setFlashdata($sessError);
             return redirect()->to('/');
         } else {
-            $modelLogin = new ModelLogin();
+            //pengecekan bagian bagian input jenis role nya bener tidak
 
-            $cekUserLogin = $modelLogin->find($idUser);
+            $pegawaiModel = new ModelPegawai();
+            // $modelLogin = new ModelLogin();
+
+            $cekUserLogin = $pegawaiModel->find($pass);
+            // dd($cekUserLogin);
+            // $cekUserLogin = $modelLogin->find($idUser);
             if ($cekUserLogin == null) {
                 $sessError = [
-                    'errIdUser' => 'Maaf User Tidak Terdaftar',
+                    'errNamaRole' => 'Maaf User Tidak Terdaftar',
                 ];
                 session()->setFlashdata($sessError);
                 return redirect()->to('/');
             } else {
-                $passwordUser = $cekUserLogin['user_password'];
+                //variable penampung password
+                $passwordUser = $cekUserLogin['nip'];
+                // $passwordUser = $cekUserLogin['user_password'];
 
-                if (password_verify($pass, $passwordUser)) {
-                    $idlevel = $cekUserLogin['user_level_id'];
+                //proses pengecekan password
+                //ubah jadi => password_verify($pass, $passwordUser)
+                //atau if ($pass == $passwordUser)
+                if ($pass == $passwordUser) {
+                    // dd($pass);
+                    $idRole = $cekUserLogin['id_role'];
+                    
+                    
+                    // $idlevel = $cekUserLogin['user_level_id'];
 
                     $simpan_session = [
-                        'iduser' => $idUser,
-                        'namauser' => $cekUserLogin['user_nama'],
-                        'idlevel' => $idlevel
+                        'nama_role' => $namaRole,
+                        'nama_pegawai' => $cekUserLogin['nama_pegawai'],
+                        'id_role' => $idRole
+
+                        // 'iduser' => $idUser,
+                        // 'namauser' => $cekUserLogin['user_nama'],
+                        // 'idlevel' => $idlevel
                     ];
+                    // dd($simpan_session);
 
                     session()->set($simpan_session);
 
@@ -96,7 +125,6 @@ class LoginController extends BaseController
                     ];
                     session()->setFlashdata($sessError);
                     return redirect()->to('/');
-                    
                 }
             }
         }

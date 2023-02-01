@@ -4,7 +4,7 @@
 <?= $this->section('sidebar'); ?>
 
 <!-- Sidebar Untuk Pegawai -->
-<?php if (session()->idlevel == 1) : ?>
+<?php if (session()->id_role == 1) : ?>
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
             <li class="nav-item">
@@ -42,7 +42,7 @@
 <?php endif; ?>
 
 <!-- Sidebar Untuk Subkor -->
-<?php if (session()->idlevel == 2) : ?>
+<?php if (session()->id_role == 2) : ?>
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
             <li class="nav-item">
@@ -74,7 +74,7 @@
 <?php endif; ?>
 
 <!-- Sidebar Untuk Kabag -->
-<?php if (session()->idlevel == 3) : ?>
+<?php if (session()->id_role == 3) : ?>
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
             <li class="nav-item">
@@ -106,7 +106,7 @@
 <?php endif; ?>
 
 <!-- Sidebar Untuk Operator Persediaan -->
-<?php if (session()->idlevel == 4) : ?>
+<?php if (session()->id_role == 4) : ?>
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
             <li class="nav-item">
@@ -144,7 +144,7 @@
 <?php endif; ?>
 
 <!-- Sidebar Untuk Admin Sistem -->
-<?php if (session()->idlevel == 5) : ?>
+<?php if (session()->id_role == 5) : ?>
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
             <li class="nav-item">

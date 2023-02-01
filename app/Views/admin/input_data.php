@@ -46,7 +46,7 @@
                             <label for="exampleSelectGender">Role</label>
                             <select class="form-control" id="exampleSelectGender" name="id_role">
                                 <?php foreach ($role as $key => $value) { ?>
-                                <option value="<?= $value['id']; ?>"><?= $value['nama_role']; ?></option>
+                                <option value="<?= $value['id']; ?>"><?= $value['deskripsi_role']; ?></option>
                                 <?php }; ?>
                             </select>
                         </div>
