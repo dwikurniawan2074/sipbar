@@ -10,14 +10,14 @@ class FilterKabag implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        if(session()->idlevel == ''){
+        if(session()->id_role == ''){
             return redirect()->to('/login/index');
         }
     }
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        if(session()->idlevel == 3){
+        if(session()->id_role == 3){
             return redirect()->to('/kabag/halaman_kabag');
         }
     }

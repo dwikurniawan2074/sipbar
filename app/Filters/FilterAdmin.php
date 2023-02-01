@@ -10,14 +10,14 @@ class FilterAdmin implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        if(session()->idlevel == ''){
+        if(session()->id_role == ''){
             return redirect()->to('/login/index');
         }
     }
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        if(session()->idlevel == 5){
+        if(session()->id_role == 5){
             return redirect()->to('/admin/halaman_admin');
         }
     }

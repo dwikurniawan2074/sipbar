@@ -62,7 +62,7 @@ class AdminController extends BaseController
 
         $data = [
             'nip' => $this->request->getPost('nip'),
-            'nama' => $this->request->getPost('nama'),
+            'nama_pegawai' => $this->request->getPost('nama'),
             'id_pangkat' => $this->request->getPost('id_pangkat'),
             'id_bidang' => $this->request->getPost('id_bidang'),
             'jabatan' => $this->request->getPost('jabatan'),
