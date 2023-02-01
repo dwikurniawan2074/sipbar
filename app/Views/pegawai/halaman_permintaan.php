@@ -69,15 +69,15 @@
                                                             <?php if (
                                                                 $pr['status'] == '0'
                                                             ) { ?>
-                                                                <label class="badge badge-danger">Rejected</label>
+                                                                <label class="badge badge-danger">Tidak di Setujui</label>
                                                             <?php } else if (
                                                                 $pr['status'] == '1'
                                                             ) { ?>
-                                                                <label class="badge badge-info">Procces</label>
+                                                                <label class="badge badge-info">On Proses</label>
                                                             <?php } elseif (
                                                                 $pr['status'] == '2'
                                                             ) { ?>
-                                                                <label class="badge badge-success">Approve</label>
+                                                                <label class="badge badge-success">di Setujui</label>
                                                                 
                                                             <?php } ?>
 
@@ -85,22 +85,71 @@
                                                         <td class="sorting_1">
                                                             <div class="container-fluid" style="display: flex;">
                                                             <?php if ($pr['status'] == "0") { ?>
-                                                                <a class="disabled btn btn-warning mr-2" href="/keluar/edit/<?= $pr['id'] ?>"><i class="ti-pencil-alt"></i></a>
+                                                                <a class="disabled btn btn-warning mr-2" href="/keluar/edit/<?= $pr['id'] ?>" style="height: 30px"><i class="ti-pencil-alt"></i></a>
                                                                 <form action="/pegawai/delete_permintaan/<?= $pr['id'] ?>" method="post">
                                                                     <input type="hidden" name="_method" value="DELETE" >
-                                                                    <button type="submit" class="btn btn-danger" disabled><i class="ti-trash"></i></button>
+                                                                    <button type="submit" class="btn btn-danger" style="height: 30px" disabled><i class="ti-trash"></i></button>
                                                                 </form> 
                                                             <?php } else if ($pr['status'] == "1"){?> 
-                                                                <a class="btn btn-warning mr-2" href="/keluar/edit/<?= $pr['id'] ?>" ><i class="ti-pencil-alt"></i></a>
+                                                                <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#staticBackdrop<?= $pr['id'] ?>" style="height: 30px"><i class="ti-pencil-alt"></i></button>
+                                                                    <div class="modal fade bd-example-modal-xl" id="staticBackdrop<?=$pr['id'] ?>" tabindex="-1" aria-labelledby="myLargeModalLabel" role="dialog">
+                                                                        <div class="modal-dialog modal-xl">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title" id="staticBackdropLabel">Edit Pengajuan Permintaan Barang</h1>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">&times;</span></button>
+                                                                                </div>
+                                                                                <?= form_open('/pegawai/update_permintaan/'.$pr['id']) ?>
+                                                                                <?= csrf_field(); ?>
+                                                                                <form action="/pegawai/update_permintaan/<?= $pr['id'] ?>" method="POST" enctype="multipart/form-data">
+                                                                                <div class="modal-body">
+                                                                                    <div class="form-group">
+                                                                                        <label for="exampleInputName1">Nama Pegawai</label>
+                                                                                        <input type="text" class="form-control" id="exampleInputName1" value="Achirsyah Moeis" readonly>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="exampleInputName1">Nama Barang</label>
+                                                                                        <input type="text" class="form-control" id="exampleInputName1" name="nama_barang" placeholder="Nama Barang" value="<?= $pr['nama_barang'] ?> "required>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="exampleInputName1">Stok Barang</label>
+                                                                                        <input type="text" class="form-control" id="exampleInputName1" value="10" readonly>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="exampleInputName1">Jumlah</label>
+                                                                                        <input type="text" class="form-control" id="exampleInputName1" name="jumlah" placeholder="Jumlah" min="1" max="10" value="<?= $pr['jumlah'] ?> " required>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="exampleInputName1">Satuan</label>
+                                                                                        <input type="text" class="form-control" id="exampleInputName1" name="satuan" value="<?= $pr['satuan'] ?> " readonly>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="exampleInputName1">Keterangan</label>
+                                                                                        <input type="text" class="form-control" id="exampleInputName1" name="keterangan" placeholder="Keterangan" value="<?= $pr['keterangan'] ?> " required>
+                                                                                    </div> 
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-light" data-dismiss="modal" style="height: 50px">Close</button>
+                                                                                    <button type="submit" class="btn btn-success" style="height: 50px" >Simpan <i class="ti-save"></i></button>
+                                                                                </div>
+                                                                                </form> 
+                                                                                <?= form_close(); ?> 
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                <?= form_open('/pegawai/delete_permintaan/'.$pr['id']) ?>
+                                                                <?= csrf_field(); ?>
                                                                 <form action="/pegawai/delete_permintaan/<?= $pr['id'] ?>" method="post">
                                                                     <input type="hidden" name="_method" value="DELETE">
-                                                                    <button type="submit" class="btn btn-danger" ><i class="ti-trash"></i></button>
+                                                                    <button type="submit" class="btn btn-danger" style="height: 30px"><i class="ti-trash"></i></button>
                                                                 </form> 
+                                                                <?= form_close(); ?> 
                                                             <?php } else if ($pr['status'] == "2"){?> 
-                                                                <a class="disabled btn btn-warning mr-2" href="/keluar/edit/<?= $pr['id'] ?>" ><i class="ti-pencil-alt"></i></a>
+                                                                <a class="disabled btn btn-warning mr-2" href="/keluar/edit/<?= $pr['id'] ?>" style="height: 30px"><i class="ti-pencil-alt"></i></a>
                                                                 <form action="/pegawai/delete_permintaan/<?= $pr['id'] ?>" method="post">
                                                                     <input type="hidden" name="_method" value="DELETE">
-                                                                    <button type="submit" class="btn btn-danger" disabled><i class="ti-trash"></i></button>
+                                                                    <button type="submit" class="btn btn-danger" style="height: 30px" disabled><i class="ti-trash"></i></button>
                                                                 </form> 
                                                             <?php } ?>
                                                             

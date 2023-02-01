@@ -14,7 +14,7 @@
                     <form action="/admin/tambah_akun" method="POST" class="forms-sample">
                         <div class="form-group">
                             <label for="exampleInputName1">NIP</label>
-                            <input type="text" class="form-control" name="nip" id="exampleInputName1" placeholder="Nama">
+                            <input type="text" class="form-control" name="nip" id="exampleInputName1" placeholder="NIP">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputName1">Nama Pegawai</label>
