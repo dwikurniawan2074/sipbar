@@ -4,12 +4,34 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\ModelLogin;
+use App\Models\ModelPegawai;
+use App\Models\ModelRole;
+use App\Models\ModelBidang;
+use App\Models\ModelPangkat;
 
 class LoginController extends BaseController
 {
     public function index()
     {
-        return view('login');
+        $pegawaiModel = new ModelPegawai();
+        $bidangModel = new ModelBidang();
+        $pangkatModel = new ModelPangkat();
+        $roleModel = new ModelRole();
+
+        $pegawai = $pegawaiModel->findAll();
+        $bidang = $bidangModel->findAll();
+        $pangkat = $pangkatModel->findAll();
+        $role = $roleModel->findAll();
+
+        $data = [
+            'title' => 'Pegawai',
+            'pegawai' => $pegawai,
+            'bidang' => $bidang,
+            'pangkat' => $pangkat,
+            'role' => $role
+        ];
+
+        return view('login', $data);
     }
 
     public function cekUser()

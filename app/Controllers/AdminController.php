@@ -4,7 +4,9 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\ModelBidang;
+use App\Models\ModelPangkat;
 use App\Models\ModelPegawai;
+use App\Models\ModelRole;
 
 class AdminController extends BaseController
 {
@@ -19,6 +21,8 @@ class AdminController extends BaseController
         $pegawaiModel = new ModelPegawai();
         $pegawai = $pegawaiModel
             ->join('bidang', 'bidang.id=pegawai.id_bidang', 'left')
+            ->join('pangkat', 'pangkat.id=pegawai.id_pangkat', 'left')
+            ->join('role', 'role.id=pegawai.id_role', 'left')
             ->findAll();
 
         $data = [
@@ -33,14 +37,20 @@ class AdminController extends BaseController
     {
         $pegawaiModel = new ModelPegawai();
         $bidangModel = new ModelBidang();
+        $pangkatModel = new ModelPangkat();
+        $roleModel = new ModelRole();
 
         $pegawai = $pegawaiModel->findAll();
         $bidang = $bidangModel->findAll();
+        $pangkat = $pangkatModel->findAll();
+        $role = $roleModel->findAll();
 
         $data = [
             'title' => 'Pegawai',
             'pegawai' => $pegawai,
-            'bidang' => $bidang
+            'bidang' => $bidang,
+            'pangkat' => $pangkat,
+            'role' => $role
         ];
 
         return view('admin/input_data', $data);
@@ -53,13 +63,13 @@ class AdminController extends BaseController
         $data = [
             'nip' => $this->request->getPost('nip'),
             'nama' => $this->request->getPost('nama'),
-            'pangkat' => $this->request->getPost('pangkat'),
+            'id_pangkat' => $this->request->getPost('id_pangkat'),
             'id_bidang' => $this->request->getPost('id_bidang'),
             'jabatan' => $this->request->getPost('jabatan'),
-            'role' => $this->request->getPost('role')
+            'id_role' => $this->request->getPost('id_role')
         ];
         $pegawaiModel->insert($data);
 
-        return view('admin/data_akun');
+        return redirect()->to('admin/data_akun');
     }
 }
