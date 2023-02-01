@@ -52,11 +52,6 @@
                   }
                   ?>
                 </div>
-                <div class="form-group">
-
-                  <input type="text" class="form-control form-control-lg " name="iduser" id="exampleInputEmail1" placeholder="Username" autofocus>
-
-                </div>
 
 
                 <div class="form-group">
