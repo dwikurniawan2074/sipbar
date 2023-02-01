@@ -4,12 +4,12 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ModelPegawai extends Model
+class ModelPangkat extends Model
 {
-    protected $table            = 'pegawai';
+    protected $table            = 'pangkat';
     protected $primaryKey       = 'id';
     protected $allowedFields    = [
-        'nip', 'nama', 'id_pangkat', 'jabatan', 'id_bidang', 'id_role'
+        'nama_pangkat'
     ];
 
     // public function getPegawai()

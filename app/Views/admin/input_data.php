@@ -23,8 +23,12 @@
                             <input type="text" class="form-control" name="nama" id="exampleInputName1" placeholder="Nama">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputName1">Pangkat Golongan</label>
-                            <input type="text" class="form-control" name="pangkat" id="exampleInputName1" placeholder="Pangkat Golongan">
+                            <label for="exampleSelectGender">Pangkat</label>
+                            <select class="form-control" id="exampleSelectGender" name="id_pangkat">
+                                <?php foreach ($pangkat as $pgkt => $value) { ?>
+                                    <option value="<?= $value['id']; ?>"><?= $value['nama_pangkat']; ?></option>
+                                <?php }; ?>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleSelectGender">Bidang</label>
@@ -40,16 +44,14 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleSelectGender">Role</label>
-                            <select class="form-control" id="exampleSelectGender" name="role">
-                                <option value="Pegawai">Pegawai</option>
-                                <option value="Subkor">Subkor</option>
-                                <option value="Kabag">Kepala Bagian</option>
-                                <option value="Operator">Operator</option>
-                                <option value="Admin Sistem">Admin Sistem</option>
+                            <select class="form-control" id="exampleSelectGender" name="id_role">
+                                <?php foreach ($role as $key => $value) { ?>
+                                <option value="<?= $value['id']; ?>"><?= $value['nama_role']; ?></option>
+                                <?php }; ?>
                             </select>
                         </div>
-                       
-                        
+
+
                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
                     </form>
                     <?= form_close(); ?>
