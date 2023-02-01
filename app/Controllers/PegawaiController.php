@@ -83,7 +83,6 @@ class PegawaiController extends BaseController
             'title' => 'Permintaan',
             'permintaan' => $permintaan
         ];
-
         return view('pegawai/halaman_permintaan',$data);
     }
     public function halaman_stok_barang()

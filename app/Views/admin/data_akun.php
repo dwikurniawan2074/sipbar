@@ -36,9 +36,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                $no = 1;
-                                foreach ($pegawai as $peg) : ?>
+                                <?php $no = 1; ?>
+                                <?php foreach ($pegawai as $peg) : ?>
                                     <tr>
                                         <td>
                                             <?= $no; ?>
@@ -53,7 +52,7 @@
                                             <?= $peg['pangkat']; ?>
                                         </td>
                                         <td>
-                                            <?= $peg['bidang']; ?>
+                                            <?= $peg['nama_bidang']; ?>
                                         </td>
                                         <td>
                                             <?= $peg['jabatan']; ?>

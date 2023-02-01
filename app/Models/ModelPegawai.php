@@ -9,7 +9,7 @@ class ModelPegawai extends Model
     protected $table            = 'pegawai';
     protected $primaryKey       = 'id';
     protected $allowedFields    = [
-        'nip', 'nama', 'pangkat', 'bidang', 'jabatan', 'role'
+        'nip', 'nama', 'pangkat', 'jabatan', 'role', 'id_bidang'
     ];
 
     // public function getPegawai()
