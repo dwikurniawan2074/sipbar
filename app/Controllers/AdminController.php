@@ -19,16 +19,30 @@ class AdminController extends BaseController
     public function data_akun()
     {
         $pegawaiModel = new ModelPegawai();
+        $bidangModel = new ModelBidang();
+        $pangkatModel = new ModelPangkat();
+        $roleModel = new ModelRole();
+
         $pegawai = $pegawaiModel
             ->join('bidang', 'bidang.id=pegawai.id_bidang', 'left')
             ->join('pangkat', 'pangkat.id=pegawai.id_pangkat', 'left')
             ->join('role', 'role.id=pegawai.id_role', 'left')
             ->findAll();
 
+        $bidang = $bidangModel->findAll();
+        $pangkat = $pangkatModel->findAll();
+        $role = $roleModel->findAll();
+
         $data = [
             'title' => 'Pegawai',
-            'pegawai' => $pegawai
+            'pegawai' => $pegawai,
+            'pegawai' => $pegawai,
+            'bidang' => $bidang,
+            'pangkat' => $pangkat,
+            'role' => $role
         ];
+
+        // dd($data);
 
         return view('admin/data_akun', $data);
     }
@@ -52,6 +66,7 @@ class AdminController extends BaseController
             'pangkat' => $pangkat,
             'role' => $role
         ];
+        
 
         return view('admin/input_data', $data);
     }
@@ -71,5 +86,22 @@ class AdminController extends BaseController
         $pegawaiModel->insert($data);
 
         return redirect()->to('admin/data_akun');
+    }
+
+    public function update_akun($nip)
+    {
+        $pegawaiModel = new ModelPegawai();
+
+        $data = [
+            'nip' => $this->request->getPost('nip'),
+            'nama_pegawai' => $this->request->getPost('nama'),
+            'id_pangkat' => $this->request->getPost('id_pangkat'),
+            'id_bidang' => $this->request->getPost('id_bidang'),
+            'jabatan' => $this->request->getPost('jabatan'),
+            'id_role' => $this->request->getPost('id_role')
+        ];
+        $pegawaiModel->update($nip, $data);
+        
+        return redirect()->to('/admin/data_akun');
     }
 }

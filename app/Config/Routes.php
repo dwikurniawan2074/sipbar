@@ -43,6 +43,7 @@ $routes->get('/admin/halaman_admin', 'AdminController::halaman_admin');
 $routes->get('/admin/data_akun', 'AdminController::data_akun');
 $routes->get('/admin/input_data', 'AdminController::input_data');
 $routes->post('/admin/tambah_akun', 'AdminController::tambah_akun');
+$routes->post('/admin/update_akun/(:num)', 'AdminController::update_akun/$1');
 
 
 // Routes Pegawai

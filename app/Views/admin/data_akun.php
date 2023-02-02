@@ -138,10 +138,71 @@
                                                     </td>
                                                     <td class="sorting_1">
                                                         <div class="container-fluid" style="display: flex;">
-                                                            <a class="btn btn-warning mr-2" href=""><i class="ti-pencil-alt"></i></a>
-                                                            <form action="" method="post">
+                                                            <!-- button edit barang -->
+                                                            <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#staticBackdrop<?= $peg['nip'] ?>" style="height: 30px"><i class="ti-pencil-alt"></i></button>
+                                                            <!-- modal -->
+                                                            <div class="modal fade bd-example-modal-xl" id="staticBackdrop<?= $peg['nip'] ?>" tabindex="-1" aria-labelledby="myLargeModalLabel" role="dialog">
+                                                                <div class="modal-dialog modal-xl">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="staticBackdropLabel">Edit Pengajuan Permintaan Barang</h1>
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">&times;</span></button>
+                                                                        </div>
+                                                                        <?= form_open('/admin/update_akun/' . $peg['nip']); ?>
+                                                                        <?= csrf_field(); ?>
+                                                                        <form method="POST" enctype="multipart/form-data">
+                                                                            <div class="modal-body">
+                                                                                <div class="form-group">
+                                                                                    <label for="exampleInputName1">NIP</label>
+                                                                                    <input type="text" class="form-control" name="nip" id="exampleInputName1" value="<?= $peg['nip']; ?>" readonly>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label for="exampleInputName1">Nama Pegawai</label>
+                                                                                    <input type="text" class="form-control" id="exampleInputName1" name="nama" placeholder="" value="<?= $peg['nama_pegawai']; ?>" required>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label for="exampleInputName1">Pangkat</label>
+                                                                                    <select class="form-control" id="exampleSelectGender" name="id_pangkat" required>
+                                                                                        <?php foreach ($pangkat as $key => $value) { ?>
+                                                                                            <option value="<?= $value['id']; ?>">&nbsp;&nbsp;&nbsp;<?= $value['nama_pangkat']; ?></option>
+                                                                                        <?php }; ?>
+                                                                                    </select>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label for="exampleInputName1">Bidang</label>
+                                                                                    <select class="form-control" id="exampleSelectGender" name="id_bidang" required>
+                                                                                        <?php foreach ($bidang as $key => $value) { ?>
+                                                                                            <option value="<?= $value['id']; ?>">&nbsp;&nbsp;&nbsp;<?= $value['nama_bidang']; ?></option>
+                                                                                        <?php  }; ?>
+                                                                                    </select>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label for="exampleInputName1">Jabatan</label>
+                                                                                    <input type="text" class="form-control" id="exampleInputName1" name="jabatan" value="<?= $peg['jabatan']; ?>">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label for="exampleInputName1">Role</label>
+                                                                                    <select class="form-control" id="exampleSelectGender" name="id_role" required>
+                                                                                        <?php foreach ($role as $key => $value) { ?>
+                                                                                            <option value="<?= $value['id']; ?>">&nbsp;&nbsp;&nbsp;<?= $value['deskripsi_role']; ?></option>
+                                                                                        <?php }; ?>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-light" data-dismiss="modal" style="height: 50px">Cancel</button>
+                                                                                <button type="submit" class="btn btn-success" style="height: 50px">Simpan <i class="ti-save"></i></button>
+                                                                            </div>
+                                                                        </form>
+                                                                        <?= form_close(); ?>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <form>
                                                                 <input type="hidden" name="_method" value="DELETE">
-                                                                <button type="submit" class="btn btn-danger"><i class="ti-trash"></i></button>
+                                                                <button type="submit" class="btn btn-danger" style="height: 30px"><i class="ti-trash"></i></button>
                                                             </form>
                                                         </div>
                                                     </td>
