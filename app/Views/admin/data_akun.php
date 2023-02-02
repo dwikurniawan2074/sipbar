@@ -199,11 +199,13 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-
-                                                            <form>
+                                                            <?= form_open('/admin/hapus_akun/'. $peg['nip']) ?>
+                                                            <?= csrf_field(); ?>
+                                                            <form method="post">
                                                                 <input type="hidden" name="_method" value="DELETE">
                                                                 <button type="submit" class="btn btn-danger" style="height: 30px"><i class="ti-trash"></i></button>
                                                             </form>
+                                                            <?= form_close(); ?>
                                                         </div>
                                                     </td>
                                                 </tr>
