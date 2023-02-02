@@ -66,7 +66,7 @@ class AdminController extends BaseController
             'pangkat' => $pangkat,
             'role' => $role
         ];
-        
+
 
         return view('admin/input_data', $data);
     }
@@ -101,7 +101,15 @@ class AdminController extends BaseController
             'id_role' => $this->request->getPost('id_role')
         ];
         $pegawaiModel->update($nip, $data);
-        
+
+        return redirect()->to('/admin/data_akun');
+    }
+
+    public function hapus_akun($nip)
+    {
+        $pegawai = new ModelPegawai();
+        $pegawai->delete($nip);
+
         return redirect()->to('/admin/data_akun');
     }
 }
