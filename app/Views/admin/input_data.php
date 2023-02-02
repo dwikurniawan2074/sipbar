@@ -25,7 +25,7 @@
                         <div class="form-group">
                             <label for="exampleSelectGender">Pangkat</label>
                             <select class="form-control" id="exampleSelectGender" name="id_pangkat" required>
-                                <?php foreach ($pangkat as $pgkt => $value) { ?>
+                                <?php foreach ($pangkat as $key => $value) { ?>
                                     <option value="<?= $value['id']; ?>"><?= $value['nama_pangkat']; ?></option>
                                 <?php }; ?>
                             </select>
