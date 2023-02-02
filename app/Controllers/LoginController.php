@@ -79,10 +79,18 @@ class LoginController extends BaseController
             //pengecekan bagian bagian input jenis role nya bener tidak
 
             $pegawaiModel = new ModelPegawai();
+            $roleModel = new ModelRole();
             // $modelLogin = new ModelLogin();
 
+            
+
             $cekUserLogin = $pegawaiModel->find($pass);
-            // dd($cekUserLogin);
+
+            $idRole = $cekUserLogin['id_role'];
+            // dd($idRole);
+            
+            $cekRoleLogin = $roleModel->find($idRole);
+            // dd($cekRoleLogin);
             // $cekUserLogin = $modelLogin->find($idUser);
             if ($cekUserLogin == null) {
                 $sessError = [
@@ -93,16 +101,19 @@ class LoginController extends BaseController
             } else {
                 //variable penampung password
                 $passwordUser = $cekUserLogin['nip'];
+                $roleUser = $cekRoleLogin['nama_role'];
+
+                
                 // $passwordUser = $cekUserLogin['user_password'];
 
                 //proses pengecekan password
                 //ubah jadi => password_verify($pass, $passwordUser)
                 //atau if ($pass == $passwordUser)
-                if ($pass == $passwordUser) {
+                if ($pass == $passwordUser && $namaRole == $roleUser) {
                     // dd($pass);
-                    $idRole = $cekUserLogin['id_role'];
-                    
-                    
+                    // $idRole = $cekUserLogin['id_role'];
+
+
                     // $idlevel = $cekUserLogin['user_level_id'];
 
                     $simpan_session = [
@@ -110,7 +121,7 @@ class LoginController extends BaseController
                         'nip' => $cekUserLogin['nip'],
                         'nama_pegawai' => $cekUserLogin['nama_pegawai'],
                         'id_role' => $idRole,
-                        
+
 
                         // 'iduser' => $idUser,
                         // 'namauser' => $cekUserLogin['user_nama'],
