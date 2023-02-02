@@ -16,15 +16,15 @@
                     <form class="forms-sample">
                         <div class="form-group">
                             <label for="exampleInputName1">NIP</label>
-                            <input type="text" class="form-control" name="nip" id="exampleInputName1" placeholder="NIP">
+                            <input type="text" class="form-control" name="nip" id="exampleInputName1" placeholder="NIP" required>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputName1">Nama Pegawai</label>
-                            <input type="text" class="form-control" name="nama" id="exampleInputName1" placeholder="Nama">
+                            <input type="text" class="form-control" name="nama" id="exampleInputName1" placeholder="Nama" required>
                         </div>
                         <div class="form-group">
                             <label for="exampleSelectGender">Pangkat</label>
-                            <select class="form-control" id="exampleSelectGender" name="id_pangkat">
+                            <select class="form-control" id="exampleSelectGender" name="id_pangkat" required>
                                 <?php foreach ($pangkat as $pgkt => $value) { ?>
                                     <option value="<?= $value['id']; ?>"><?= $value['nama_pangkat']; ?></option>
                                 <?php }; ?>
@@ -32,7 +32,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleSelectGender">Bidang</label>
-                            <select class="form-control" id="exampleSelectGender" name="id_bidang">
+                            <select class="form-control" id="exampleSelectGender" name="id_bidang" required>
                                 <?php foreach ($bidang as $key => $value) { ?>
                                     <option value="<?= $value['id']; ?>"><?= $value['nama_bidang']; ?></option>
                                 <?php  }; ?>
@@ -40,11 +40,11 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputName1">Jabatan</label>
-                            <input type="text" class="form-control" name="jabatan" id="exampleInputName1" placeholder="Jabatan">
+                            <input type="text" class="form-control" name="jabatan" id="exampleInputName1" placeholder="Jabatan" required>
                         </div>
                         <div class="form-group">
                             <label for="exampleSelectGender">Role</label>
-                            <select class="form-control" id="exampleSelectGender" name="id_role">
+                            <select class="form-control" id="exampleSelectGender" name="id_role" required>
                                 <?php foreach ($role as $key => $value) { ?>
                                 <option value="<?= $value['id']; ?>"><?= $value['deskripsi_role']; ?></option>
                                 <?php }; ?>
