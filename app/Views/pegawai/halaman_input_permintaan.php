@@ -10,12 +10,12 @@
                     <p class="card-description">
                         Silahkan masukkan data barang yang sesuai
                     </p>
-                    <?= form_open('/pegawai/simpan_permintaan') ?>
+                    <?= form_open('/pegawai/simpan_permintaanSementara') ?>
                     <?= csrf_field(); ?>
-                    <form action="/pegawai/simpan_permintaan" method="POST" class="forms-sample">
+                    <form action="/pegawai/simpan_permintaanSementara" method="POST" class="forms-sample">
                         <div class="form-group disabled">
                             <label for="exampleInputName1">Nama Pegawai</label>
-                            <input type="text" class="form-control" id="exampleInputName1" value="Achirsyah Moeis" readonly>
+                            <input type="text" class="form-control" id="exampleInputName1" value="<?= session()->get('nama_pegawai'); ?>" readonly>
                         </div>
                         <div class="form-group position-relative">
                             <label for="exampleInputName1">Nama Barang</label>
@@ -38,7 +38,7 @@
                             <input type="text" class="form-control" id="exampleInputName1" name="keterangan" placeholder="Keterangan" required>
                         </div>
 
-                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                        <button type="submit" class="btn btn-info mr-2">Simpan</button>
 
                     </form>
                     <?= form_close(); ?>
@@ -55,7 +55,6 @@
                 <thead>
                     <tr role="row">
                         <th>No.</th>
-                        <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Nama Pegawai: activate to sort column ascending ">Nama Pegawai</th>
                         <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Nama Barang: activate to sort column ascending">Nama Barang</th>
                         <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Jumlah: activate to sort column ascending">Jumlah</th>
                         <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Satuan: activate to sort column ascending">Satuan</th>
@@ -63,18 +62,24 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php
+                        $no = 1;
+                        foreach ($permintaanS as $prs) : 
+                    ?>
                         <tr>
-                            <td>1</td>
-                            <td>Achirsyah Moeis</td>
-                            <td>Achirsyah Moeis</td>
-                            <td>Achirsyah Moeis</td>
-                            <td>Achirsyah Moeis</td>
-                            <td>Achirsyah Moeis</td>
-                            
+                            <td><?= $no?></td>
+                            <td><?= $prs['nama_barang'] ?></td>
+                            <td><?= $prs['jumlah'] ?></td>
+                            <td><?= $prs['satuan'] ?></td>
+                            <td><?= $prs['keterangan'] ?></td>
+                        </tr>
+                    <?php $no++;
+                    endforeach;
+                    ?>
                 </tbody>
                 <tfoot></tfoot>
             </table>
-            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            <button type="submit" class="btn btn-success mr-2">Submit</button>
         </div>
             </div>
         </div>

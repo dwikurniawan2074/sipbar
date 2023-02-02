@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Permintaan;
+use App\Models\PermintaanSementara;
 
 class PegawaiController extends BaseController
 {
@@ -14,13 +15,21 @@ class PegawaiController extends BaseController
     }
     public function halaman_input_permintaan()
     {
-        return view('pegawai/halaman_input_permintaan');
+        $permintaanNew = new PermintaanSementara();
+        $permintaan= $permintaanNew->findAll();
+
+        $data = [
+            'title' => 'Permintaan',
+            'permintaanS' => $permintaan
+        ];
+        return view('pegawai/halaman_input_permintaan',$data);
     } 
 
     public function save_permintaan()
     {
         $permintaan = new Permintaan();
         $data = [
+            'nip' => session()->get('nip'),
             'nama_barang' => $this->request->getPost('nama_barang'),
             'jumlah' => $this->request->getPost('jumlah'),
             'satuan' => $this->request->getPost('satuan'),
@@ -35,19 +44,19 @@ class PegawaiController extends BaseController
 
     public function saveSementara_permintaan()
     {
-        $permintaan = new Permintaan();
+        $permintaan = new PermintaanSementara();
 
         $data = [
+            'nip' => session()->get('nip'),
             'nama_barang' => $this->request->getPost('nama_barang'),
             'jumlah' => $this->request->getPost('jumlah'),
             'satuan' => $this->request->getPost('satuan'),
             'keterangan' => $this->request->getPost('keterangan'),
             'tanggal_permintaan' => date('y-m-d'),
-            'status' => '0'
         ];
 
         $permintaan->insert($data);
-        return redirect()->to('pegawai/halaman_permintaan');
+        return redirect()->to('pegawai/halaman_input_permintaan');
     } 
 
     public function Update_permintaan($id)

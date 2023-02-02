@@ -32,16 +32,16 @@
                                         <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
                                             <thead>
                                                 <tr role="row">
-                                                    <th>No.</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Nama Pegawai: activate to sort column ascending ">Nama Pegawai</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Nama Barang: activate to sort column ascending">Nama Barang</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Jumlah: activate to sort column ascending">Jumlah</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Satuan: activate to sort column ascending">Satuan</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Keterangan: activate to sort column ascending">Keterangan</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Tanggal Permintaan: activate to sort column ascending">Tanggal Permintaan</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Tanggal di Setujui: activate to sort column ascending">Tanggal di Setujui</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">Status</th>
-                                                    <th class="sorting_desc" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending" aria-sort="descending" style="width: 126.016px;">Actions</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >No.</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Nama Pegawai</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Nama Barang</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Jumlah</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Satuan</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Keterangan</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Tanggal Permintaan</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Tanggal di Setujui</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-sort="descending">Status</th>
+                                                    <th class="sorting_desc" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-sort="descending" style="width: 126.016px;">Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -50,7 +50,7 @@
                                                 foreach ($permintaan as $pr) : ?>
                                                     <tr>
                                                         <td><?= $no?></td>
-                                                        <td>Achirsyah Moeis</td>
+                                                        <td><?= session()->get('nama_pegawai'); ?></td>
                                                         <td><?= $pr['nama_barang'] ?></td>
                                                         <td><?= $pr['jumlah'] ?></td>
                                                         <td><?= $pr['satuan'] ?></td>

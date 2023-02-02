@@ -70,7 +70,7 @@ class Filters extends BaseConfig
             'filterSubkor' => [
                 'except' => ['subkor/*']
             ],
-            // 'toolbar',
+            'toolbar',
             // 'honeypot',
             // 'secureheaders',
         ],

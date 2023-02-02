@@ -107,8 +107,10 @@ class LoginController extends BaseController
 
                     $simpan_session = [
                         'nama_role' => $namaRole,
+                        'nip' => $cekUserLogin['nip'],
                         'nama_pegawai' => $cekUserLogin['nama_pegawai'],
-                        'id_role' => $idRole
+                        'id_role' => $idRole,
+                        
 
                         // 'iduser' => $idUser,
                         // 'namauser' => $cekUserLogin['user_nama'],
