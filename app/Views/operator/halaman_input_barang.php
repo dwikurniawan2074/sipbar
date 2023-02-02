@@ -10,30 +10,31 @@
                     <p class="card-description">
                         Silahkan masukkan data barang yang sesuai
                     </p>
-                    <form class="forms-sample">
+                    <?= form_open('/operator/simpan_data_barang') ?>
+                    <?= csrf_field(); ?>
+                    <form action="/operator/simpan_data_barang" class="forms-sample">
                         <div class="form-group">
                             <label for="exampleInputName1">Kode Barang</label>
-                            <input type="text" class="form-control" id="exampleInputName1" placeholder="Kode Barang">
+                            <input type="text" class="form-control" id="exampleInputName1" placeholder="Kode Barang" name="kode_barang">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputName1">Nama Barang</label>
-                            <input type="text" class="form-control" id="exampleInputName1" placeholder="Nama Barang">
+                            <input type="text" class="form-control" id="exampleInputName1" placeholder="Nama Barang" name="nama_barang">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputName1">Stok Awal</label>
-                            <input type="text" class="form-control" id="exampleInputName1" placeholder="Stok Awal">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleSelectGender">Keterangan</label>
-                            <select class="form-control" id="exampleSelectGender">
-                                <option>Sudah Opname</option>
-                                <option>Belum Opname</option>
-                            </select>
+                            <label for="exampleInputName1">Satuan</label>
+                            <input type="text" class="form-control" id="exampleInputName1" placeholder="Satuan" name="satuan">
                         </div>
 
+                        <div class="form-group">
+                            <label for="exampleInputName1">Stok Awal</label>
+                            <input type="text" class="form-control" id="exampleInputName1" placeholder="Stok Awal" name="stok_awal">
+                        </div>
+ 
                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
 
                     </form>
+                    <?= form_close(); ?>
                 </div>
             </div>
         </div>

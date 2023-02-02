@@ -122,9 +122,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/operator/halaman_permintaan">
+                <a class="nav-link" href="/operator/halaman_data_barang">
                     <i class="icon-grid-2 menu-icon"></i>
-                    <span class="menu-title">Data Permintaan</span>
+                    <span class="menu-title">Data Barang</span>
                 </a>
             </li>
             <li class="nav-item">

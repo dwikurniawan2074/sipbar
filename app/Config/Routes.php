@@ -50,6 +50,7 @@ $routes->get('/pegawai/', 'PegawaiController::halaman_pegawai');
 $routes->get('/pegawai/halaman_pegawai', 'PegawaiController::halaman_pegawai');
 $routes->get('/pegawai/halaman_input_permintaan', 'PegawaiController::halaman_input_permintaan');
 $routes->post('/pegawai/simpan_permintaan', 'PegawaiController::save_permintaan');
+$routes->post('/pegawai/simpan_permintaanSementara', 'PegawaiController::saveSementara_permintaan');
 $routes->post('/pegawai/update_permintaan/(:num)', 'PegawaiController::Update_permintaan/$1');
 $routes->delete('/pegawai/delete_permintaan/(:num)', 'PegawaiController::delete_permintaan/$1');
 $routes->get('/pegawai/halaman_permintaan', 'PegawaiController::halaman_permintaan');
@@ -67,8 +68,11 @@ $routes->get('/subkor/halaman_stok_barang', 'SubkorController::halaman_stok_bara
 // Routes Operator Persediaan
 $routes->get('/operator/', 'OperatorController::halaman_operator');
 $routes->get('/operator/halaman_operator', 'OperatorController::halaman_operator');
-$routes->get('/operator/halaman_permintaan', 'OperatorController::halaman_permintaan');
+$routes->get('/operator/halaman_data_barang', 'OperatorController::halaman_data_barang');
 $routes->get('/operator/halaman_input_barang', 'OperatorController::halaman_input_barang');
+$routes->post('/operator/simpan_data_barang', 'OperatorController::save_dataBarang');
+$routes->post('/operator/update_data_barang/(:num)', 'OperatorController::Update_dataBarang/$1');
+$routes->delete('/operator/delete_data_barang/(:num)', 'OperatorController::delete_dataBarang/$1');
 $routes->get('/operator/halaman_laporan_stok', 'OperatorController::halaman_laporan_stok');
 
 
