@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\Permintaan;
 use App\Models\PermintaanSementara;
+use App\Models\ModelBarang;
 
 class PegawaiController extends BaseController
 {
@@ -17,10 +18,13 @@ class PegawaiController extends BaseController
     {
         $permintaanNew = new PermintaanSementara();
         $permintaan= $permintaanNew->findAll();
+        $barangNew = new ModelBarang();
+        $barang= $barangNew->findAll();
 
         $data = [
             'title' => 'Permintaan',
-            'permintaanS' => $permintaan
+            'permintaanS' => $permintaan,
+            'barang' => $barang
         ];
         return view('pegawai/halaman_input_permintaan',$data);
     } 
