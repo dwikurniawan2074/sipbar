@@ -19,15 +19,20 @@
                         </div>
                         <div class="form-group position-relative">
                             <label for="exampleInputName1">Nama Barang</label>
-                            <input type="text" class="form-control" id="exampleInputName1" name="nama_barang" placeholder="Nama Barang" required>
+                            <select class="form-control" id="exampleSelectGender" name="id_pangkat" required>
+                                <option value="">--Pilih Nama Barang--</option>
+                                <?php foreach ($barang as $brg => $value) { ?>
+                                    <option value="<?= $value['id']; ?>"><?= $value['nama_barang']; ?></option>
+                                <?php }; ?>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputName1">Stok Barang</label>
-                            <input type="text" class="form-control" id="exampleInputName1" value="10" readonly>
+                            <input type="text" class="form-control" id="exampleInputName1" name="stok" value="<?= $value['stok_menjadi']; ?>" readonly>
                         </div>
                         <div class="form-group position-relative">
                             <label for="exampleInputName1">Jumlah</label>
-                            <input type="number" class="form-control" id="exampleInputName1" name="jumlah" placeholder="Jumlah" min="1" max="10" required>
+                            <input type="number" class="form-control" id="exampleInputName1" name="jumlah" placeholder="Jumlah" min="1" max="stok" required>
                         </div>
                         <div class="form-group position-relative">
                             <label for="exampleInputName1">Satuan</label>
