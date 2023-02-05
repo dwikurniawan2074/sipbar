@@ -44,10 +44,10 @@
                     $isInvalidUser = '';
                   }
                   ?>
-                  <select class="form-control <?= $isInvalidUser ?>" name="nama_role" autofocus" required oninvalid="this.setCustomValidity('Role Belum Diinput')" oninput="this.setCustomValidity('')">
+                  <select class="form-control <?= $isInvalidUser ?>" name="nama_role" autofocus" required oninvalid="this.setCustomValidity('Role Belum Diinput')" oninput="this.setCustomValidity('')" style="color: black";>
                     <option disabled value="" selected>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--Pilih Login Sebagai--</option>
                     <?php foreach ($role as $key => $value) { ?>
-                      <option value="<?= $value['nama_role']; ?>" style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value['deskripsi_role']; ?></option>
+                      <option value="<?= $value['nama_role']; ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value['deskripsi_role']; ?></option>
                     <?php }; ?>
                   </select>
                   <?php
