@@ -44,10 +44,10 @@
                     $isInvalidUser = '';
                   }
                   ?>
-                  <select class="form-control <?= $isInvalidUser ?>" name="nama_role" autofocus style="color: black;">
-                    <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pilih Login Sebagai</option>
+                  <select class="form-control <?= $isInvalidUser ?>" name="nama_role" autofocus" required oninvalid="this.setCustomValidity('Role Belum Diinput')" oninput="this.setCustomValidity('')">
+                    <option disabled value="" selected>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--Pilih Login Sebagai--</option>
                     <?php foreach ($role as $key => $value) { ?>
-                      <option value="<?= $value['nama_role']; ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value['deskripsi_role']; ?></option>
+                      <option value="<?= $value['nama_role']; ?>" style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value['deskripsi_role']; ?></option>
                     <?php }; ?>
                   </select>
                   <?php
@@ -67,7 +67,7 @@
                     $isInvalidPassword = '';
                   }
                   ?>
-                  <input type="password" class="form-control form-control-lg <?= $isInvalidPassword; ?>" name="pass" id="exampleInputPassword1" placeholder="Password">
+                  <input type="password" class="form-control form-control-lg <?= $isInvalidPassword; ?>" name="pass" id="exampleInputPassword1" placeholder="Password" required oninvalid="this.setCustomValidity('Password Belum Diinput')" oninput="this.setCustomValidity('')">
                   <?php
                   if (session()->getFlashdata('errPassword')) {
                     echo '<div id="validationServer03Feedback" class="invalid-feedback">'
