@@ -74,7 +74,7 @@ class LoginController extends BaseController
                 'errPassword' => $validation->getError('pass')
             ];
             session()->setFlashdata($sessError);
-            return redirect()->to('/');
+            return redirect()->to('/login/index');
         } else {
             //pengecekan bagian bagian input jenis role nya bener tidak
 
@@ -86,7 +86,7 @@ class LoginController extends BaseController
 
             $cekUserLogin = $pegawaiModel->find($pass);
 
-            $idRole = $cekUserLogin['id_role'];
+            $idRole = isset($cekUserLogin['id_role']) ? $cekUserLogin['id_role']:'';
             // dd($idRole);
             
             $cekRoleLogin = $roleModel->find($idRole);
@@ -97,7 +97,7 @@ class LoginController extends BaseController
                     'errNamaRole' => 'Maaf User Tidak Terdaftar',
                 ];
                 session()->setFlashdata($sessError);
-                return redirect()->to('/');
+                return redirect()->to('/login/index');
             } else {
                 //variable penampung password
                 $passwordUser = $cekUserLogin['nip'];
@@ -137,7 +137,7 @@ class LoginController extends BaseController
                         'errPassword' => 'Password Yang Anda Masukkan Salah',
                     ];
                     session()->setFlashdata($sessError);
-                    return redirect()->to('/');
+                    return redirect()->to('/login/index');
                 }
             }
         }
