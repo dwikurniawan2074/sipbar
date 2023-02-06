@@ -33,6 +33,7 @@
               </div>
               <h4>Selamat Datang di Web Sistem Informasi Permintaan Barang</h4>
               <h6 class="font-weight-light">Silahkan Login Menggunakan Akun Yang Anda Miliki</h6>
+              <br>
               <?= form_open('login/cekUser'); ?>
               <?= csrf_field(); ?>
               <form class="pt-3">
@@ -44,7 +45,7 @@
                     $isInvalidUser = '';
                   }
                   ?>
-                  <select class="form-control <?= $isInvalidUser ?>" name="nama_role" autofocus" required oninvalid="this.setCustomValidity('Role Belum Diinput')" oninput="this.setCustomValidity('')" style="color: black";>
+                  <select class="form-control <?= $isInvalidUser ?>" name="nama_role" autofocus" style="color: black";>
                     <option disabled value="" selected>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--Pilih Login Sebagai--</option>
                     <?php foreach ($role as $key => $value) { ?>
                       <option value="<?= $value['nama_role']; ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value['deskripsi_role']; ?></option>
@@ -67,7 +68,7 @@
                     $isInvalidPassword = '';
                   }
                   ?>
-                  <input type="password" class="form-control form-control-lg <?= $isInvalidPassword; ?>" name="pass" id="exampleInputPassword1" placeholder="Password" required oninvalid="this.setCustomValidity('Password Belum Diinput')" oninput="this.setCustomValidity('')">
+                  <input type="password" class="form-control form-control-lg <?= $isInvalidPassword; ?>" name="pass" id="exampleInputPassword1" placeholder="Password">
                   <?php
                   if (session()->getFlashdata('errPassword')) {
                     echo '<div id="validationServer03Feedback" class="invalid-feedback">'
