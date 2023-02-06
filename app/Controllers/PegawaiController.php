@@ -19,12 +19,12 @@ class PegawaiController extends BaseController
         $permintaanNew = new PermintaanSementara();
         $permintaan= $permintaanNew->findAll();
         $barangNew = new ModelBarang();
-        $barang= $barangNew->findAll();
+        $data_barang= $barangNew->findAll();
 
         $data = [
             'title' => 'Permintaan',
             'permintaanS' => $permintaan,
-            'barang' => $barang
+            'data_barang' => $data_barang
         ];
         return view('pegawai/halaman_input_permintaan',$data);
     } 

@@ -10,26 +10,34 @@
                     <p class="card-description">
                         Silahkan masukkan data barang yang sesuai
                     </p>
-                    <?= form_open('/pegawai/simpan_permintaanSementara') ?>
-                    <?= csrf_field(); ?>
-                    <form action="/pegawai/simpan_permintaanSementara" method="POST" class="forms-sample">
+                    <form action="<?= base_url('/pegawai/simpan_permintaanSementara') ?>" method="POST" class="forms-sample">
                         <div class="form-group disabled">
                             <label for="exampleInputName1">Nama Pegawai</label>
                             <input type="text" class="form-control" id="exampleInputName1" value="<?= session()->get('nama_pegawai'); ?>" readonly>
                         </div>
-                        <div class="form-group position-relative">
-                            <label for="exampleInputName1">Nama Barang</label>
-                            <select class="form-control" id="exampleSelectGender" name="id_pangkat" required>
-                                <option value="">--Pilih Nama Barang--</option>
-                                <?php foreach ($barang as $brg => $value) { ?>
+                        <div class="form-group">
+                            <label for="nama_barang">Nama Barang</label>
+                            <select class="form-control" id="nama_barang" name="nama_barang" required>
+                                <option value="" disabled selected>--Pilih Nama Barang--</option>
+                                <?php foreach ($data_barang as $value) : ?>
                                     <option value="<?= $value['id']; ?>"><?= $value['nama_barang']; ?></option>
-                                <?php }; ?>
+                                <?php endforeach ?>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputName1">Stok Barang</label>
-                            <input type="text" class="form-control" id="exampleInputName1" name="stok" value="<?= $value['stok_menjadi']; ?>" readonly>
+                            <label for="stok_menjadi">Stok Barang</label>
+                            <input type="text" class="form-control" id="stok_menjadi" name="stok_menjadi" value="<?= $value['stok_menjadi']; ?>" readonly required>
+
+                            <!-- <script type="text/javascript">
+                                function barang(){
+                                    var data = document.getElementById("nama_barang").value;
+                                    document.getElementById("stok").value=data;
+                                }
+                            </script> -->
+
+                            
                         </div>
+
                         <div class="form-group position-relative">
                             <label for="exampleInputName1">Jumlah</label>
                             <input type="number" class="form-control" id="exampleInputName1" name="jumlah" placeholder="Jumlah" min="1" max="stok" required>
@@ -46,7 +54,6 @@
                         <button type="submit" class="btn btn-info mr-2">Simpan</button>
 
                     </form>
-                    <?= form_close(); ?>
                 </div>
             </div>
         </div>
@@ -92,3 +99,18 @@
     
 </div>
 <?= $this->endSection(); ?>
+
+<script>
+    $('#nama_barang').on('change',(event) =>{
+        getBarang(event.target.value).then(data_barang=>{
+            $('#stok_menjadi').val(data_barang.stok_menjadi);
+        });
+    });
+
+    async function getBarang($id) {
+        let response = await fetch('/api/home/' + $id)
+        let data = await response.json();
+
+        return data;
+    } 
+</script>

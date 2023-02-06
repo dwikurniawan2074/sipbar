@@ -5,6 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<script src="<?= base_url() ?>/js/jquery-3.6.0.min.js"></script>
     <title>SIPBAR</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="/skydash/vendors/feather/feather.css">

@@ -84,7 +84,8 @@ $routes->get('/kabag/halaman_kabag', 'KabagController::halaman_kabag');
 $routes->get('/kabag/halaman_permintaan', 'KabagController::halaman_permintaan');
 $routes->get('/kabag/halaman_stok_barang', 'KabagController::halaman_stok_barang');
 
-
+//Routes API
+$routes->resource('api/home', ['controller' => 'Api\Home']); 
 /*
  * --------------------------------------------------------------------
  * Additional Routing
