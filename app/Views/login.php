@@ -90,7 +90,7 @@
                   <a href="#" class="auth-link text-black">Forgot password?</a>
                 </div> -->
                 <div class="text-center mt-4 font-weight-light">
-                  Tidak mempunyai akun? <a href="https://wa.me/62895392795541" class="text-primary">Hubungi Admin</a>
+                  Tidak mempunyai akun? <a href="https://wa.me/6289648479496" class="text-primary">Hubungi Admin</a>
                 </div>
               </form>
               <?= form_close(); ?>
