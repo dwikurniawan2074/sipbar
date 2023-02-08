@@ -8,116 +8,51 @@
                 <div class="card-body">
                     <h4 class="card-title">Data Stok Barang</h4>
                     <div class="table-responsive pt-3">
-                        <table class="table table-bordered">
+                        <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
                             <thead>
-                                <tr>
-                                    <th>
+                                <tr role="row">
+                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1">
                                         No.
                                     </th>
-                                    <th>
+                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1">
                                         Kode Barang
                                     </th>
-                                    <th>
+                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1">
                                         Nama Barang
                                     </th>
-                                    <th>
-                                        Stok
+                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1">
+                                        Satuan
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1">
+                                        Stok Tersedia
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+                                    $no = 1;
+                                    foreach ($barang as $br) : 
+                                ?>
                                 <tr>
                                     <td>
-                                        1
+                                        <?= $no ?>
                                     </td>
                                     <td>
-                                        196609091990031001
+                                        <?= $br['kode_barang'] ?>
                                     </td>
                                     <td>
-                                        Achirsyah Moeis
+                                        <?= $br['nama_barang'] ?>
                                     </td>
                                     <td>
-                                        Kepala Bagian
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        2
+                                        <?= $br['satuan'] ?>
                                     </td>
                                     <td>
-                                        196609091990031001 </td>
-                                    <td>
-                                        Achmad Faried Joesoef
-                                    </td>
-                                    <td>
-                                        Subkor
+                                        <?= $br['stok_menjadi'] ?>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        196609091990031001 </td>
-                                    <td>
-                                        Albert Suherman
-                                    </td>
-                                    <td>
-                                        Pegawai
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        4
-                                    </td>
-                                    <td>
-                                        196609091990031001 </td>
-                                    <td>
-                                        Andreas Tjahjadi
-                                    </td>
-                                    <td>
-                                        Subkor
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        5
-                                    </td>
-                                    <td>
-                                        196609091990031001 </td>
-                                    <td>
-                                        Sutono Nitisastro
-                                    </td>
-                                    <td>
-                                        Pegawai
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        6
-                                    </td>
-                                    <td>
-                                        196609091990031001 </td>
-                                    <td>
-                                        Sutiadi Widjaya
-                                    </td>
-                                    <td>
-                                        Subkor
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        7
-                                    </td>
-                                    <td>
-                                        196609091990031001 </td>
-                                    <td>
-                                        Sugiono Djauhari
-                                    </td>
-                                    <td>
-                                        Kabag
-                                    </td>
-                                </tr>
+                                <?php $no++;
+                                    endforeach;
+                                ?>
                             </tbody>
                         </table>
                     </div>
