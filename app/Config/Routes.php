@@ -13,7 +13,7 @@ $routes = Services::routes();
 $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('LoginController');
 $routes->setDefaultMethod('index');
-$routes->setTranslateURIDashes(false);
+$routes->setTranslateURIDashes(true);
 $routes->set404Override();
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
 // where controller filters or CSRF protection are bypassed.
@@ -76,6 +76,7 @@ $routes->post('/operator/simpan_data_barang', 'OperatorController::save_dataBara
 $routes->post('/operator/update_data_barang/(:num)', 'OperatorController::Update_dataBarang/$1');
 $routes->delete('/operator/delete_data_barang/(:num)', 'OperatorController::delete_dataBarang/$1');
 $routes->get('/operator/halaman_laporan_stok', 'OperatorController::halaman_laporan_stok');
+$routes->post('/operator/cetak_laporan', 'OperatorController::cetak_laporan');
 
 
 // Routes Kabag
