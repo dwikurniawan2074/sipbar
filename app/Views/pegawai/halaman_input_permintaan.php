@@ -10,6 +10,8 @@
                     <p class="card-description">
                         Silahkan masukkan data barang yang sesuai
                     </p>
+                    <?= form_open('/pegawai/simpan_permintaanSementara') ?>
+                    <?= csrf_field(); ?>
                     <form action="<?= base_url('/pegawai/simpan_permintaanSementara') ?>" method="POST" class="forms-sample">
                         <div class="form-group disabled">
                             <label for="exampleInputName1">Nama Pegawai</label>
@@ -20,31 +22,13 @@
                             <select class="form-control" id="nama_barang" name="nama_barang" required>
                                 <option value="" disabled selected>--Pilih Nama Barang--</option>
                                 <?php foreach ($data_barang as $value) : ?>
-                                    <option value="<?= $value['id']; ?>"><?= $value['nama_barang']; ?></option>
+                                    <option value="<?=$value['id']; ?>"><?= $value['nama_barang']; ?> - <?= $value['stok_menjadi']; ?> <?= $value['satuan']; ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="stok_menjadi">Stok Barang</label>
-                            <input type="text" class="form-control" id="stok_menjadi" name="stok_menjadi" value="<?= $value['stok_menjadi']; ?>" readonly required>
-
-                            <!-- <script type="text/javascript">
-                                function barang(){
-                                    var data = document.getElementById("nama_barang").value;
-                                    document.getElementById("stok").value=data;
-                                }
-                            </script> -->
-
-                            
-                        </div>
-
                         <div class="form-group position-relative">
                             <label for="exampleInputName1">Jumlah</label>
-                            <input type="number" class="form-control" id="exampleInputName1" name="jumlah" placeholder="Jumlah" min="1" max="stok" required>
-                        </div>
-                        <div class="form-group position-relative">
-                            <label for="exampleInputName1">Satuan</label>
-                            <input type="text" class="form-control" id="exampleInputName1" name="satuan" value="Pack" readonly>
+                            <input type="number" class="form-control" id="exampleInputName1" name="jumlah" placeholder="Jumlah" min="1" max="<?= $value['stok_menjadi']; ?>" required>
                         </div>
                         <div class="form-group position-relative">
                             <label for="exampleInputName1">Keterangan</label>
@@ -54,6 +38,7 @@
                         <button type="submit" class="btn btn-info mr-2">Simpan</button>
 
                     </form>
+                    <?= form_close(); ?>
                 </div>
             </div>
         </div>
@@ -100,7 +85,7 @@
 </div>
 <?= $this->endSection(); ?>
 
-<script>
+<!-- <script>
     $('#nama_barang').on('change',(event) =>{
         getBarang(event.target.value).then(data_barang=>{
             $('#stok_menjadi').val(data_barang.stok_menjadi);
@@ -113,4 +98,4 @@
 
         return data;
     } 
-</script>
+</script> -->

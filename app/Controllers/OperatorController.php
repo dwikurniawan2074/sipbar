@@ -53,6 +53,7 @@ class OperatorController extends BaseController
             'kode_barang' => $this->request->getVar('kode_barang'),
             'nama_barang' => $this->request->getVar('nama_barang'),
             'satuan' => $this->request->getVar('satuan'),
+            'stok_awal' => $this->request->getVar('stok_awal'),
             'stok_menjadi' => $this->request->getVar('stok_menjadi'),
             'status' => '1',
             'tanggal' => date('y-m-d'),

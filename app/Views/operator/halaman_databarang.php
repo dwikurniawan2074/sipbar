@@ -100,6 +100,7 @@
 
                                                                             <div class="form-group">
                                                                                 <label for="exampleInputName1">Stok Menjadi</label>
+                                                                                <input type="hidden" class="form-control" id="exampleInputName1" placeholder="Stok Awal" name="stok_awal" value="<?= $br['stok_menjadi'] ?>">
                                                                                 <input type="text" class="form-control" id="exampleInputName1" placeholder="Stok Menjadi" name="stok_menjadi" value="<?= $br['stok_menjadi'] ?>">
                                                                             </div>
                                                                             </div>

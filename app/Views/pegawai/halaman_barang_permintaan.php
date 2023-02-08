@@ -4,7 +4,7 @@
     <div class="content-wrapper">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Data Pengajuan Permintaan Barang Pegawai</h4>
+                <h4 class="card-title">Data Barang Permintaan</h4>
                 <div class="row">
                     <div class="col-12">
                         <div class="table-responsive">
@@ -33,11 +33,10 @@
                                             <thead>
                                                 <tr role="row">
                                                     <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >No.</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Nama Pegawai</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Permintaan</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Tanggal Permintaan</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Tanggal di Setujui</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-sort="descending">Status</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Nama Barang</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Jumlah</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Satuan</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Keterangan</th>
                                                     <th class="sorting_desc" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-sort="descending" style="width: 126.016px;">Actions</th>
                                                 </tr>
                                             </thead>
