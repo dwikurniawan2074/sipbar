@@ -19,15 +19,15 @@ class OperatorController extends BaseController
 
         $data = [
             'title' => 'Data Barang',
-            'barang'=> $barang
+            'barang' => $barang
         ];
-        return view('operator/halaman_databarang',$data);
+        return view('operator/halaman_databarang', $data);
     }
     public function halaman_input_barang()
     {
         return view('operator/halaman_input_barang');
     }
-    
+
     public function save_dataBarang()
     {
         $data_barang = new ModelBarang();
@@ -43,7 +43,7 @@ class OperatorController extends BaseController
 
         $data_barang->insert($data);
         return redirect()->to('/operator/halaman_data_barang');
-    } 
+    }
 
     public function Update_dataBarang($id)
     {
@@ -58,11 +58,12 @@ class OperatorController extends BaseController
             'tanggal' => date('y-m-d'),
         ];
 
-        $data_barang->update($id,$data);
+        $data_barang->update($id, $data);
         return redirect()->to('/operator/halaman_data_barang');
-    } 
+    }
 
-    public function delete_dataBarang($id){
+    public function delete_dataBarang($id)
+    {
         $data_barang = new ModelBarang();
         $data_barang->delete($id);
 
@@ -72,5 +73,13 @@ class OperatorController extends BaseController
     public function halaman_laporan_stok()
     {
         return view('operator/halaman_laporan_stok');
+    }
+
+    public function cetak_laporan()
+    {
+        // $tglawal = $this->request->request->getPost('tglawal');
+        // $tglakhir = $this->request->request->getPost('tglakhir');
+
+        return view('operator/cetak_laporan');
     }
 }
