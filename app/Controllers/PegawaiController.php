@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\Permintaan;
 use App\Models\PermintaanSementara;
 use App\Models\ModelBarang;
+use App\Models\ModelBarangPermintaan;
 
 class PegawaiController extends BaseController
 {
@@ -67,23 +68,36 @@ class PegawaiController extends BaseController
     public function save_permintaan()
     {
         $permintaan = new Permintaan();
+        $permintaanSimpan = $permintaan->findAll(); 
+        $barangPermintaan = new ModelBarangPermintaan();
+        $permintaanSementara = new PermintaanSementara();
+        $Sementara = $permintaanSementara->findAll();
         
-        $id = $this->request->getPost('nama_barang');
-
-        $nama = $permintaan->find($id);
-
-        dd($nama);
-        $data = [
+        $dataMaster = [
             'nip' => session()->get('nip'),
-            'nama_barang' => $this->request->getPost('nama_barang'),
-            'jumlah' => $this->request->getPost('jumlah'),
-            'satuan' => $this->request->getPost('satuan'),
-            'keterangan' => $this->request->getPost('keterangan'),
             'tanggal_permintaan' => date('y-m-d'),
             'status' => '1'
         ];
 
-        $permintaan->insert($data);
+        $permintaan->insert($dataMaster);
+
+        
+        $id = $permintaan->select('id')->where('tanggal_permintaan',date('y-m-d'))->first();
+
+        foreach ($Sementara as $key => $n) {
+        $dataBarang= [
+            'nama_barang' => $this->request->getPost('nama_barang'.$n['id']),
+            'jumlah_permintaan' => $this->request->getPost('jumlah'.$n['id']),
+            'satuan' => $this->request->getPost('satuan'.$n['id']),
+            'keterangan' => $this->request->getPost('keterangan'.$n['id']),
+            'status' => '1',
+            'id_permintaan'> $id,
+            'nip' => session()->get('nip'),
+        ];
+
+        $barangPermintaan->insert($dataBarang);
+        }
+
         return redirect()->to('pegawai/halaman_permintaan');
     } 
 
@@ -142,7 +156,7 @@ class PegawaiController extends BaseController
 
         $data = [
             'title' => 'Permintaan',
-            'permintaan' => $permintaan
+            'permintaan' => $permintaan,
         ];
         return view('pegawai/halaman_permintaan',$data);
     }
@@ -161,5 +175,17 @@ class PegawaiController extends BaseController
     public function halaman_data_barang()
     {
         
+    }
+
+    public function halaman_BarangPermintaan()
+    {
+        $permintaanNew = new ModelBarangPermintaan();
+        $permintaan= $permintaanNew->findAll();
+
+        $data = [
+            'title' => 'Permintaan',
+            'permintaan' => $permintaan,
+        ];
+        return view('pegawai/halaman_barang_permintaan',$data);
     }
 }

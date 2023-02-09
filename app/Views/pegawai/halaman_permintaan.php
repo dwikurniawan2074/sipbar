@@ -45,10 +45,11 @@
                                                 <?php
                                                 $no = 1;
                                                 foreach ($permintaan as $pr) : ?>
+                                                    <?php if ($pr['nip'] == session()->get('nip') ){  ?>
                                                     <tr>
                                                         <td><?= $no?></td>
                                                         <td><?= session()->get('nama_pegawai'); ?></td>
-                                                        <td><a class="btn btn-info" href="/keluar/edit/" style="height: 30px"><label class="badge badge-info">Barang Permintaan</label></a></td>
+                                                        <td><a class="btn btn-info" href="/pegawai/barang_permintaan/" style="height: 30px"><label class="badge badge-info">Barang Permintaan</label></a></td>
                                                         <td><?= $pr['tanggal_permintaan'] ?></td>
                                                         <td>
                                                             <?php if (
@@ -68,7 +69,7 @@
                                                                 $pr['status'] == '1'
                                                             ) { ?>
                                                                 <label class="badge badge-info">On Proses</label>
-                                                            <?php } elseif (
+                                                            <?php } else if (
                                                                 $pr['status'] == '2'
                                                             ) { ?>
                                                                 <label class="badge badge-success">di Setujui</label>
@@ -149,8 +150,8 @@
                                                             
                                                             </div>
                                                         </td>
-
                                                     </tr>
+                                                    <?php } ?>
                                                 <?php $no++;
                                                 endforeach;
                                                 ?>

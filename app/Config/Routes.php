@@ -56,6 +56,7 @@ $routes->post('/pegawai/simpan_permintaanSementara', 'PegawaiController::saveSem
 $routes->post('/pegawai/update_permintaan/(:num)', 'PegawaiController::Update_permintaan/$1');
 $routes->delete('/pegawai/delete_permintaan/(:num)', 'PegawaiController::delete_permintaan/$1');
 $routes->get('/pegawai/halaman_permintaan', 'PegawaiController::halaman_permintaan');
+$routes->get('/pegawai/barang_permintaan/', 'PegawaiController::halaman_Barangpermintaan');
 $routes->get('/pegawai/halaman_stok_barang', 'PegawaiController::halaman_stok_barang');
 
 
