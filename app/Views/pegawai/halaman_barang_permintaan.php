@@ -34,9 +34,12 @@
                                                 <tr role="row">
                                                     <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >No.</th>
                                                     <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Nama Barang</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Jumlah</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Jumlah Permintaan</th>
                                                     <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Satuan</th>
                                                     <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Keterangan</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Jumlah di Setujui</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Tanggal di Setujui</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-sort="descending">Status</th>
                                                     <th class="sorting_desc" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-sort="descending" style="width: 126.016px;">Actions</th>
                                                 </tr>
                                             </thead>
@@ -47,8 +50,18 @@
                                                     <tr>
                                                         <td><?= $no?></td>
                                                         <td><?= session()->get('nama_pegawai'); ?></td>
-                                                        <td><a class="btn btn-info" href="/keluar/edit/" style="height: 30px"><label class="badge badge-info">Barang Permintaan</label></a></td>
-                                                        <td><?= $pr['tanggal_permintaan'] ?></td>
+                                                        <td><?= $pr['jumlah_permintaan'] ?></td>
+                                                        <td><?= $pr['satuan'] ?></td>
+                                                        <td><?= $pr['keterangan'] ?></td>
+                                                        <td>
+                                                            <?php if (
+                                                                $pr['jumlah_disetujui'] == null
+                                                            ) { ?>
+                                                                -
+                                                            <?php } else { ?>
+                                                                <?= $pr['jumlah_disetujui'] ?>
+                                                            <?php } ?>
+                                                        </td>
                                                         <td>
                                                             <?php if (
                                                                 $pr['tanggal_disetujui'] == null

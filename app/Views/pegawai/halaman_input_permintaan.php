@@ -22,7 +22,12 @@
                             <select class="form-control" id="nama_barang" name="nama_barang" required>
                                 <option value="" disabled selected>--Pilih Nama Barang--</option>
                                 <?php foreach ($data_barang as $value) : ?>
-                                    <option value="<?=$value['id']; ?>"><?= $value['nama_barang']; ?> - <?= $value['stok_menjadi']; ?> <?= $value['satuan']; ?></option>
+                                    <?php if ( $value['stok_menjadi'] > 0 ){  ?>
+                                        <option value="<?=$value['id']; ?>"><?= $value['nama_barang']; ?> - <?= $value['stok_menjadi']; ?> <?= $value['satuan']; ?></option>
+                                    <?php } else if ($value['stok_menjadi'] == 0 ){?>
+                                        <option value="<?=$value['id']; ?>" disabled><?= $value['nama_barang']; ?> - Stok Persediaan Kosong</option>
+                                    <?php } ?>
+
                                 <?php endforeach ?>
                             </select>
                         </div>
@@ -48,6 +53,8 @@
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
+                <?= form_open('/pegawai/simpan_permintaan') ?>
+                    <?= csrf_field(); ?>
             <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
                 <thead>
                     <tr role="row">
@@ -63,6 +70,13 @@
                         $no = 1;
                         foreach ($permintaanS as $prs) : 
                     ?>
+                    <?php if ($prs['nip'] == session()->get('nip') ){  ?>
+                        <?php
+                        echo form_hidden('nama_barang'.$prs['id'],$prs['nama_barang']); 
+                        echo form_hidden('jumlah'.$prs['id'],$prs['jumlah']);
+                        echo form_hidden('satuan'.$prs['id'],$prs['satuan']);
+                        echo form_hidden('keterangan'.$prs['id'],$prs['keterangan']);
+                        ?>
                         <tr>
                             <td><?= $no?></td>
                             <td><?= $prs['nama_barang'] ?></td>
@@ -70,6 +84,8 @@
                             <td><?= $prs['satuan'] ?></td>
                             <td><?= $prs['keterangan'] ?></td>
                         </tr>
+                        <?php } ?>
+                    
                     <?php $no++;
                     endforeach;
                     ?>
@@ -77,6 +93,7 @@
                 <tfoot></tfoot>
             </table>
             <button type="submit" class="btn btn-success mr-2">Submit</button>
+            <?= form_close(); ?>
         </div>
             </div>
         </div>
