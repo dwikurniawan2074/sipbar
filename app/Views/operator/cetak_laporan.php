@@ -2,87 +2,181 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cetak Laporan Barang</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <style type="text/css">
-        header {
-            margin-left: auto;
-            margin-right: auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cetak Laporan Barang</title>
+  <link rel="shortcut icon" href="/Images/bpkp_logo.png" />
 </head>
 
-<header>
-    <table>
-        <tbody>
-            <tr>
-                <td><img src="/Images/bpkp_logo.png" height="60"></td>
-                <td>
-                    <h6 style="font-family:'Times New Roman', Times, serif;margin:0; font-size: 16px; text-align: center;">BADAN PENGAWASAN KEUANGAN DAN PEMBANGUNAN </h5>
-                        <h5 style="font-family:'Times New Roman', Times, serif;margin:0;  text-align: center;">PERWAKILAN PROVINSI LAMPUNG </h5>
-                        <p style="margin: 0; text-align: center; font-size: 14px">
-                            Jl. Basuki Rahmat Nomor 33, Bandar Lampung. 35215.
-                        </p>
-                        <p style="margin: 0; text-align: center; font-size: 14px">
-                            Telp/Fax : (0721) 481550 / (0721) 481550
-                        </p>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <!-- <div class="">
-                <div class="row">
-                    <div class="col-2" style=" margin-top: auto; margin-bottom: auto;">
-                        <img src="/Images/bpkp_logo.png" height="60">
-                    </div>
-                    <div class="col-10">
-                        <h6 style="font-family:'Times New Roman', Times, serif;margin:0; font-size: 16px;">BADAN PENGAWASAN KEUANGAN DAN PEMBANGUNAN </h5>
-                        <h5 style="font-family:'Times New Roman', Times, serif;margin:0; ">PERWAKILAN PROVINSI LAMPUNG </h5>
-                        <h6 style="font-family:'Times New Roman', Times, serif;margin:0;">Jl. Basuki Rahmat Nomor 33, Bandar Lampung. 35215. </h6>
-                        <h6 style="font-family:'Times New Roman', Times, serif;margin:0; ">Telp/Fax : (0721) 481550 / (0721) 481550</h6>
-                    </div>
-                </div> -->
-    <!-- </div> -->
-    <!-- <div style="width:1200px">
-                <div class="row">
-                    <div class="col-2" style=" margin-top: auto; margin-bottom: auto;">
-                        <img src="/Images/bpkp_logo.png" height="60">
-                    </div>
-                    <div class="col-10">
-                        <h5 style="font-family:'Times New Roman', Times, serif;margin:0;">BADAN PENGAWASAN KEUANGAN DAN PEMBANGUNAN </h5>
-                        <h5 style="font-family:'Times New Roman', Times, serif;margin:0; ">PERWAKILAN PROVINSI LAMPUNG </h5>
-                        <h6 style="font-family:'Times New Roman', Times, serif;margin:0;">Jl. Basuki Rahmat Nomor 33, Bandar Lampung. 35215. </h6>
-                        <h6 style="font-family:'Times New Roman', Times, serif;margin:0; ">Telp/Fax : (0721) 481550 / (0721) 481550</h6>
-                        <h6>
-                            </p>
-                            <p>
-
-                            </p>
-                    </div>
-                </div>
-            </div> -->
-</header>
-
 <body>
+  <div align="center">
+    <div style="width: 900px">
+      <table style="width: 800px">
+        <tbody>
+          <tr>
+            <td style="width: 15%; " align="center">
+              <img src="/Images/bpkp_logo.png" width="100%" height="60" />
+            </td>
+            <td align="center">
+              <p>
+                <strong style="font-size: 15pt">BADAN PENGAWASAN KEUANGAN DAN PEMBANGUNAN</strong>
+              </p>
+              <p>
+                <strong style="font-size: 15pt">PERWAKILAN PROVINSI LAMPUNG</strong>
+              </p>
+              <p>
+                Jl. Basuki Rahmat Nomor 33, Bandar Lampung. 35215.<br />
+                Telp/Fax : (0721) 481550 / (0721) 481550<br />
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <hr style="border: 0; border-top: 5px double #8c8c8c; margin-top: 0" />
+      <meta http-equiv="content-type" content="text/html;charset=iso-8859-1" />
+      <link rel="icon" type="img/png" href="https://siakadu.unila.ac.id/assets/v1/img/logo_unila.png" sizes="16x16" />
 
-    <!-- <div style="text-align: center;"> -->
+      <div align="center">
+        <table width="900px">
+          <tbody>
+            <tr>
+              <td align="center">
+                <font size="3"><strong>Laporan Stok Barang</strong></font>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <table class="" width="900px" cellpadding="0" style="margin-bottom: 10pt;">
+          <tbody>
+            <tr>
+              <td width="100">Mulai Tanggal</td>
+              <td width="10">:</td>
+              <td width="400">01/02/2023</td>
+              <td width="120" valign="top">Sampai Tanggal</td>
+              <td width="10" valign="top">:</td>
+              <td valign="top">07/02/2023</td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="tb_data" width="900px" border="1" bordercolor="black" cellspacing="0" cellpadding="3">
+          <tbody>
+            <tr align="center" height="10" style="">
+              <td class="HeaderBG">
+                <font size="-1">No</font>
+              </td>
+              <td class="HeaderBG">
+                <font size="-1">Kode Barang<br /></font>
+              </td>
+              <td class="HeaderBG">
+                <font size="-1">Nama Barang</font>
+              </td>
+              <td class="HeaderBG">
+                <font size="-1">Satuan</font>
+              </td>
+              <td class="HeaderBG">
+                <font size="-1">Stok Tersedia</font>
+              </td>
+              <td class="HeaderBG">
+                <font size="-1">Stok Menjadi</font>
+              </td>
+              <?php 
+              $no = 1;
+              foreach ($barang as $br) : 
+              ?>
+            </tr>
+            <tr valign="top" class="AlternateBG" style="font-size: 10pt">
+              <td align="center">1.</td>
+              <td align="center"><?= $br['kode_barang'] ; ?></td>
+              <td align="center"><?= $br['nama_barang'] ; ?></td>
+              <td align="center"><?= $br['satuan'] ; ?></td>
+              <td align="center"><?= $br['stok_awal'] ; ?></td>
+              <td align="center"><?= $br['stok_menjadi'] ; ?></td>
+            </tr>
+            <?php $no++;
+            endforeach;
+            ?>
+            
+          </tbody>
+        </table>
+        <br />
+        <table width="100%" class="footer-table">
+          <tbody>
+            <tr>
+              <td width="50%"></td>
+              <td width="50%">Bandar Lampung, 8 Februari 2023</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>Pengelola Pengadaan Barang/Jasa Muda
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>Subkoordinator Pengelola Barang Milik Negara, Rumah Tangga dan Kearsipan
+              </td>
+            </tr>
 
-    <hr style="width:1000px; border: 0; border-top: 3px double; margin-left: auto; margin-right: auto;">
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
 
+            <tr>
+              <td></td>
+              <td>Sutisna</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>NIP. 196607051990031001</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="page-break-after: always"></div>
 
+      <style>
+        table.tb_identity {
+          text-transform: uppercase;
+          font-size: 12px;
+          margin-top: 10px;
+          margin-bottom: 12px;
+        }
 
+        table.tb_title {
+          border: 1px solid;
+          margin-bottom: 12px;
+        }
 
+        table.tb_data th,
+        td {
+          vertical-align: middle;
+        }
 
-    <!-- </div> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        table.tb_acc {
+          margin-top: 20px;
+        }
+      </style>
+    </div>
+  </div>
+  <script>window.print()</script>
 </body>
-<!-- perintah buat cetak laporan pop up -->
-<!-- <script>window.print()</script> -->
 
 </html>
