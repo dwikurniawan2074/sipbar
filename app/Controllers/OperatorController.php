@@ -80,7 +80,14 @@ class OperatorController extends BaseController
     {
         // $tglawal = $this->request->request->getPost('tglawal');
         // $tglakhir = $this->request->request->getPost('tglakhir');
+        $data_barang = new ModelBarang();
+        $barang = $data_barang->findAll();
 
-        return view('operator/cetak_laporan');
+        $data = [
+            'title' => 'Data Barang',
+            'barang' => $barang
+        ];
+
+        return view('operator/cetak_laporan', $data);
     }
 }
