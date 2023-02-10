@@ -42,7 +42,7 @@
           <tbody>
             <tr>
               <td align="center">
-                <font size="4"><strong>Laporan Stok Barang</strong></font>
+                <font size="4"><strong>Laporan Permintaan Barang</strong></font>
               </td>
             </tr>
           </tbody>
@@ -61,19 +61,19 @@
                 <font size="-1">No</font>
               </td>
               <td class="HeaderBG">
-                <font size="-1">Kode Barang<br /></font>
+                <font size="-1">Nama Pegawai<br /></font>
               </td>
               <td class="HeaderBG">
-                <font size="-1">Nama Barang</font>
+                <font size="-1">Permintaan</font>
               </td>
               <td class="HeaderBG">
-                <font size="-1">Satuan</font>
+                <font size="-1">Tanggal</font>
               </td>
               <td class="HeaderBG">
-                <font size="-1">Stok Awal</font>
+                <font size="-1">Tanggal Disetujui</font>
               </td>
               <td class="HeaderBG">
-                <font size="-1">Stok Menjadi</font>
+                <font size="-1">Status</font>
               </td>
             </tr>
             <tr valign="top" class="AlternateBG" style="font-size: 10pt">
@@ -90,7 +90,38 @@
           <tbody>
             <tr>
               <td width="50%"></td>
-              <td width="50%">Bandar Lampung, 8 Februari 2023</td>
+              <td width="50%">Bandar Lampung,
+                <!-- fungsi tanggal format indonesia -->
+                <?php
+
+                function tanggal_indonesia($tanggal)
+                {
+
+                  $bulan = array(
+                    1 =>     'Januari',
+                    'Februari',
+                    'Maret',
+                    'April',
+                    'Mei',
+                    'Juni',
+                    'Juli',
+                    'Agustus',
+                    'September',
+                    'Oktober',
+                    'November',
+                    'Desember'
+                  );
+
+                  $var = explode('-', $tanggal);
+
+                  return $var[2] . ' ' . $bulan[(int)$var[1]] . ' ' . $var[0];
+                  // var 0 = tanggal
+                  // var 1 = bulan
+                  // var 2 = tahun
+                }
+
+                echo tanggal_indonesia(date('Y-m-d')); ?>
+              </td>
             </tr>
             <tr>
               <td></td>

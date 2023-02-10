@@ -58,7 +58,8 @@ $routes->delete('/pegawai/delete_permintaan/(:num)', 'PegawaiController::delete_
 $routes->get('/pegawai/halaman_permintaan', 'PegawaiController::halaman_permintaan');
 $routes->get('/pegawai/barang_permintaan/', 'PegawaiController::halaman_Barangpermintaan');
 $routes->get('/pegawai/halaman_stok_barang', 'PegawaiController::halaman_stok_barang');
-$routes->get('/pegawai/cetak_permintaan', 'PegawaiController::cetak_permintaan');
+$routes->get('/pegawai/halaman_cetak_permintaan', 'PegawaiController::halaman_cetak_permintaan');
+$routes->post('/pegawai/cetak_permintaan', 'PegawaiController::cetak_permintaan');
 
 
 // Routes Subkor
@@ -87,7 +88,7 @@ $routes->get('/kabag/halaman_permintaan', 'KabagController::halaman_permintaan')
 $routes->get('/kabag/halaman_stok_barang', 'KabagController::halaman_stok_barang');
 
 //Routes API
-$routes->resource('api/home', ['controller' => 'Api\Home']); 
+$routes->resource('api/home', ['controller' => 'Api\Home']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing

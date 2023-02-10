@@ -91,9 +91,10 @@ class PegawaiController extends BaseController
             'satuan' => $this->request->getPost('satuan'.$n['id']),
             'keterangan' => $this->request->getPost('keterangan'.$n['id']),
             'status' => '1',
-            'id_permintaan'> $id,
+            'id_permintaan'=> $id,
             'nip' => session()->get('nip'),
         ];
+        dd($dataBarang);
 
         $barangPermintaan->insert($dataBarang);
         }
@@ -187,6 +188,12 @@ class PegawaiController extends BaseController
             'permintaan' => $permintaan,
         ];
         return view('pegawai/halaman_barang_permintaan',$data);
+    }
+
+    public function halaman_cetak_permintaan()
+    {
+
+        return view('pegawai/halaman_cetak_permintaan');
     }
 
     public function cetak_permintaan()
