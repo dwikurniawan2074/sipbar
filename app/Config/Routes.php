@@ -38,7 +38,7 @@ $routes->post('/login/cekUser', 'LoginController::cekUser');
 $routes->get('/login/keluar', 'LoginController::keluar');
 
 // Routes Admin
-$routes->get('/admin/', 'AdminController::halaman_admin');
+$routes->get('admin/', 'AdminController::halaman_admin');
 $routes->get('/admin/halaman_admin', 'AdminController::halaman_admin');
 $routes->get('/admin/data_akun', 'AdminController::data_akun');
 $routes->get('/admin/input_data', 'AdminController::input_data');
@@ -48,7 +48,7 @@ $routes->delete('/admin/hapus_akun/(:num)', 'AdminController::hapus_akun/$1');
 
 
 // Routes Pegawai
-$routes->get('/pegawai/', 'PegawaiController::halaman_pegawai');
+$routes->get('pegawai/', 'PegawaiController::halaman_pegawai');
 $routes->get('/pegawai/halaman_pegawai', 'PegawaiController::halaman_pegawai');
 $routes->get('/pegawai/halaman_input_permintaan', 'PegawaiController::halaman_input_permintaan');
 $routes->post('/pegawai/simpan_permintaan', 'PegawaiController::save_permintaan');
@@ -58,18 +58,18 @@ $routes->delete('/pegawai/delete_permintaan/(:num)', 'PegawaiController::delete_
 $routes->get('/pegawai/halaman_permintaan', 'PegawaiController::halaman_permintaan');
 $routes->get('/pegawai/barang_permintaan/', 'PegawaiController::halaman_Barangpermintaan');
 $routes->get('/pegawai/halaman_stok_barang', 'PegawaiController::halaman_stok_barang');
-
+$routes->get('/pegawai/cetak_permintaan', 'PegawaiController::cetak_permintaan');
 
 
 // Routes Subkor
-$routes->get('/subkor/', 'SubkorController::halaman_subkor');
+$routes->get('subkor/', 'SubkorController::halaman_subkor');
 $routes->get('/subkor/halaman_subkor', 'SubkorController::halaman_subkor');
 $routes->get('/subkor/halaman_permintaan', 'SubkorController::halaman_permintaan');
 $routes->get('/subkor/halaman_stok_barang', 'SubkorController::halaman_stok_barang');
 
 
 // Routes Operator Persediaan
-$routes->get('/operator/', 'OperatorController::halaman_operator');
+$routes->get('operator/', 'OperatorController::halaman_operator');
 $routes->get('/operator/halaman_operator', 'OperatorController::halaman_operator');
 $routes->get('/operator/halaman_data_barang', 'OperatorController::halaman_data_barang');
 $routes->get('/operator/halaman_input_barang', 'OperatorController::halaman_input_barang');
@@ -81,7 +81,7 @@ $routes->post('/operator/cetak_laporan', 'OperatorController::cetak_laporan');
 
 
 // Routes Kabag
-$routes->get('/kabag/', 'KabagController::halaman_kabag');
+$routes->get('kabag/', 'KabagController::halaman_kabag');
 $routes->get('/kabag/halaman_kabag', 'KabagController::halaman_kabag');
 $routes->get('/kabag/halaman_permintaan', 'KabagController::halaman_permintaan');
 $routes->get('/kabag/halaman_stok_barang', 'KabagController::halaman_stok_barang');

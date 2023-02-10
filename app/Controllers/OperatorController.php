@@ -21,7 +21,7 @@ class OperatorController extends BaseController
             'title' => 'Data Barang',
             'barang' => $barang
         ];
-        return view('operator/halaman_databarang', $data);
+        return view('operator/halaman_data_barang', $data);
     }
     public function halaman_input_barang()
     {
