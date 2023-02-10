@@ -188,4 +188,10 @@ class PegawaiController extends BaseController
         ];
         return view('pegawai/halaman_barang_permintaan',$data);
     }
+
+    public function cetak_permintaan()
+    {
+
+        return view('pegawai/cetak_permintaan');
+    }
 }

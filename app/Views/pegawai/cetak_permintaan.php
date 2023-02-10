@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cetak Laporan Barang</title>
+  <title>Cetak Permintaan Barang</title>
   <link rel="shortcut icon" href="/Images/bpkp_logo.png" />
 </head>
 
@@ -75,35 +75,14 @@
               <td class="HeaderBG">
                 <font size="-1">Stok Menjadi</font>
               </td>
-              <td class="HeaderBG">
-                <font size="-1">Status</font>
-              </td>
-              <?php
-              $no = 1;
-              foreach ($barang as $br) :
-              ?>
             </tr>
             <tr valign="top" class="AlternateBG" style="font-size: 10pt">
               <td align="center">1.</td>
-              <td align="center"><?= $br['kode_barang']; ?></td>
-              <td align="center"><?= $br['nama_barang']; ?></td>
-              <td align="center"><?= $br['satuan']; ?></td>
-              <td align="center"><?= $br['stok_awal']; ?></td>
-              <td align="center"><?= $br['stok_menjadi']; ?></td>
-              <?php if (
-                  $br['status'] == '0'
-                ) { ?>
-                <td align="center">Belum di Opname</td>
-              <?php } else if (
-                  $br['status'] == '1'
-                ) { ?>
-                <td align="center">Sudah di Opname</td>
-              <?php } ?>
-            </tr>
-          <?php $no++;
-              endforeach;
-          ?>
-
+              <td align="center"></td>
+              <td align="center"></td>
+              <td align="center"></td>
+              <td align="center"></td>
+              <td align="center"></td>
           </tbody>
         </table>
         <br />
@@ -182,9 +161,9 @@
       </style>
     </div>
   </div>
-  <script>
+  <!-- <script>
     window.print()
-  </script>
+  </script> -->
 </body>
 
 </html>
