@@ -25,7 +25,8 @@ class PegawaiController extends BaseController
         $data = [
             'title' => 'Permintaan',
             'permintaanS' => $permintaan,
-            'data_barang' => $data_barang
+            'data_barang' => $data_barang,
+            'jml_prmtn_sntr' => $permintaanNew->where('nip', session()->get('nip'))->countAllResults(),
         ];
         return view('pegawai/halaman_input_permintaan',$data);
     } 
@@ -72,7 +73,7 @@ class PegawaiController extends BaseController
         $barangPermintaan = new ModelBarangPermintaan();
         $permintaanSementara = new PermintaanSementara();
         $Sementara = $permintaanSementara->findAll();
-        
+
         $dataMaster = [
             'nip' => session()->get('nip'),
             'tanggal_permintaan' => date('y-m-d'),
@@ -80,23 +81,24 @@ class PegawaiController extends BaseController
         ];
 
         $permintaan->insert($dataMaster);
+        $id_permintaan = $permintaan->insertID();
+        $data_prmnt_smntr = $permintaanSementara->where('nip',session()->get('nip'))->findAll();
 
-        
-        $id = $permintaan->select('id')->where('tanggal_permintaan',date('y-m-d'))->first();
-
-        foreach ($Sementara as $key => $n) {
-        $dataBarang= [
-            'nama_barang' => $this->request->getPost('nama_barang'.$n['id']),
-            'jumlah_permintaan' => $this->request->getPost('jumlah'.$n['id']),
-            'satuan' => $this->request->getPost('satuan'.$n['id']),
-            'keterangan' => $this->request->getPost('keterangan'.$n['id']),
-            'status' => '1',
-            'id_permintaan'=> $id,
-            'nip' => session()->get('nip'),
-        ];
-        dd($dataBarang);
-
-        $barangPermintaan->insert($dataBarang);
+        for ($i=0; $i < count($data_prmnt_smntr); $i++) { 
+            $data = [
+                'id_permintaan' => $id_permintaan,
+                'nama_barang' => $data_prmnt_smntr[$i]['nama_barang'],
+                'jumlah_permintaan' => $data_prmnt_smntr[$i]['jumlah'],
+                'satuan' => $data_prmnt_smntr[$i]['satuan'],
+                'keterangan' => $data_prmnt_smntr[$i]['keterangan'],
+                'tanggal_permintaan' => date('y-m-d'),
+                'nip' => session()->get('nip'),
+                'status' => '1'
+            ];
+            $barangPermintaan->insert($data);
+        }
+        for ($i=0; $i < count($data_prmnt_smntr); $i++) { 
+            $permintaanSementara->where('id',$data_prmnt_smntr[$i]['id'])->delete();
         }
 
         return redirect()->to('pegawai/halaman_permintaan');
@@ -110,7 +112,38 @@ class PegawaiController extends BaseController
         $id = $this->request->getPost('nama_barang');
         $barang = $permintaan->select('nama_barang')->where('id',$id)->first();
         $satuan = $permintaan->select('satuan')->where('id',$id)->first();
+        $stock_awal = $permintaan->select('stok_awal')->where('id',$id)->first();
+        if ($stock_awal['stok_awal'] >= $this->request->getPost('jumlah')){
+            if($permintaanS->where('nama_barang',$barang)->where('nip',session()->get('nip'))->first() != null){
+                $jumlah = $permintaanS->select('jumlah')->where('nama_barang',$barang)->where('nip',session()->get('nip'))->first();
+                $jumlahBaru = $jumlah['jumlah'] + $this->request->getPost('jumlah');
+                $data = [
+                    'nip' => session()->get('nip'),
+                    'nama_barang' => $barang,
+                    'jumlah' => $jumlahBaru,
+                    'satuan' => $satuan,
+                    'keterangan' => $this->request->getPost('keterangan'),
+                    'tanggal_permintaan' => date('y-m-d'),
+                ];
+                $permintaanS->where('nama_barang',$barang)->where('nip',session()->get('nip'))->set($data)->update();
+                return redirect()->to('pegawai/halaman_input_permintaan');
+            }else{
+            $data = [
+                'nip' => session()->get('nip'),
+                'nama_barang' => $barang,
+                'jumlah' => $this->request->getPost('jumlah'),
+                'satuan' => $satuan,
+                'keterangan' => $this->request->getPost('keterangan'),
+                'tanggal_permintaan' => date('y-m-d'),
+            ];
+            }
 
+            $permintaanS->insert($data);
+            return redirect()->to('pegawai/halaman_input_permintaan');
+        }else{
+            session()->setFlashdata('stock','Stock Barang Tidak Mencukupi!!!');
+            return redirect()->to('/pegawai/halaman_input_permintaan');
+        }
         $data = [
             'nip' => session()->get('nip'),
             'nama_barang' => $barang,
@@ -119,9 +152,6 @@ class PegawaiController extends BaseController
             'keterangan' => $this->request->getPost('keterangan'),
             'tanggal_permintaan' => date('y-m-d'),
         ];
-
-        $permintaanS->insert($data);
-        return redirect()->to('pegawai/halaman_input_permintaan');
     } 
 
     public function Update_permintaan($id)
@@ -173,16 +203,13 @@ class PegawaiController extends BaseController
         return view('pegawai/halaman_stok_barang',$data);
     }
 
-    public function halaman_data_barang()
-    {
-        
-    }
-
-    public function halaman_BarangPermintaan()
+    public function halaman_BarangPermintaan($id)
     {
         $permintaanNew = new ModelBarangPermintaan();
-        $permintaan= $permintaanNew->findAll();
-
+        $permintaan= $permintaanNew->select('*')
+                    ->join('permintaan_barang','barang_permintaan.id_permintaan=permintaan_barang.id')
+                    ->where('id_permintaan',$id)
+                    ->get();
         $data = [
             'title' => 'Permintaan',
             'permintaan' => $permintaan,
