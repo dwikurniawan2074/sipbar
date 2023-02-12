@@ -60,7 +60,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="/subkor/halaman_stok_barang">
                     <i class="icon-bar-graph menu-icon"></i>
-                    <span class="menu-title">Laporan Stok Barang</span>
+                    <span class="menu-title"> Data  Stok Barang</span>
                 </a>
             </li>
             <li class="nav-item">

@@ -47,7 +47,11 @@
                                         <?= $br['satuan'] ?>
                                     </td>
                                     <td>
+                                        <?php if ( $br['stok_menjadi'] > 0 ){  ?>   
                                         <?= $br['stok_menjadi'] ?>
+                                        <?php } else if ($br['stok_menjadi'] == 0 ){?>
+                                         Stok Kosong
+                                        <?php } ?>
                                     </td>
                                 </tr>
                                 <?php $no++;

@@ -8,7 +8,7 @@
             <h4 class="card-title">Data Pengajuan Permintaan Barang Pegawai</h4>
             <div class="row">
                 <div class="col-12">
-                    <div class="table-responsive">
+                    <div class="table-responsive pt-3">
                         <div id="order-listing_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div class="row">
                                 <div class="col-sm-12 col-md-10">
@@ -34,8 +34,8 @@
                                             $no = 1;
                                             foreach ($permintaan as $pr) : ?>
                                                 <?php
-
                                                 if ($pr['nip'] == session()->get('nip')) {  ?>
+                                                
                                                     <tr>
                                                         <td><?= $no ?></td>
                                                         <td><?= session()->get('nama_pegawai'); ?></td>
@@ -43,7 +43,7 @@
                                                         <td><?= $pr['tanggal_permintaan'] ?></td>
                                                         <td class="sorting_1">
                                                             <div class="container-fluid" style="display: flex;">
-                                                            <a class="btn btn-info mr-2" href="/pegawai/halaman_cetak_permintaan/" style="height: 30px"><i class="ti-printer btn-icon"></i></a>
+                                                            <a class="btn btn-info mr-2" href="/pegawai/halaman_cetak_permintaan/" style="height:30x"><i class="ti-printer"></i></a>
 
                                                                 <?php if ($pr['status'] == "0") { ?>
                                                                     <form action="/pegawai/delete_permintaan/<?= $pr['id'] ?>" method="post">
@@ -68,8 +68,9 @@
                                                             </div>
                                                         </td>
                                                     </tr>
-                                                <?php } ?>
-                                            <?php $no++;
+                                                <?php $no++;
+                                                }
+                                            
                                             endforeach;
                                             ?>
                                         </tbody>

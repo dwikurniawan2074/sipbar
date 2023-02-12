@@ -112,8 +112,8 @@ class PegawaiController extends BaseController
         $id = $this->request->getPost('nama_barang');
         $barang = $permintaan->select('nama_barang')->where('id',$id)->first();
         $satuan = $permintaan->select('satuan')->where('id',$id)->first();
-        $stock_awal = $permintaan->select('stok_awal')->where('id',$id)->first();
-        if ($stock_awal['stok_awal'] >= $this->request->getPost('jumlah')){
+        $stock_menjadi = $permintaan->select('stok_menjadi')->where('id',$id)->first();
+        if ($stock_menjadi['stok_menjadi'] >= $this->request->getPost('jumlah')){
             if($permintaanS->where('nama_barang',$barang)->where('nip',session()->get('nip'))->first() != null){
                 $jumlah = $permintaanS->select('jumlah')->where('nama_barang',$barang)->where('nip',session()->get('nip'))->first();
                 $jumlahBaru = $jumlah['jumlah'] + $this->request->getPost('jumlah');
@@ -175,7 +175,21 @@ class PegawaiController extends BaseController
 
     public function delete_permintaan($id){
         $permintaan = new Permintaan();
+        $barangPermintaan = new ModelBarangPermintaan();
+        
+        $barangP = $barangPermintaan->select('*')
+                -> where('id_permintaan',$id)
+                -> first();
+        $barangPermintaan->delete($barangP);
         $permintaan->delete($id);
+
+        return redirect()->to('/pegawai/halaman_permintaan');
+    }
+
+    public function delete_permintaan_barang($id){
+        $barangPermintaan = new ModelBarangPermintaan();
+        
+        $barangPermintaan->delete($id);
 
         return redirect()->to('/pegawai/halaman_permintaan');
     }
