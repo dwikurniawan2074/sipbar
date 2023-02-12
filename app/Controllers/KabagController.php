@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\Permintaan;
 use App\Models\ModelBarang;
+use App\Models\ModelBarangPermintaan;
+use App\Models\ModelPegawai;
 
 class KabagController extends BaseController
 {
@@ -14,14 +16,18 @@ class KabagController extends BaseController
     }
     public function halaman_permintaan()
     {
-        $permintaanNew = new Permintaan();
-        $permintaan = $permintaanNew->findAll();
-
+        $permintaanNew = new ModelBarangPermintaan();
+        $permintaan= $permintaanNew->select('*')
+                    ->join('permintaan_barang','barang_permintaan.id_permintaan=permintaan_barang.id')
+                    ->join('pegawai','permintaan_barang.nip=pegawai.nip')
+                    ->join('bidang','pegawai.id_bidang=bidang.id')
+                    ->get();
         $data = [
             'title' => 'Permintaan',
-            'permintaan' => $permintaan
+            'permintaan' => $permintaan,
         ];
-        return view('pegawai/halaman_permintaan', $data);
+
+        return view('kabag/halaman_permintaan', $data);
     }
     public function halaman_stok_barang()
     {
