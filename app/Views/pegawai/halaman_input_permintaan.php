@@ -1,7 +1,19 @@
 <?= $this->extend('template/dashboard_user'); ?>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <?= $this->section('content'); ?>
 <div class="content-wrapper">
+    <?php
+        if (session()->getFlashdata('kosong')){
+          echo '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+          echo session()->getFlashdata('kosong');
+          echo '</div>';
+        }
+        if (session()->getFlashdata('stock')){
+            echo '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+            echo session()->getFlashdata('stock');
+            echo '</div>';
+        }
+        ?>
     <div class="row">
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
@@ -23,17 +35,20 @@
                                 <option value="" disabled selected>--Pilih Nama Barang--</option>
                                 <?php foreach ($data_barang as $value) : ?>
                                     <?php if ( $value['stok_menjadi'] > 0 ){  ?>
-                                        <option value="<?=$value['id']; ?>"><?= $value['nama_barang']; ?> - <?= $value['stok_menjadi']; ?> <?= $value['satuan']; ?></option>
+                                        <option value="<?=$value['id']; ?>"><?= $value['nama_barang']; ?></option>
                                     <?php } else if ($value['stok_menjadi'] == 0 ){?>
-                                        <option value="<?=$value['id']; ?>" disabled><?= $value['nama_barang']; ?> - Stok Persediaan Kosong</option>
+                                        <option value="<?=$value['id']; ?>" disabled><?= $value['nama_barang']; ?> (Stok Persediaan Kosong)</option>
                                     <?php } ?>
-
                                 <?php endforeach ?>
                             </select>
                         </div>
                         <div class="form-group position-relative">
+                            <label for="exampleInputName1">Stock Barang</label>
+                            <input type="text" readonly class="form-control" id="stockBarang" name="jumlah" placeholder="Stok Barang" min="1" required>
+                        </div>
+                        <div class="form-group position-relative">
                             <label for="exampleInputName1">Jumlah</label>
-                            <input type="number" class="form-control" id="exampleInputName1" name="jumlah" placeholder="Jumlah" min="1" max="<?= $value['stok_menjadi']; ?>" required>
+                            <input type="number" class="form-control" id="jumlah_barang" name="jumlah" placeholder="Jumlah" min="1" required>
                         </div>
                         <div class="form-group position-relative">
                             <label for="exampleInputName1">Keterangan</label>
@@ -67,15 +82,17 @@
                 </thead>
                 <tbody>
                     <?php
-                        $no = 1;
+                    $no = 1;
                         foreach ($permintaanS as $prs) : 
+                            if ($prs['nip'] == session()->get('nip') ){ 
+                            ;
                     ?>
-                    <?php if ($prs['nip'] == session()->get('nip') ){  ?>
+
                         <?php
-                        echo form_hidden('nama_barang'.$prs['id'],$prs['nama_barang']); 
-                        echo form_hidden('jumlah'.$prs['id'],$prs['jumlah']);
-                        echo form_hidden('satuan'.$prs['id'],$prs['satuan']);
-                        echo form_hidden('keterangan'.$prs['id'],$prs['keterangan']);
+                        echo form_hidden('nama_barang'.$prs['id'].session()->get('nip'),$prs['nama_barang']); 
+                        echo form_hidden('jumlah'.$prs['id'].session()->get('nip'),$prs['jumlah']);
+                        echo form_hidden('satuan'.$prs['id'].session()->get('nip'),$prs['satuan']);
+                        echo form_hidden('keterangan'.$prs['id'].session()->get('nip'),$prs['keterangan']);
                         ?>
                         <tr>
                             <td><?= $no?></td>
@@ -84,15 +101,17 @@
                             <td><?= $prs['satuan'] ?></td>
                             <td><?= $prs['keterangan'] ?></td>
                         </tr>
-                        <?php } ?>
                     
                     <?php $no++;
+                            }
                     endforeach;
                     ?>
                 </tbody>
                 <tfoot></tfoot>
             </table>
+            <?php if($jml_prmtn_sntr > 0 ): ?>
             <button type="submit" class="btn btn-success mr-2">Submit</button>
+            <?php endif; ?>
             <?= form_close(); ?>
         </div>
             </div>
@@ -100,19 +119,21 @@
     </div>
     
 </div>
-<?= $this->endSection(); ?>
 
-<!-- <script>
-    $('#nama_barang').on('change',(event) =>{
-        getBarang(event.target.value).then(data_barang=>{
-            $('#stok_menjadi').val(data_barang.stok_menjadi);
-        });
+
+<script>
+    $('#nama_barang').change(function (e) { 
+        e.preventDefault();
+        var id= $(this).val();
+        var barang = <?php echo json_encode($data_barang); ?>;
+        console.log(barang);
+        for (let i = 0; i < barang.length; i++) {
+            if (barang[i].id == id) {
+                var stok = barang[i].stok_menjadi +" "+ barang[i].satuan;
+                console.log(stok);
+                $('#stockBarang').val(stok);
+            }
+        }
     });
-
-    async function getBarang($id) {
-        let response = await fetch('/api/home/' + $id)
-        let data = await response.json();
-
-        return data;
-    } 
-</script> -->
+</script>
+<?= $this->endSection(); ?>
