@@ -83,23 +83,23 @@
                 <tbody>
                     <?php
                     $no = 1;
-                        foreach ($permintaanS as $prs) : 
-                            if ($prs['nip'] == session()->get('nip') ){ 
+                        foreach ($permintaanS->getResult() as $key => $prs) : 
+                            if ($prs->nip == session()->get('nip') ){ 
                             ;
                     ?>
 
                         <?php
-                        echo form_hidden('nama_barang'.$prs['id'].session()->get('nip'),$prs['nama_barang']); 
-                        echo form_hidden('jumlah'.$prs['id'].session()->get('nip'),$prs['jumlah']);
-                        echo form_hidden('satuan'.$prs['id'].session()->get('nip'),$prs['satuan']);
-                        echo form_hidden('keterangan'.$prs['id'].session()->get('nip'),$prs['keterangan']);
+                        echo form_hidden('id_barang'.$prs->id.session()->get('nip'),$prs->id_barang); 
+                        echo form_hidden('jumlah'.$prs->id.session()->get('nip'),$prs->jumlah);
+                        echo form_hidden('satuan'.$prs->id.session()->get('nip'),$prs->satuan);
+                        echo form_hidden('keterangan'.$prs->id.session()->get('nip'),$prs->keterangan);
                         ?>
                         <tr>
                             <td><?= $no?></td>
-                            <td><?= $prs['nama_barang'] ?></td>
-                            <td><?= $prs['jumlah'] ?></td>
-                            <td><?= $prs['satuan'] ?></td>
-                            <td><?= $prs['keterangan'] ?></td>
+                            <td><?= $prs->nama_barang ?></td>
+                            <td><?= $prs->jumlah ?></td>
+                            <td><?= $prs->satuan ?></td>
+                            <td><?= $prs->keterangan ?></td>
                         </tr>
                     
                     <?php $no++;

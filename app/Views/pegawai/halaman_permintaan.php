@@ -3,6 +3,12 @@
 
 <?= $this->section('content') ?>
 <div class="content-wrapper">
+    <?php if (session()->getFlashdata('stock')){
+            echo '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+            echo session()->getFlashdata('stock');
+            echo '</div>';
+        }
+        ?>
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Data Pengajuan Permintaan Barang Pegawai</h4>

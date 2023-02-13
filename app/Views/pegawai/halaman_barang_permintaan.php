@@ -99,7 +99,7 @@
                                                                                     
                                                                                     <div class="form-group">
                                                                                         <label for="exampleInputName1">Jumlah Permintaan</label>
-                                                                                        <input type="text" class="form-control" id="exampleInputName1" name="jumlah" placeholder="Jumlah" min="1" value="<?= $pr->jumlah_permintaan ?>" required>
+                                                                                        <input type="number" class="form-control" id="exampleInputName1" name="jumlah" placeholder="Jumlah" min="1" max='<?= $pr->stok_menjadi ?>' value="<?= $pr->jumlah_permintaan ?>" required>
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="exampleInputName1">Satuan</label>
