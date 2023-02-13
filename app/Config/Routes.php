@@ -72,6 +72,9 @@ $routes->post('/pegawai/cetak_permintaan', 'PegawaiController::cetak_permintaan'
 $routes->get('subkor/', 'SubkorController::halaman_subkor');
 $routes->get('/subkor/halaman_subkor', 'SubkorController::halaman_subkor');
 $routes->get('/subkor/halaman_permintaan', 'SubkorController::halaman_permintaan');
+$routes->post('/subkor/update_permintaan_persetujuan/(:num)', 'SubkorController::Update_permintaan/$1');
+$routes->post('/subkor/setuju_permintaan/(:num)', 'SubkorController::Setuju_permintaan/$1');
+$routes->post('/subkor/tolak_permintaan/(:num)', 'SubkorController::Tolak_permintaan/$1');
 $routes->get('/subkor/halaman_stok_barang', 'SubkorController::halaman_stok_barang');
 
 
@@ -81,6 +84,7 @@ $routes->get('/operator/halaman_operator', 'OperatorController::halaman_operator
 $routes->get('/operator/halaman_data_barang', 'OperatorController::halaman_data_barang');
 $routes->get('/operator/halaman_input_barang', 'OperatorController::halaman_input_barang');
 $routes->post('/operator/simpan_data_barang', 'OperatorController::save_dataBarang');
+$routes->get('/operator/halaman_input_barang_masuk', 'OperatorController::halaman_input_barangMasuk');
 $routes->post('/operator/update_data_barang/(:num)', 'OperatorController::Update_dataBarang/$1');
 $routes->delete('/operator/delete_data_barang/(:num)', 'OperatorController::delete_dataBarang/$1');
 $routes->get('/operator/halaman_laporan_stok', 'OperatorController::halaman_laporan_stok');

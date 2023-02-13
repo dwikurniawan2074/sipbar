@@ -50,12 +50,12 @@
                                                             <div class="container-fluid" style="display: flex;">
                                                                 <a class="btn btn-info mr-2" href="/pegawai/halaman_cetak_permintaan/" style="height:30x"><i class="ti-printer" ></i></a>
 
-                                                                <?php if ($pr['status'] == "0") { ?>
+                                                                <?php if ($pr['status_permintaan'] == "0") { ?>
                                                                     <form action="/pegawai/delete_permintaan/<?= $pr['id'] ?>" method="post">
                                                                         <input type="hidden" name="_method" value="DELETE">
                                                                         <button type="submit" class="btn btn-danger" style="height: 30px" disabled><i class="ti-trash"></i></button>
                                                                     </form>
-                                                                <?php } else if ($pr['status'] == "1") { ?>
+                                                                <?php } else if ($pr['status_permintaan'] == "1") { ?>
                                                                     <?= form_open('/pegawai/delete_permintaan/' . $pr['id']) ?>
                                                                     <?= csrf_field(); ?>
                                                                     <form action="/pegawai/delete_permintaan/<?= $pr['id'] ?>" method="post">
@@ -63,7 +63,7 @@
                                                                         <button type="submit" class="btn btn-danger" style="height: 30px"><i class="ti-trash"></i></button>
                                                                     </form>
                                                                     <?= form_close(); ?>
-                                                                <?php } else if ($pr['status'] == "2") { ?>
+                                                                <?php } else if ($pr['status_permintaan'] == "2") { ?>
                                                                     <form action="/pegawai/delete_permintaan/<?= $pr['id'] ?>" method="post">
                                                                         <input type="hidden" name="_method" value="DELETE">
                                                                         <button type="submit" class="btn btn-danger" style="height: 30px" disabled><i class="ti-trash"></i></button>

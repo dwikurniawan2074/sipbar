@@ -43,11 +43,11 @@
                                                         <td><?= $br['tanggal'] ?></td>
                                                         <td>
                                                             <?php if (
-                                                                $br['status'] == '0'
+                                                                $br['status_barang'] == '0'
                                                             ) { ?>
                                                                 <label class="badge badge-info">Belum di Opname</label>
                                                             <?php } else if (
-                                                                $br['status'] == '1'
+                                                                $br['status_barang'] == '1'
                                                             ) { ?>
                                                                 <label class="badge badge-success">Sudah di Opname</label>
                                                             <?php } ?>
