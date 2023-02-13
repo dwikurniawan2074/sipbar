@@ -47,7 +47,8 @@ class SubkorController extends BaseController
     public function Setuju_permintaan($id_barang_permintaan){
         $permintaan = new ModelBarangPermintaan();
         $barang = new ModelBarang();
-
+        date_default_timezone_set('Asia/Jakarta');
+        
         $jumlah_permintaan = $permintaan->select('jumlah_permintaan')->where('id_barang_permintaan',$id_barang_permintaan)->first();
         $id_barang = $permintaan->select('id_barang')->where('id_barang_permintaan',$id_barang_permintaan)->first();
         $stok = $barang->select('stok_menjadi')->where('id',$id_barang)->first();

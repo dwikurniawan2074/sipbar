@@ -76,7 +76,8 @@ class PegawaiController extends BaseController
         $barangPermintaan = new ModelBarangPermintaan();
         $permintaanSementara = new PermintaanSementara();
         $Sementara = $permintaanSementara->findAll();
-
+        date_default_timezone_set('Asia/Jakarta');
+        
         $dataMaster = [
             'nip' => session()->get('nip'),
             'tanggal_permintaan' => date('y-m-d'),
@@ -110,6 +111,7 @@ class PegawaiController extends BaseController
     {
         $permintaanS = new PermintaanSementara();
         $permintaan = new ModelBarang();
+        date_default_timezone_set('Asia/Jakarta');
 
         $id = $this->request->getPost('nama_barang');
         // $barang = $permintaan->select('nama_barang')->where('id',$id)->first();
@@ -156,7 +158,8 @@ class PegawaiController extends BaseController
     public function Update_permintaan($id_barang_permintaan)
     {
         $permintaan = new ModelBarangPermintaan();
-
+        date_default_timezone_set('Asia/Jakarta');
+        
         $data = [
             'jumlah_permintaan' => $this->request->getVar('jumlah'),
             'keterangan' => $this->request->getVar('keterangan'),
