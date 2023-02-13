@@ -40,13 +40,17 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputName1">Jabatan</label>
-                            <input type="text" class="form-control" name="jabatan" id="exampleInputName1" placeholder="Jabatan" required>
+                            <select class="form-control" id="exampleSelectGender" name="id_jabatan" required>
+                                <?php foreach ($jabatan as $key => $value) { ?>
+                                    <option value="<?= $value['id']; ?>"><?= $value['nama_jabatan']; ?></option>
+                                <?php }; ?>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleSelectGender">Role</label>
                             <select class="form-control" id="exampleSelectGender" name="id_role" required>
                                 <?php foreach ($role as $key => $value) { ?>
-                                <option value="<?= $value['id']; ?>"><?= $value['deskripsi_role']; ?></option>
+                                    <option value="<?= $value['id']; ?>"><?= $value['deskripsi_role']; ?></option>
                                 <?php }; ?>
                             </select>
                         </div>

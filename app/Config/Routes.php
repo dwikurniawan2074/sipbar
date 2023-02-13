@@ -42,9 +42,14 @@ $routes->get('admin/', 'AdminController::halaman_admin');
 $routes->get('/admin/halaman_admin', 'AdminController::halaman_admin');
 $routes->get('/admin/data_akun', 'AdminController::data_akun');
 $routes->get('/admin/input_data', 'AdminController::input_data');
+$routes->get('/admin/data_jabatan', 'AdminController::data_jabatan');
+$routes->get('/admin/input_jabatan', 'AdminController::input_jabatan');
+$routes->post('/admin/tambah_jabatan', 'AdminController::tambah_jabatan');
 $routes->post('/admin/tambah_akun', 'AdminController::tambah_akun');
 $routes->post('/admin/update_akun/(:num)', 'AdminController::update_akun/$1');
+$routes->post('/admin/update_jabatan/(:num)', 'AdminController::update_jabatan/$1');
 $routes->delete('/admin/hapus_akun/(:num)', 'AdminController::hapus_akun/$1');
+$routes->delete('/admin/hapus_jabatan/(:num)', 'AdminController::hapus_jabatan/$1');
 
 
 // Routes Pegawai

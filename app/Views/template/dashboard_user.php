@@ -154,6 +154,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/admin/data_jabatan">
+                    <i class="icon-head menu-icon"></i>
+                    <span class="menu-title">Data Jabatan</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/admin/input_data">
                     <i class="icon-head menu-icon"></i>
                     <span class="menu-title">Input Data Akun</span>
