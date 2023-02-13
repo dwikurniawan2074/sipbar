@@ -55,27 +55,27 @@
             </tr>
           </tbody>
         </table>
-        <table class="tb_data" width="1200px" border="1" bordercolor="black" cellspacing="0" cellpadding="3">
+        <table class="tb_data" width="1150px" border="1" bordercolor="black" cellspacing="0" cellpadding="3">
           <tbody>
             <tr align="center" height="10" style="">
               <td class="HeaderBG">
                 <font size="-1">No</font>
               </td>
               <td class="HeaderBG">
-                <font size="-1">NIP<br /></font>
-              </td>
-              <td class="HeaderBG">
                 <font size="-1">Nama Pegawai<br /></font>
               </td>
-              <!-- <td class="HeaderBG">
-                <font size="-1">Nama Barang</font>
-              </td> -->
               <td class="HeaderBG">
                 <font size="-1">Jumlah Permintaan</font>
               </td>
-              <td class="HeaderBG">
+              <!-- <td class="HeaderBG">
+                <font size="-1">NIP<br /></font>
+              </td> -->
+              <!-- <td class="HeaderBG">
+                <font size="-1">Nama Barang</font>
+              </td> -->
+              <!-- <td class="HeaderBG">
                 <font size="-1">Satuan</font>
-              </td>
+              </td> -->
               <td class="HeaderBG">
                 <font size="-1">Tanggal Permintaan</font>
               </td>
@@ -94,8 +94,6 @@
                 <td align="center"><?= $no; ?></td>
                 <td align="center"><?= $per['nip']; ?></td>
                 <td align="center"><?= $per['nama_pegawai']; ?></td>
-                <td align="center"></td>
-                <td align="center"></td>
                 <td align="center"></td>
                 <td align="center"></td>
                 <td align="center"></td>
