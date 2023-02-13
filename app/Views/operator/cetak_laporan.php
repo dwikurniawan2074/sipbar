@@ -78,11 +78,11 @@
               <td class="HeaderBG">
                 <font size="-1">Status</font>
               </td>
+            </tr>
               <?php
               $no = 1;
               foreach ($barang as $br) :
               ?>
-            </tr>
             <tr valign="top" class="AlternateBG" style="font-size: 10pt">
               <td align="center">1.</td>
               <td align="center"><?= $br['kode_barang']; ?></td>
