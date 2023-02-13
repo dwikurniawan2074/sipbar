@@ -25,6 +25,7 @@
                         <div class="form-group">
                             <label for="exampleSelectGender">Pangkat</label>
                             <select class="form-control" id="exampleSelectGender" name="id_pangkat" required>
+                                <option value="" disabled selected>--Pilih Pangkat--</option>
                                 <?php foreach ($pangkat as $key => $value) { ?>
                                     <option value="<?= $value['id']; ?>"><?= $value['nama_pangkat']; ?></option>
                                 <?php }; ?>
@@ -33,6 +34,7 @@
                         <div class="form-group">
                             <label for="exampleSelectGender">Bidang</label>
                             <select class="form-control" id="exampleSelectGender" name="id_bidang" required>
+                                <option value="" disabled selected>--Pilih Bidang--</option>
                                 <?php foreach ($bidang as $key => $value) { ?>
                                     <option value="<?= $value['id']; ?>"><?= $value['nama_bidang']; ?></option>
                                 <?php  }; ?>
@@ -41,6 +43,7 @@
                         <div class="form-group">
                             <label for="exampleInputName1">Jabatan</label>
                             <select class="form-control" id="exampleSelectGender" name="id_jabatan" required>
+                                <option value="" disabled selected>--Pilih Jabatan--</option>
                                 <?php foreach ($jabatan as $key => $value) { ?>
                                     <option value="<?= $value['id']; ?>"><?= $value['nama_jabatan']; ?></option>
                                 <?php }; ?>
@@ -49,6 +52,7 @@
                         <div class="form-group">
                             <label for="exampleSelectGender">Role</label>
                             <select class="form-control" id="exampleSelectGender" name="id_role" required>
+                                <option value="" disabled selected>--Pilih Role--</option>
                                 <?php foreach ($role as $key => $value) { ?>
                                     <option value="<?= $value['id']; ?>"><?= $value['deskripsi_role']; ?></option>
                                 <?php }; ?>

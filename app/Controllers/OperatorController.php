@@ -27,6 +27,7 @@ class OperatorController extends BaseController
     {
         return view('operator/halaman_input_barang');
     }
+    
 
     public function save_dataBarang()
     {
@@ -89,5 +90,10 @@ class OperatorController extends BaseController
         ];
 
         return view('operator/cetak_laporan', $data);
+    }
+
+    public function halaman_input_barangMasuk()
+    {
+        return view('operator/input_barang_masuk');
     }
 }

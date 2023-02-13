@@ -15,13 +15,12 @@
                                             <thead>
                                                 <tr role="row">
                                                     <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >No.</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >NIP</th>
                                                     <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Nama Pegawai</th>
                                                     <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Bidang</th>
                                                     <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Nama Barang</th>
                                                     <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Jumlah Permintaan</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Satuan</th>
                                                     <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Keterangan</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Tanggal Permintaan</th>
                                                     <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Jumlah di Setujui</th>
                                                     <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Tanggal di Setujui</th>
                                                     <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-sort="descending">Status</th>
@@ -34,13 +33,12 @@
                                                 foreach ($permintaan->getResult() as $key =>$pr) : ?>
                                                     <tr>
                                                         <td><?= $no?></td>
-                                                        <td><?= $pr->nip?></td>
                                                         <td><?= $pr->nama_pegawai?></td>
                                                         <td><?= $pr->nama_bidang?></td>
                                                         <td><?= $pr->nama_barang ?></td>
-                                                        <td><?= $pr->jumlah_permintaan  ?></td>
-                                                        <td><?= $pr->satuan  ?></td>
+                                                        <td><?= $pr->jumlah_permintaan?> <?= $pr->satuan?></td>
                                                         <td><?= $pr->keterangan  ?></td>
+                                                        <td><?= $pr->tanggal_permintaan  ?></td>
                                                         <td>
                                                             <?php if (
                                                                 $pr->jumlah_disetujui  == null
@@ -98,33 +96,25 @@
                                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                                     <span aria-hidden="true">&times;</span></button>
                                                                                 </div>
-                                                                                <?= form_open('/pegawai/update_permintaan/'.$pr->id) ?>
+                                                                                <?= form_open('/subkor/update_permintaan_persetujuan/'.$pr->id_barang_permintaan) ?>
                                                                                 <?= csrf_field(); ?>
-                                                                                <form action="/pegawai/update_permintaan/<?= $pr->id ?>" method="POST" enctype="multipart/form-data">
+                                                                                <form action="/subkor/update_permintaan_persetujuan/<?= $pr->id_barang_permintaan ?>" method="POST" enctype="multipart/form-data">
                                                                                 <div class="modal-body">
                                                                                     <div class="form-group">
-                                                                                        <label for="exampleInputName1">Nama Pegawai</label>
-                                                                                        <input type="text" class="form-control" id="exampleInputName1" value="Achirsyah Moeis" readonly>
-                                                                                    </div>
-                                                                                    <div class="form-group">
                                                                                         <label for="exampleInputName1">Nama Barang</label>
-                                                                                        <input type="text" class="form-control" id="exampleInputName1" name="nama_barang" placeholder="Nama Barang" value=""required>
+                                                                                        <input type="text" class="form-control" id="exampleInputName1" name="nama_barang" placeholder="Nama Barang" value="<?=$pr->nama_barang ?>" readonly>
                                                                                     </div>
                                                                                     <div class="form-group">
-                                                                                        <label for="exampleInputName1">Stok Barang</label>
-                                                                                        <input type="text" class="form-control" id="exampleInputName1" value="10" readonly>
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label for="exampleInputName1">Jumlah</label>
-                                                                                        <input type="text" class="form-control" id="exampleInputName1" name="jumlah" placeholder="Jumlah" min="1" max="10" value=" " required>
+                                                                                        <label for="exampleInputName1">Jumlah Permintaan</label>
+                                                                                        <input type="number" class="form-control" id="exampleInputName1" name="jumlah" placeholder="Jumlah" min="1" max="<?=$pr->stok_menjadi?>" value="<?=$pr->jumlah_permintaan ?>" required>
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="exampleInputName1">Satuan</label>
-                                                                                        <input type="text" class="form-control" id="exampleInputName1" name="satuan" value="" readonly>
+                                                                                        <input type="text" class="form-control" id="exampleInputName1" name="satuan" value="<?=$pr->satuan ?>" readonly>
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="exampleInputName1">Keterangan</label>
-                                                                                        <input type="text" class="form-control" id="exampleInputName1" name="keterangan" placeholder="Keterangan" value="" required>
+                                                                                        <input type="text" class="form-control" id="exampleInputName1" name="keterangan" placeholder="Keterangan" value="<?=$pr->keterangan ?>" readonly>
                                                                                     </div> 
                                                                                 </div>
                                                                                 <div class="modal-footer">
@@ -136,17 +126,17 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                <?= form_open('/pegawai/delete_permintaan/'.$pr->id) ?>
+                                                                <?= form_open('/subkor/setuju_permintaan/'.$pr->id_barang_permintaan) ?>
                                                                 <?= csrf_field(); ?>
-                                                                <form action="/pegawai/delete_permintaan/<?= $pr->id ?>" method="post">
-                                                                    <input type="hidden" name="_method" value="DELETE">
+                                                                <form action="/subkor/setuju_permintaan/<?= $pr->id_barang_permintaan ?>" method="post">
+                                                                    
                                                                     <button type="submit" class="btn btn-success mr-2" style="height: 30px"><i class="ti-check"></i></button>
                                                                 </form> 
                                                                 <?= form_close(); ?> 
-                                                                <?= form_open('/pegawai/delete_permintaan/'.$pr->id) ?>
+                                                                <?= form_open('/subkor/tolak_permintaan/'.$pr->id_barang_permintaan) ?>
                                                                 <?= csrf_field(); ?>
-                                                                <form action="/pegawai/delete_permintaan/<?= $pr->id ?>" method="post">
-                                                                    <input type="hidden" name="_method" value="DELETE">
+                                                                <form action="/subkor/tolak_permintaan/<?= $pr->id_barang_permintaan?>" method="post">
+                                                                    
                                                                     <button type="submit" class="btn btn-danger" style="height: 30px"><i class="ti-close"></i></button>
                                                                 </form> 
                                                                 <?= form_close(); ?> 

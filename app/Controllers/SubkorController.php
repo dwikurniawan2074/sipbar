@@ -22,6 +22,7 @@ class SubkorController extends BaseController
         $pgw = new ModelPegawai();
         $permintaan= $permintaanNew->select('*')
                     ->join('permintaan_barang','barang_permintaan.id_permintaan=permintaan_barang.id')
+                    ->join('data_barang','barang_permintaan.id_barang=data_barang.id')
                     ->join('pegawai','permintaan_barang.nip=pegawai.nip')
                     ->join('bidang','pegawai.id_bidang=bidang.id')
                     ->get();
@@ -31,6 +32,55 @@ class SubkorController extends BaseController
         ];
         return view('subkor/halaman_permintaan',$data);
     }
+
+    public function Update_permintaan($id_barang_permintaan){
+        $permintaan = new ModelBarangPermintaan();
+
+        $data = [
+            'jumlah_permintaan' => $this->request->getVar('jumlah'),
+        ];
+
+        $permintaan->update($id_barang_permintaan,$data);
+        return redirect()->to('subkor/halaman_permintaan');
+    }
+
+    public function Setuju_permintaan($id_barang_permintaan){
+        $permintaan = new ModelBarangPermintaan();
+        $barang = new ModelBarang();
+
+        $jumlah_permintaan = $permintaan->select('jumlah_permintaan')->where('id_barang_permintaan',$id_barang_permintaan)->first();
+        $id_barang = $permintaan->select('id_barang')->where('id_barang_permintaan',$id_barang_permintaan)->first();
+        $stok = $barang->select('stok_menjadi')->where('id',$id_barang)->first();
+
+        $hasil = $stok['stok_menjadi'] - $jumlah_permintaan['jumlah_permintaan'];
+
+        $jumlah=[
+            'stok_menjadi'=> $hasil
+        ];
+
+        $barang->update($id_barang,$jumlah);
+        
+        $data = [
+            'status' => '2',
+            'jumlah_disetujui' => $jumlah_permintaan,
+            'tanggal_disetujui' => date('y-m-d'),
+ 
+        ];
+
+        $permintaan->update($id_barang_permintaan,$data);
+        return redirect()->to('subkor/halaman_permintaan');
+    }
+    public function Tolak_permintaan($id_barang_permintaan){
+        $permintaan = new ModelBarangPermintaan();
+
+        $data = [
+            'status' => '0',
+        ];
+
+        $permintaan->update($id_barang_permintaan,$data);
+        return redirect()->to('subkor/halaman_permintaan');
+    }
+
     public function halaman_stok_barang()
     {
         $data_barang = new ModelBarang();

@@ -156,29 +156,16 @@ class PegawaiController extends BaseController
     public function Update_permintaan($id_barang_permintaan)
     {
         $permintaan = new ModelBarangPermintaan();
-        $barang = new ModelBarang();
 
-        $namaBarang = $this->request->getPost('nama_barang');
-        $stok = $barang->select('stok_menjadi')->where('nama_barang',$namaBarang)->first();
+        $data = [
+            'jumlah_permintaan' => $this->request->getVar('jumlah'),
+            'keterangan' => $this->request->getVar('keterangan'),
+            'tanggal_permintaan' => date('y-m-d'),
+            'status' => '1'
+        ];
 
-        $jumlah_barang = $this->request->getPost('jumlah');
-        
-
-        // if($jumlah_barang <= $stok){
-            $data = [
-                'jumlah_permintaan' => $this->request->getVar('jumlah'),
-                'keterangan' => $this->request->getVar('keterangan'),
-                'tanggal_permintaan' => date('y-m-d'),
-                'status' => '1'
-            ];
-    
-            $permintaan->update($id_barang_permintaan,$data);
-            return redirect()->to('pegawai/halaman_permintaan');
-        // }
-        // else if($jumlah_barang > $stok){
-        //     session()->setFlashdata('stock','Stock Barang Tidak Mencukupi!!!');
-        //     return redirect()->to('/pegawai/halaman_permintaan/');
-        // }
+        $permintaan->update($id_barang_permintaan,$data);
+        return redirect()->to('pegawai/halaman_permintaan');
         
     } 
 
@@ -188,10 +175,14 @@ class PegawaiController extends BaseController
         $permintaan = new Permintaan();
         $barangPermintaan = new ModelBarangPermintaan();
         
+
         $barangP = $barangPermintaan->select('*')
                 -> where('id_permintaan',$id)
                 -> first();
-        $barangPermintaan->delete($barangP);
+        if($barangP != null){
+            $barangPermintaan->delete($barangP);
+        }
+        
         $permintaan->delete($id);
 
         return redirect()->to('/pegawai/halaman_permintaan');
