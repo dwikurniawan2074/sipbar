@@ -18,7 +18,10 @@ class PegawaiController extends BaseController
     public function halaman_input_permintaan()
     {
         $permintaanNew = new PermintaanSementara();
-        $permintaan= $permintaanNew->findAll();
+        $permintaan= $permintaanNew->select('*')
+                    ->join('data_barang','permintaansementara_barang.id_barang=data_barang.id')
+                    ->join('pegawai','permintaansementara_barang.nip=pegawai.nip')
+                    ->get();
         $barangNew = new ModelBarang();
         $data_barang= $barangNew->findAll();
 
@@ -87,9 +90,8 @@ class PegawaiController extends BaseController
         for ($i=0; $i < count($data_prmnt_smntr); $i++) { 
             $data = [
                 'id_permintaan' => $id_permintaan,
-                'nama_barang' => $data_prmnt_smntr[$i]['nama_barang'],
+                'id_barang' => $data_prmnt_smntr[$i]['id_barang'],
                 'jumlah_permintaan' => $data_prmnt_smntr[$i]['jumlah'],
-                'satuan' => $data_prmnt_smntr[$i]['satuan'],
                 'keterangan' => $data_prmnt_smntr[$i]['keterangan'],
                 'tanggal_permintaan' => date('y-m-d'),
                 'nip' => session()->get('nip'),
@@ -110,29 +112,27 @@ class PegawaiController extends BaseController
         $permintaan = new ModelBarang();
 
         $id = $this->request->getPost('nama_barang');
-        $barang = $permintaan->select('nama_barang')->where('id',$id)->first();
-        $satuan = $permintaan->select('satuan')->where('id',$id)->first();
+        // $barang = $permintaan->select('nama_barang')->where('id',$id)->first();
+        // $satuan = $permintaan->select('satuan')->where('id',$id)->first();
         $stock_menjadi = $permintaan->select('stok_menjadi')->where('id',$id)->first();
         if ($stock_menjadi['stok_menjadi'] >= $this->request->getPost('jumlah')){
-            if($permintaanS->where('nama_barang',$barang)->where('nip',session()->get('nip'))->first() != null){
-                $jumlah = $permintaanS->select('jumlah')->where('nama_barang',$barang)->where('nip',session()->get('nip'))->first();
+            if($permintaanS->where('id_barang',$id)->where('nip',session()->get('nip'))->first() != null){
+                $jumlah = $permintaanS->select('jumlah')->where('id_barang',$id)->where('nip',session()->get('nip'))->first();
                 $jumlahBaru = $jumlah['jumlah'] + $this->request->getPost('jumlah');
                 $data = [
                     'nip' => session()->get('nip'),
-                    'nama_barang' => $barang,
+                    'id_barang' => $id,
                     'jumlah' => $jumlahBaru,
-                    'satuan' => $satuan,
                     'keterangan' => $this->request->getPost('keterangan'),
                     'tanggal_permintaan' => date('y-m-d'),
                 ];
-                $permintaanS->where('nama_barang',$barang)->where('nip',session()->get('nip'))->set($data)->update();
+                $permintaanS->where('id_barang',$id)->where('nip',session()->get('nip'))->set($data)->update();
                 return redirect()->to('pegawai/halaman_input_permintaan');
             }else{
             $data = [
                 'nip' => session()->get('nip'),
-                'nama_barang' => $barang,
+                'id_barang' => $id,
                 'jumlah' => $this->request->getPost('jumlah'),
-                'satuan' => $satuan,
                 'keterangan' => $this->request->getPost('keterangan'),
                 'tanggal_permintaan' => date('y-m-d'),
             ];
@@ -146,29 +146,40 @@ class PegawaiController extends BaseController
         }
         $data = [
             'nip' => session()->get('nip'),
-            'nama_barang' => $barang,
+            'id_barang' => $id,
             'jumlah' => $this->request->getPost('jumlah'),
-            'satuan' => $satuan,
             'keterangan' => $this->request->getPost('keterangan'),
             'tanggal_permintaan' => date('y-m-d'),
         ];
     } 
 
-    public function Update_permintaan($id)
+    public function Update_permintaan($id_barang_permintaan)
     {
-        $permintaan = new Permintaan();
+        $permintaan = new ModelBarangPermintaan();
+        $barang = new ModelBarang();
 
-        $data = [
-            'nama_barang' => $this->request->getVar('nama_barang'),
-            'jumlah' => $this->request->getVar('jumlah'),
-            'satuan' => $this->request->getVar('satuan'),
-            'keterangan' => $this->request->getVar('keterangan'),
-            'tanggal_permintaan' => date('y-m-d'),
-            'status' => '1'
-        ];
+        $namaBarang = $this->request->getPost('nama_barang');
+        $stok = $barang->select('stok_menjadi')->where('nama_barang',$namaBarang)->first();
 
-        $permintaan->update($id,$data);
-        return redirect()->to('pegawai/halaman_permintaan');
+        $jumlah_barang = $this->request->getPost('jumlah');
+        
+
+        // if($jumlah_barang <= $stok){
+            $data = [
+                'jumlah_permintaan' => $this->request->getVar('jumlah'),
+                'keterangan' => $this->request->getVar('keterangan'),
+                'tanggal_permintaan' => date('y-m-d'),
+                'status' => '1'
+            ];
+    
+            $permintaan->update($id_barang_permintaan,$data);
+            return redirect()->to('pegawai/halaman_permintaan');
+        // }
+        // else if($jumlah_barang > $stok){
+        //     session()->setFlashdata('stock','Stock Barang Tidak Mencukupi!!!');
+        //     return redirect()->to('/pegawai/halaman_permintaan/');
+        // }
+        
     } 
 
     
@@ -222,6 +233,7 @@ class PegawaiController extends BaseController
         $permintaanNew = new ModelBarangPermintaan();
         $permintaan= $permintaanNew->select('*')
                     ->join('permintaan_barang','barang_permintaan.id_permintaan=permintaan_barang.id')
+                    ->join('data_barang','barang_permintaan.id_barang=data_barang.id')
                     ->where('id_permintaan',$id)
                     ->get();
         $data = [

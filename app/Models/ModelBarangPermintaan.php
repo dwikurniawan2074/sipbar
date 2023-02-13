@@ -9,6 +9,6 @@ class ModelBarangPermintaan extends Model
     protected $table            = 'barang_permintaan';
     protected $primaryKey       = 'id_barang_permintaan';
     protected $allowedFields    = [
-        'nama_barang', 'jumlah_permintaan', 'satuan', 'keterangan','jumlah_disetujui','tanggal_disetujui','status','id_permintaan','nip',
+         'id_barang','jumlah_permintaan', 'keterangan','jumlah_disetujui','tanggal_disetujui','status','id_permintaan','nip',
     ];
 }
