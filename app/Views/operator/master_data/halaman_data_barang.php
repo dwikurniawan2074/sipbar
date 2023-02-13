@@ -96,15 +96,6 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            <?= form_open('/operator/delete_data_barang/'.$br['id']) ?>
-                                                            <?= csrf_field(); ?>
-                                                            <form action="/operator/delete_data_barang/<?= $br['id'] ?>" method="post">
-                                                                <input type="hidden" name="_method" value="DELETE">
-                                                                <button type="submit" class="btn btn-danger" style="height: 30px"><i class="ti-trash"></i></button>
-                                                            </form> 
-                                                            <?= form_close(); ?> 
-                                                        
-                        
                                                             </div>
                                                         </td>
 
