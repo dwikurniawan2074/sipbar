@@ -11,8 +11,8 @@
 
 <body>
   <div align="center">
-    <div style="width: 900px">
-      <table style="width: 800px">
+    <div style="width: 1200px">
+      <table style="width: 1100px">
         <tbody>
           <tr>
             <td style="width: 15%; " align="center">
@@ -37,8 +37,9 @@
       <meta http-equiv="content-type" content="text/html;charset=iso-8859-1" />
       <link rel="icon" type="img/png" href="https://siakadu.unila.ac.id/assets/v1/img/logo_unila.png" sizes="16x16" />
 
+
       <div align="center">
-        <table width="900px">
+        <table width="1200px">
           <tbody>
             <tr>
               <td align="center">
@@ -54,20 +55,29 @@
             </tr>
           </tbody>
         </table>
-        <table class="tb_data" width="900px" border="1" bordercolor="black" cellspacing="0" cellpadding="3">
+        <table class="tb_data" width="1200px" border="1" bordercolor="black" cellspacing="0" cellpadding="3">
           <tbody>
             <tr align="center" height="10" style="">
               <td class="HeaderBG">
                 <font size="-1">No</font>
               </td>
               <td class="HeaderBG">
+                <font size="-1">NIP<br /></font>
+              </td>
+              <td class="HeaderBG">
                 <font size="-1">Nama Pegawai<br /></font>
               </td>
+              <!-- <td class="HeaderBG">
+                <font size="-1">Nama Barang</font>
+              </td> -->
               <td class="HeaderBG">
-                <font size="-1">Permintaan</font>
+                <font size="-1">Jumlah Permintaan</font>
               </td>
               <td class="HeaderBG">
-                <font size="-1">Tanggal</font>
+                <font size="-1">Satuan</font>
+              </td>
+              <td class="HeaderBG">
+                <font size="-1">Tanggal Permintaan</font>
               </td>
               <td class="HeaderBG">
                 <font size="-1">Tanggal Disetujui</font>
@@ -76,13 +86,22 @@
                 <font size="-1">Status</font>
               </td>
             </tr>
-            <tr valign="top" class="AlternateBG" style="font-size: 10pt">
-              <td align="center">1.</td>
-              <td align="center"></td>
-              <td align="center"></td>
-              <td align="center"></td>
-              <td align="center"></td>
-              <td align="center"></td>
+            <?php
+            $no = 1;
+            foreach ($permintaan as $per) :
+            ?>
+              <tr valign="top" class="AlternateBG" style="font-size: 10pt">
+                <td align="center"><?= $no; ?></td>
+                <td align="center"><?= $per['nip']; ?></td>
+                <td align="center"><?= $per['nama_pegawai']; ?></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+              <?php $no++;
+            endforeach;
+              ?>
           </tbody>
         </table>
         <br />

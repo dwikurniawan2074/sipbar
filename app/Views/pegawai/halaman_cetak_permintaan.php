@@ -5,11 +5,11 @@
     <div class="row">
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
-                <?= form_open('pegawai/cetak_permintaan'); ?>
+                <?= form_open('pegawai/cetak_permintaan', ['target' => '_blank']); ?>
                 <div class="card-body">
                     <h4 class="card-title">Laporan Permintaan Barang</h4>
                     <p class="card-description">
-                        Silahkan masukkan rentang waktu dari laporan yang akan di generate
+                        Silahkan masukkan rentang tanggal permintaan dari laporan yang akan di generate
                     </p>
                     <form class="form-inline">
                         <div class="col-3">
