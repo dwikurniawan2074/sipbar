@@ -81,14 +81,20 @@ $routes->get('/subkor/halaman_stok_barang', 'SubkorController::halaman_stok_bara
 // Routes Operator Persediaan
 $routes->get('operator/', 'OperatorController::halaman_operator');
 $routes->get('/operator/halaman_operator', 'OperatorController::halaman_operator');
+$routes->get('/operator/halaman_laporan_stok', 'OperatorController::halaman_laporan_stok');
+$routes->post('/operator/cetak_laporan', 'OperatorController::cetak_laporan');
+// Routes Master Data
 $routes->get('/operator/halaman_data_barang', 'OperatorController::halaman_data_barang');
 $routes->get('/operator/halaman_input_barang', 'OperatorController::halaman_input_barang');
 $routes->post('/operator/simpan_data_barang', 'OperatorController::save_dataBarang');
-$routes->get('/operator/halaman_input_barang_masuk', 'OperatorController::halaman_input_barangMasuk');
 $routes->post('/operator/update_data_barang/(:num)', 'OperatorController::Update_dataBarang/$1');
 $routes->delete('/operator/delete_data_barang/(:num)', 'OperatorController::delete_dataBarang/$1');
-$routes->get('/operator/halaman_laporan_stok', 'OperatorController::halaman_laporan_stok');
-$routes->post('/operator/cetak_laporan', 'OperatorController::cetak_laporan');
+// Routes Barang Masuk
+$routes->get('/operator/halaman_data_barang_masuk', 'OperatorController::halaman_data_barang_masuk');
+$routes->get('/operator/halaman_input_barang_masuk', 'OperatorController::halaman_input_barang_masuk');
+$routes->post('/operator/simpan_data_barang_masuk', 'OperatorController::save_dataBarang_masuk');
+$routes->post('/operator/update_data_barang_masuk/(:num)', 'OperatorController::Update_dataBarang_masuk/$1');
+$routes->delete('/operator/delete_data_barang_masuk/(:num)', 'OperatorController::delete_dataBarang_masuk/$1');
 
 
 // Routes Kabag
