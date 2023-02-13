@@ -19,6 +19,7 @@ class KabagController extends BaseController
         $permintaanNew = new ModelBarangPermintaan();
         $permintaan= $permintaanNew->select('*')
                     ->join('permintaan_barang','barang_permintaan.id_permintaan=permintaan_barang.id')
+                    ->join('data_barang','barang_permintaan.id_barang=data_barang.id')
                     ->join('pegawai','permintaan_barang.nip=pegawai.nip')
                     ->join('bidang','pegawai.id_bidang=bidang.id')
                     ->get();
