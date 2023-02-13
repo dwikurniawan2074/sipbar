@@ -231,36 +231,50 @@ class PegawaiController extends BaseController
             'title' => 'Permintaan',
             'permintaan' => $permintaan,
         ];
+
         return view('pegawai/halaman_barang_permintaan',$data);
     }
 
-    public function halaman_cetak_permintaan()
+    public function cetak_data_permintaan()
     {
+        $permintaanNew = new Permintaan();
+        $permintaan= $permintaanNew->findAll();
+
+        
+        dd($permintaanNew);
+
 
         return view('pegawai/halaman_cetak_permintaan');
     }
 
-    public function cetak_permintaan()
+    public function cetak_permintaan($id)
     {
-        $tglawal = $this->request->getPost('tglawal');
-        $tglakhir = $this->request->getPost('tglakhir');
-        $modelPermintaan = new Permintaan();
+
+        $permintaanNew = new ModelBarangPermintaan();
+        $permintaan= $permintaanNew->select('*')
+                    ->join('permintaan_barang','barang_permintaan.id_permintaan=permintaan_barang.id')
+                    ->join('data_barang','barang_permintaan.id_barang=data_barang.id')
+                    ->where('id_permintaan',$id)
+                    ->get();
+        // $data = [
+        //     'title' => 'Permintaan',
+        //     'permintaan' => $permintaan,
+        // ];
+        // $data = [
+        //     'title' => 'Permintaan',
+        //     'permintaan' => $permintaan,
+        // ];
+        // $permintaan = $modelPermintaan
+
+        // ->join('pegawai', 'pegawai.nip=permintaan_barang.nip', 'left')
         
-        $permintaan = $modelPermintaan
-        
-        ->join('pegawai', 'pegawai.nip=permintaan_barang.nip', 'left')
-        
-        ->findAll();
-        $dataLaporan = $modelPermintaan->laporanPerPeriode($tglawal, $tglakhir);
+        // ->findAll();
+        // $dataLaporan = $modelPermintaan->laporanPerPeriode($tglawal, $tglakhir);
 
         $data = [
-            'datalaporan' => $dataLaporan,
+            'title' => 'Permintaan',
             'permintaan' => $permintaan,
-            'tglawal' => $tglawal,
-            'tglakhir' => $tglakhir
         ];
-
-        // dd($data);
 
         return view('pegawai/cetak_permintaan', $data);
     }

@@ -84,7 +84,7 @@
               foreach ($barang as $br) :
               ?>
             <tr valign="top" class="AlternateBG" style="font-size: 10pt">
-              <td align="center">1.</td>
+              <td align="center"><?= $no; ?></td>
               <td align="center"><?= $br['kode_barang']; ?></td>
               <td align="center"><?= $br['nama_barang']; ?></td>
               <td align="center"><?= $br['satuan']; ?></td>
