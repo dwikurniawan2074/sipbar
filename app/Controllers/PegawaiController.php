@@ -188,10 +188,14 @@ class PegawaiController extends BaseController
         $permintaan = new Permintaan();
         $barangPermintaan = new ModelBarangPermintaan();
         
+
         $barangP = $barangPermintaan->select('*')
                 -> where('id_permintaan',$id)
                 -> first();
-        $barangPermintaan->delete($barangP);
+        if($barangP != null){
+            $barangPermintaan->delete($barangP);
+        }
+        
         $permintaan->delete($id);
 
         return redirect()->to('/pegawai/halaman_permintaan');
