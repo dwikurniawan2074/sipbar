@@ -1,14 +1,13 @@
-
 <?= $this->extend('template/dashboard_user') ?>
 
 <?= $this->section('content') ?>
 <div class="content-wrapper">
-    <?php if (session()->getFlashdata('stock')){
-            echo '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
-            echo session()->getFlashdata('stock');
-            echo '</div>';
-        }
-        ?>
+    <?php if (session()->getFlashdata('stock')) {
+        echo '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+        echo session()->getFlashdata('stock');
+        echo '</div>';
+    }
+    ?>
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Data Pengajuan Permintaan Barang Pegawai</h4>
@@ -41,7 +40,7 @@
                                             foreach ($permintaan as $pr) : ?>
                                                 <?php
                                                 if ($pr['nip'] == session()->get('nip')) {  ?>
-                                                
+
                                                     <tr>
                                                         <td><?= $no ?></td>
                                                         <td><?= session()->get('nama_pegawai'); ?></td>
@@ -49,7 +48,7 @@
                                                         <td><?= $pr['tanggal_permintaan'] ?></td>
                                                         <td class="sorting_1">
                                                             <div class="container-fluid" style="display: flex;">
-                                                            <a class="btn btn-info mr-2" href="/pegawai/halaman_cetak_permintaan/" style="height:30x"><i class="ti-printer"></i></a>
+                                                                <a class="btn btn-info mr-2" href="/pegawai/halaman_cetak_permintaan/" style="height:30x"><i class="ti-printer" ></i></a>
 
                                                                 <?php if ($pr['status'] == "0") { ?>
                                                                     <form action="/pegawai/delete_permintaan/<?= $pr['id'] ?>" method="post">
@@ -74,16 +73,16 @@
                                                             </div>
                                                         </td>
                                                     </tr>
-                                                <?php $no++;
+                                            <?php $no++;
                                                 }
-                                            
+
                                             endforeach;
                                             ?>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>

@@ -11,4 +11,9 @@ class Permintaan extends Model
     protected $allowedFields    = [
         'nip','nama_barang', 'jumlah', 'satuan', 'keterangan','tanggal_permintaan','tanggal_disetujui','status'
     ];
+
+    public function laporanPerPeriode($tglawal, $tglakhir)
+    {
+        return $this->table('permintaan')->where('tanggal_permintaan >=', $tglawal)->where('tanggal_permintaan <=', $tglakhir)->get();    
+    }
 }

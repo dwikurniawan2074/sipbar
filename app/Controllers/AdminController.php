@@ -46,8 +46,6 @@ class AdminController extends BaseController
             'role' => $role
         ];
 
-        // dd($data);
-
         return view('admin/data_akun', $data);
     }
 

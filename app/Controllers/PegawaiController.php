@@ -251,7 +251,26 @@ class PegawaiController extends BaseController
 
     public function cetak_permintaan()
     {
+        $tglawal = $this->request->getPost('tglawal');
+        $tglakhir = $this->request->getPost('tglakhir');
+        $modelPermintaan = new Permintaan();
+        
+        $permintaan = $modelPermintaan
+        
+        ->join('pegawai', 'pegawai.nip=permintaan_barang.nip', 'left')
+        
+        ->findAll();
+        $dataLaporan = $modelPermintaan->laporanPerPeriode($tglawal, $tglakhir);
 
-        return view('pegawai/cetak_permintaan');
+        $data = [
+            'datalaporan' => $dataLaporan,
+            'permintaan' => $permintaan,
+            'tglawal' => $tglawal,
+            'tglakhir' => $tglakhir
+        ];
+
+        // dd($data);
+
+        return view('pegawai/cetak_permintaan', $data);
     }
 }
