@@ -11,4 +11,6 @@ class ModelBarangPermintaan extends Model
     protected $allowedFields    = [
          'id_barang','jumlah_permintaan', 'keterangan','jumlah_disetujui','tanggal_disetujui','status','id_permintaan','nip',
     ];
+
+    
 }

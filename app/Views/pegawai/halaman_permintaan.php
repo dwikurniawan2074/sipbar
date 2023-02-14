@@ -12,6 +12,16 @@
         <div class="card-body">
             <h4 class="card-title">Data Pengajuan Permintaan Barang Pegawai</h4>
             <div class="row">
+                <div class="col-10"></div>
+                <div class="col-2">
+                    <?php $nip = session()->get('nip'); ?>
+                    <a class="btn btn-info mr-2" href="/pegawai/cetak_data_permintaan/<?= $nip; ?>" style="height:30x">
+                    <i class="ti-printer"></i>
+                    Cetak Data Permintaan
+                </a>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-12">
                     <div class="table-responsive pt-3">
                         <div id="order-listing_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
@@ -40,7 +50,7 @@
                                             foreach ($permintaan as $pr) : ?>
                                                 <?php
                                                 if ($pr['nip'] == session()->get('nip')) {  ?>
-
+        
                                                     <tr>
                                                         <td><?= $no ?></td>
                                                         <td><?= session()->get('nama_pegawai'); ?></td>
@@ -48,7 +58,7 @@
                                                         <td><?= $pr['tanggal_permintaan'] ?></td>
                                                         <td class="sorting_1">
                                                             <div class="container-fluid" style="display: flex;">
-                                                                <a class="btn btn-info mr-2" href="/pegawai/halaman_cetak_permintaan/" style="height:30x"><i class="ti-printer" ></i></a>
+                                                                <a class="btn btn-info mr-2" href="/pegawai/cetak_permintaan/<?= $pr['id'] ?>" style="height:30x"><i class="ti-printer"></i></a>
 
                                                                 <?php if ($pr['status_permintaan'] == "0") { ?>
                                                                     <form action="/pegawai/delete_permintaan/<?= $pr['id'] ?>" method="post">

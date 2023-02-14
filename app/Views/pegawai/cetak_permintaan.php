@@ -55,27 +55,30 @@
             </tr>
           </tbody>
         </table>
-        <table class="tb_data" width="1200px" border="1" bordercolor="black" cellspacing="0" cellpadding="3">
+        <table class="tb_data" width="1150px" border="1" bordercolor="black" cellspacing="0" cellpadding="3">
           <tbody>
             <tr align="center" height="10" style="">
               <td class="HeaderBG">
                 <font size="-1">No</font>
               </td>
               <td class="HeaderBG">
-                <font size="-1">NIP<br /></font>
-              </td>
-              <td class="HeaderBG">
                 <font size="-1">Nama Pegawai<br /></font>
               </td>
-              <!-- <td class="HeaderBG">
+              <td class="HeaderBG">
                 <font size="-1">Nama Barang</font>
-              </td> -->
+              </td>
               <td class="HeaderBG">
                 <font size="-1">Jumlah Permintaan</font>
               </td>
               <td class="HeaderBG">
-                <font size="-1">Satuan</font>
+                <font size="-1">Jumlah Disetujui</font>
               </td>
+              <!-- <td class="HeaderBG">
+                <font size="-1">NIP<br /></font>
+              </td> -->
+              <!-- <td class="HeaderBG">
+                <font size="-1">Satuan</font>
+              </td> -->
               <td class="HeaderBG">
                 <font size="-1">Tanggal Permintaan</font>
               </td>
@@ -88,17 +91,23 @@
             </tr>
             <?php
             $no = 1;
-            foreach ($permintaan as $per) :
+            foreach ($permintaan->getResult() as $key => $pr) :
             ?>
               <tr valign="top" class="AlternateBG" style="font-size: 10pt">
                 <td align="center"><?= $no; ?></td>
-                <td align="center"><?= $per['nip']; ?></td>
-                <td align="center"><?= $per['nama_pegawai']; ?></td>
-                <td align="center"></td>
-                <td align="center"></td>
-                <td align="center"></td>
-                <td align="center"></td>
-                <td align="center"></td>
+                <td align="center"><?= session()->get('nama_pegawai'); ?></td>
+                <td align="center"><?= $pr->nama_barang; ?></td>
+                <td align="center"><?= $pr->jumlah_permintaan; ?> <?= $pr->satuan?></td>
+                <td align="center"><?= $pr->jumlah_disetujui;?></td>
+                <td align="center"><?= $pr->tanggal_permintaan; ?></td>
+                <td align="center"><?= $pr->tanggal_disetujui ?></td>
+                <?php if ($pr->status == "0") {?>
+                <td align="center">Tidak Disetujui</td>
+                <?php } else if ($pr->status == "1") {?>
+                <td align="center">Disetujui</td>
+                <?php } if ($pr->status == "2") {?>
+                <td align="center">Tidak Disetujui</td>
+                <?php } ?>
               <?php $no++;
             endforeach;
               ?>
@@ -211,9 +220,9 @@
       </style>
     </div>
   </div>
-  <!-- <script>
+  <script>
     window.print()
-  </script> -->
+  </script>
 </body>
 
 </html>

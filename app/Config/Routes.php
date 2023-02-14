@@ -65,7 +65,8 @@ $routes->get('/pegawai/halaman_permintaan', 'PegawaiController::halaman_perminta
 $routes->get('/pegawai/barang_permintaan/(:num)', 'PegawaiController::halaman_Barangpermintaan/$1');
 $routes->get('/pegawai/halaman_stok_barang', 'PegawaiController::halaman_stok_barang');
 $routes->get('/pegawai/halaman_cetak_permintaan', 'PegawaiController::halaman_cetak_permintaan');
-$routes->post('/pegawai/cetak_permintaan', 'PegawaiController::cetak_permintaan');
+$routes->get('/pegawai/cetak_permintaan/(:num)', 'PegawaiController::cetak_permintaan/$1');
+$routes->get('/pegawai/cetak_data_permintaan/(:num)', 'PegawaiController::cetak_data_permintaan/$1');
 
 
 // Routes Subkor

@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
-                <?= form_open('operator/cetak_laporan'); ?>
+                <?= form_open('operator/cetak_laporan',  ['target' => '_blank']); ?>
                 <div class="card-body">
                     <h4 class="card-title">Laporan Stok Barang</h4>
                     <p class="card-description">
