@@ -123,7 +123,7 @@
             </li>
             
             <li class="nav-item">
-                <a class="nav-link" href="/operator/halaman_data_barang">
+                <a class="nav-link" href="/operator/halaman_data_barang/">
                     <i class="icon-grid-2 menu-icon"></i>
                     <span class="menu-title">Data Barang</span>
                 </a>
@@ -135,7 +135,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/operator/halaman_data_barang_masuk">
+                <a class="nav-link" href="/operator/halaman_data_barang_masuk/">
                     <i class="icon-paper menu-icon"></i>
                     <span class="menu-title">Data Barang Masuk</span>
                 </a>
