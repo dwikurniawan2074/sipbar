@@ -14,7 +14,8 @@
             <div class="row">
                 <div class="col-10"></div>
                 <div class="col-2">
-                    <a class="btn btn-info mr-2" href="/pegawai/cetak_data_permintaan/" style="height:30x">
+                    <?php $nip = session()->get('nip'); ?>
+                    <a class="btn btn-info mr-2" href="/pegawai/cetak_data_permintaan/<?= $nip; ?>" style="height:30x">
                     <i class="ti-printer"></i>
                     Cetak Data Permintaan
                 </a>
@@ -49,7 +50,7 @@
                                             foreach ($permintaan as $pr) : ?>
                                                 <?php
                                                 if ($pr['nip'] == session()->get('nip')) {  ?>
-
+        
                                                     <tr>
                                                         <td><?= $no ?></td>
                                                         <td><?= session()->get('nama_pegawai'); ?></td>
