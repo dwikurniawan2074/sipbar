@@ -19,10 +19,33 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-2" href="">
-                                    <a class="btn btn-danger btn-icon-text" href="/operator/reset_opname" onclick="checkReset()">
+                                    <button class="btn btn-danger btn-icon-text" data-toggle="modal" data-target="#Reset">
                                         <i class="ti-trash btn-icon"></i>
                                         Reset Opname
-                                    </a>
+                                    </button>
+                                    <div class="modal fade" id="Reset">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="DeleteLabel">HReset Opname Data Barang</h1>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span></button>
+                                                </div>
+                                                <?= form_open('/operator/reset_opname')?>
+                                                <?= csrf_field(); ?>
+                                                <form action="/operator/reset_opname" method="POST">
+                                                <div class="modal-body">
+                                                    <p>Apakah Anda Yakin Ingin Mereset Data ini?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-light" data-dismiss="modal" style="height: 50px">Kembali</button>
+                                                    <button type="submit" class="btn btn-danger" style="height: 50px">Reset <i class="ti-trash"></i></button>
+                                                </div>
+                                                </form> 
+                                                <?= form_close(); ?> 
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                                 <div class="row">
@@ -96,7 +119,7 @@
                                                                             <div class="form-group">
                                                                                 <label for="exampleInputName1">Stok Menjadi</label>
                                                                                 <input type="hidden" class="form-control" id="exampleInputName1" placeholder="Stok Awal" name="stok_awal" value="<?= $br['stok_menjadi'] ?>">
-                                                                                <input type="text" class="form-control" id="exampleInputName1" placeholder="Stok Menjadi" name="stok_menjadi" value="<?= $br['stok_menjadi'] ?>">
+                                                                                <input type="number" class="form-control" id="exampleInputName1" placeholder="Stok Menjadi" name="stok_menjadi" value="<?= $br['stok_menjadi'] ?>">
                                                                             </div>
                                                                             </div>
                                                                             <div class="modal-footer">

@@ -47,12 +47,13 @@ class SubkorController extends BaseController
     public function Setuju_permintaan($id_barang_permintaan){
         $permintaan = new ModelBarangPermintaan();
         $barang = new ModelBarang();
+        $permintaanN = new Permintaan();
         date_default_timezone_set('Asia/Jakarta');
         
         $jumlah_permintaan = $permintaan->select('jumlah_permintaan')->where('id_barang_permintaan',$id_barang_permintaan)->first();
         $id_barang = $permintaan->select('id_barang')->where('id_barang_permintaan',$id_barang_permintaan)->first();
         $stok = $barang->select('stok_menjadi')->where('id',$id_barang)->first();
-
+        
         $hasil = $stok['stok_menjadi'] - $jumlah_permintaan['jumlah_permintaan'];
 
         $jumlah=[
@@ -65,10 +66,18 @@ class SubkorController extends BaseController
             'status' => '2',
             'jumlah_disetujui' => $jumlah_permintaan,
             'tanggal_disetujui' => date('y-m-d'),
- 
         ];
 
         $permintaan->update($id_barang_permintaan,$data);
+
+        $idPermintaan = $permintaan->select('id_permintaan')->where('id_barang_permintaan',$id_barang_permintaan)->first();
+        
+        $statusNew = [
+            'status_permintaan' => '2'
+        ];
+        
+        $permintaanN->update($idPermintaan,$statusNew);
+        
         return redirect()->to('subkor/halaman_permintaan');
     }
     public function Tolak_permintaan($id_barang_permintaan){

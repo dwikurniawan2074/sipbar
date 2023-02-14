@@ -34,41 +34,6 @@ class PegawaiController extends BaseController
         return view('pegawai/halaman_input_permintaan', $data);
     }
 
-    // public function getUsers(){
-
-    //     $request = service('request');
-    //     $postData = $request->getPost();
-
-    //     $response = array();
-
-    //     // Read new token and assign in $response['token']
-    //     $response['token'] = csrf_hash();
-    //     $data = array();
-
-    //     if(isset($postData['search'])){
-
-    //           $search = $postData['search'];
-
-    //           // Fetch record
-    //           $barang = new ModelBarang();
-    //           $userlist = $barang->select('nama_barang,stok_menjadi')
-    //                       ->like('nama_barang',$search)
-    //                       ->orderBy('nama_barang')
-    //                       ->findAll();
-    //           foreach($userlist as $user){
-    //                 $data[] = array(
-    //                       "value" => $user['nama_barang'],
-    //                       "label" => $user['stok_menjadi'],
-    //                 );
-    //           }
-    //     }
-
-    //     $response['data'] = $data;
-
-    //     return $this->response->setJSON($response);
-
-    // }
-
     public function save_permintaan()
     {
         $permintaan = new Permintaan();
@@ -81,7 +46,7 @@ class PegawaiController extends BaseController
         $dataMaster = [
             'nip' => session()->get('nip'),
             'tanggal_permintaan' => date('y-m-d'),
-            'status' => '1'
+            'status_permintaan' => '1'
         ];
 
         $permintaan->insert($dataMaster);
@@ -189,6 +154,15 @@ class PegawaiController extends BaseController
         $permintaan->delete($id);
 
         return redirect()->to('/pegawai/halaman_permintaan');
+    }
+
+    public function delete_permintaan_sementara($id)
+    {
+        $permintaan = new PermintaanSementara();
+    
+        $permintaan->delete($id);
+
+        return redirect()->to('/pegawai/halaman_input_permintaan');
     }
 
     public function delete_permintaan_barang($id)

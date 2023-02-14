@@ -126,19 +126,59 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                <?= form_open('/subkor/setuju_permintaan/'.$pr->id_barang_permintaan) ?>
-                                                                <?= csrf_field(); ?>
-                                                                <form action="/subkor/setuju_permintaan/<?= $pr->id_barang_permintaan ?>" method="post">
-                                                                    
-                                                                    <button type="submit" class="btn btn-success mr-2" style="height: 30px" onclick="checkSetuju()"><i class="ti-check"></i></button>
+                                                                
+                                                                 
+                                                                    <button type="button" class="btn btn-success mr-2" style="height: 30px" data-toggle="modal" data-target="#Setuju"><i class="ti-check"></i></button>
+                                                                    <div class="modal fade" id="Setuju">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title" id="SetujuLabel">Setuju Permintaan Barang Pegawai</h1>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">&times;</span></button>
+                                                                                </div>
+                                                                                <?= form_open('/subkor/setuju_permintaan/'.$pr->id_barang_permintaan) ?>
+                                                                                <?= csrf_field(); ?>
+                                                                                <form action="/subkor/setuju_permintaan/<?= $pr->id_barang_permintaan ?>" method="post">
+                                                                                <div class="modal-body">
+                                                                                    <p>Apakah Anda Yakin Ingin Menyetujui Permintaan ini?</p>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-light" data-dismiss="modal" style="height: 50px">Kembali</button>
+                                                                                    <button type="submit" class="btn btn-success" style="height: 50px">Setuju <i class="ti-check"></i></button>
+                                                                                </div>
+                                                                                </form> 
+                                                                                <?= form_close(); ?> 
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </form> 
                                                                 <?= form_close(); ?> 
 
-                                                                <?= form_open('/subkor/tolak_permintaan/'.$pr->id_barang_permintaan) ?>
-                                                                <?= csrf_field(); ?>
-                                                                <form action="/subkor/tolak_permintaan/<?= $pr->id_barang_permintaan?>" method="post">
-                                                                    
-                                                                    <button type="submit" class="btn btn-danger" style="height: 30px" onclick="checkTolak()"><i class="ti-close"></i></button>
+                                                                    <button type="button" class="btn btn-danger" style="height: 30px" data-toggle="modal" data-target="#Tolak"><i class="ti-close"></i></button>
+                                                                    <div class="modal fade" id="Tolak">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title" id="TolakLabel">Tolak Permintaan Barang Pegawai</h1>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">&times;</span></button>
+                                                                                </div>
+                                                                                <?= form_open('/subkor/tolak_permintaan/'.$pr->id_barang_permintaan) ?>
+                                                                                <?= csrf_field(); ?>
+                                                                                <form action="/subkor/tolak_permintaan/<?= $pr->id_barang_permintaan?>" method="post">
+                                                                                <div class="modal-body">
+                                                                                    <p>Apakah Anda Yakin Ingin Menolak Permintaan ini?</p>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-light" data-dismiss="modal" style="height: 50px">Kembali</button>
+                                                                                    <button type="submit" class="btn btn-danger" style="height: 50px">Tolak <i class="ti-close"></i></button>
+                                                                                </div>
+                                                                                </form> 
+                                                                                <?= form_close(); ?> 
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </form> 
                                                                 <?= form_close(); ?> 
                                                             <?php } else if ($pr->status == "2"){?> 
