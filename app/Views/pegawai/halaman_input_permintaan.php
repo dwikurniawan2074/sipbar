@@ -69,8 +69,8 @@
             <div class="card">
                 <div class="card-body">
                 <?= form_open('/pegawai/simpan_permintaan') ?>
-                    <?= csrf_field(); ?>
-            <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
+                <?= csrf_field(); ?>
+                <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
                 <thead>
                     <tr role="row">
                         <th>No.</th>
