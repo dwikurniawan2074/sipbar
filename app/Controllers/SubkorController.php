@@ -69,6 +69,8 @@ class SubkorController extends BaseController
         ];
 
         $permintaan->update($id_barang_permintaan,$data);
+
+        
         return redirect()->to('subkor/halaman_permintaan');
     }
     public function Tolak_permintaan($id_barang_permintaan){
