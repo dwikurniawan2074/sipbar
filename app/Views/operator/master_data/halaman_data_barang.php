@@ -12,7 +12,19 @@
                     <div class="col-12">
                         <div class="table-responsive">
                             <div id="order-listing_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                                
+                            <div class="row">
+                                <div class="col-sm-12 col-md-10">
+                                    <div class="dataTables_length" id="order-listing_length">
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-2" href="">
+                                    <a class="btn btn-danger btn-icon-text" href="/operator/reset_opname" onclick="checkReset()">
+                                        <i class="ti-trash btn-icon"></i>
+                                        Reset Opname
+                                    </a>
+                                </div>
+                            </div>
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
@@ -130,4 +142,9 @@
         </div>
     </div>
 </div>
+<script language="JavaScript" type="text/javascript">
+function checkReset(){
+    return confirm('Anda ingin Meresetnya?');
+}
+</script>
 <?= $this->endSection(); ?>

@@ -130,14 +130,15 @@
                                                                 <?= csrf_field(); ?>
                                                                 <form action="/subkor/setuju_permintaan/<?= $pr->id_barang_permintaan ?>" method="post">
                                                                     
-                                                                    <button type="submit" class="btn btn-success mr-2" style="height: 30px"><i class="ti-check"></i></button>
+                                                                    <button type="submit" class="btn btn-success mr-2" style="height: 30px" onclick="checkSetuju()"><i class="ti-check"></i></button>
                                                                 </form> 
                                                                 <?= form_close(); ?> 
+
                                                                 <?= form_open('/subkor/tolak_permintaan/'.$pr->id_barang_permintaan) ?>
                                                                 <?= csrf_field(); ?>
                                                                 <form action="/subkor/tolak_permintaan/<?= $pr->id_barang_permintaan?>" method="post">
                                                                     
-                                                                    <button type="submit" class="btn btn-danger" style="height: 30px"><i class="ti-close"></i></button>
+                                                                    <button type="submit" class="btn btn-danger" style="height: 30px" onclick="checkTolak()"><i class="ti-close"></i></button>
                                                                 </form> 
                                                                 <?= form_close(); ?> 
                                                             <?php } else if ($pr->status == "2"){?> 
@@ -171,4 +172,12 @@
             </div>
         </div>
     </div>
+<script language="JavaScript" type="text/javascript">
+function checkSetuju(){
+    return confirm('Anda ingin Menyetujuinya?');
+}
+function checkTolak(){
+    return confirm('Anda ingin Menolaknya?');
+}
+</script>
 <?= $this->endSection(); ?>
