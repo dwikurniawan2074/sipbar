@@ -5,14 +5,14 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cetak Laporan Barang</title>
+  <title>Cetak Permintaan Barang</title>
   <link rel="shortcut icon" href="/Images/bpkp_logo.png" />
 </head>
 
 <body>
   <div align="center">
-    <div style="width: 900px">
-      <table style="width: 800px">
+    <div style="width: 1200px">
+      <table style="width: 1100px">
         <tbody>
           <tr>
             <td style="width: 15%; " align="center">
@@ -37,12 +37,13 @@
       <meta http-equiv="content-type" content="text/html;charset=iso-8859-1" />
       <link rel="icon" type="img/png" href="https://siakadu.unila.ac.id/assets/v1/img/logo_unila.png" sizes="16x16" />
 
+
       <div align="center">
-        <table width="900px">
+        <table width="1200px">
           <tbody>
             <tr>
               <td align="center">
-                <font size="4"><strong>Laporan Stok Barang</strong></font>
+                <font size="4"><strong>Laporan Permintaan Barang</strong></font>
               </td>
             </tr>
           </tbody>
@@ -54,56 +55,65 @@
             </tr>
           </tbody>
         </table>
-        <table class="tb_data" width="900px" border="1" bordercolor="black" cellspacing="0" cellpadding="3">
+        <table class="tb_data" width="1150px" border="1" bordercolor="black" cellspacing="0" cellpadding="3">
           <tbody>
             <tr align="center" height="10" style="">
               <td class="HeaderBG">
                 <font size="-1">No</font>
               </td>
               <td class="HeaderBG">
-                <font size="-1">Kode Barang<br /></font>
+                <font size="-1">Nama Pegawai<br /></font>
               </td>
               <td class="HeaderBG">
                 <font size="-1">Nama Barang</font>
               </td>
               <td class="HeaderBG">
+                <font size="-1">Jumlah Permintaan</font>
+              </td>
+              <td class="HeaderBG">
+                <font size="-1">Jumlah Disetujui</font>
+              </td>
+              <!-- <td class="HeaderBG">
+                <font size="-1">NIP<br /></font>
+              </td> -->
+              <!-- <td class="HeaderBG">
                 <font size="-1">Satuan</font>
+              </td> -->
+              <td class="HeaderBG">
+                <font size="-1">Tanggal Permintaan</font>
               </td>
               <td class="HeaderBG">
-                <font size="-1">Stok Awal</font>
-              </td>
-              <td class="HeaderBG">
-                <font size="-1">Stok Menjadi</font>
+                <font size="-1">Tanggal Disetujui</font>
               </td>
               <td class="HeaderBG">
                 <font size="-1">Status</font>
               </td>
             </tr>
-              <?php
-              $no = 1;
-              foreach ($barang as $br) :
+            <?php
+            $no = 1;
+            foreach ($permintaan as $pr) :
+            ?>
+            <?php
+            if ($pr['nip'] == session()->get('nip')) {  ?>
+              <tr valign="top" class="AlternateBG" style="font-size: 10pt">
+                <td align="center"><?= $no; ?></td>
+                <td align="center"><?= session()->get('nama_pegawai'); ?></td>
+                <td align="center"><?= $pr['nama_barang']; ?></td>
+                <td align="center"><?= $pr['jumlah_permintaan']; ?> <?= $pr['satuan']?></td>
+                <td align="center"><?= $pr['jumlah_disetujui'];?></td>
+                <td align="center"><?= $pr['tanggal_permintaan']; ?></td>
+                <td align="center"><?= $pr['tanggal_disetujui'] ?></td>
+                <?php if ($pr['status'] == "0") {?>
+                <td align="center">Tidak Disetujui</td>
+                <?php } else if ($pr['status'] == "1") {?>
+                <td align="center">Disetujui</td>
+                <?php } if ($pr['status'] == "2") {?>
+                <td align="center">Tidak Disetujui</td>
+                <?php } ?>
+              <?php $no++;
+            }
+            endforeach;
               ?>
-            <tr valign="top" class="AlternateBG" style="font-size: 10pt">
-              <td align="center"><?= $no; ?></td>
-              <td align="center"><?= $br['kode_barang']; ?></td>
-              <td align="center"><?= $br['nama_barang']; ?></td>
-              <td align="center"><?= $br['satuan']; ?></td>
-              <td align="center"><?= $br['stok_awal']; ?></td>
-              <td align="center"><?= $br['stok_menjadi']; ?></td>
-              <?php if (
-                  $br['status'] == '0'
-                ) { ?>
-                <td align="center">Belum di Opname</td>
-              <?php } else if (
-                  $br['status'] == '1'
-                ) { ?>
-                <td align="center">Sudah di Opname</td>
-              <?php } ?>
-            </tr>
-          <?php $no++;
-              endforeach;
-          ?>
-
           </tbody>
         </table>
         <br />
