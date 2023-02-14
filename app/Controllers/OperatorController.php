@@ -33,6 +33,24 @@ class OperatorController extends BaseController
         return view('operator/cetak_laporan', $data);
     }
 
+    public function reset_opname(){
+        $data_barang = new ModelBarang();
+        $barang = $data_barang->findAll();
+        // $barang = $data_barang->select('status_barang')->first();
+
+        for ($i=0; $i < count($barang); $i++) { 
+            $id = $barang[$i]['id'];
+            
+            $data = [
+                'status_barang' => '0'
+            ];
+
+        $data_barang->update($id,$data);
+        }
+
+        return redirect()->to('/operator/halaman_data_barang');
+    }
+
     public function halaman_data_barang()
     {
         $data_barang = new ModelBarang();
@@ -76,7 +94,7 @@ class OperatorController extends BaseController
             'satuan' => $this->request->getVar('satuan'),
             'stok_awal' => $this->request->getVar('stok_awal'),
             'stok_menjadi' => $this->request->getVar('stok_menjadi'),
-            'status' => '1',
+            'status_barang' => '1',
             'tanggal' => date('y-m-d'),
         ];
 
@@ -194,7 +212,7 @@ class OperatorController extends BaseController
 
         $data_barang->update($id_barang,$dataMasuk);
 
-        $data_barang->delete($id_barang_masuk);
+        $data_barangMasuk->delete($id_barang_masuk);
 
         return redirect()->to('/operator/halaman_data_barang_masuk');
     }

@@ -15,13 +15,12 @@
                                             <thead>
                                                 <tr role="row">
                                                     <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >No.</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >NIP</th>
                                                     <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Nama Pegawai</th>
                                                     <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Bidang</th>
                                                     <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Nama Barang</th>
                                                     <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Jumlah Permintaan</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Satuan</th>
                                                     <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Keterangan</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Tanggal Permintaan</th>
                                                     <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Jumlah di Setujui</th>
                                                     <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" >Tanggal di Setujui</th>
                                                     <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-sort="descending">Status</th>
@@ -33,13 +32,12 @@
                                                 foreach ($permintaan->getResult() as $key =>$pr) : ?>
                                                     <tr>
                                                         <td><?= $no?></td>
-                                                        <td><?= $pr->nip?></td>
                                                         <td><?= $pr->nama_pegawai?></td>
                                                         <td><?= $pr->nama_bidang?></td>
                                                         <td><?= $pr->nama_barang ?></td>
-                                                        <td><?= $pr->jumlah_permintaan  ?></td>
-                                                        <td><?= $pr->satuan  ?></td>
+                                                        <td><?= $pr->jumlah_permintaan?> <?= $pr->satuan  ?></td>
                                                         <td><?= $pr->keterangan  ?></td>
+                                                        <td><?= $pr->tanggal_permintaan  ?></td>
                                                         <td>
                                                             <?php if (
                                                                 $pr->jumlah_disetujui  == null

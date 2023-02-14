@@ -83,6 +83,7 @@ $routes->get('operator/', 'OperatorController::halaman_operator');
 $routes->get('/operator/halaman_operator', 'OperatorController::halaman_operator');
 $routes->get('/operator/halaman_laporan_stok', 'OperatorController::halaman_laporan_stok');
 $routes->post('/operator/cetak_laporan', 'OperatorController::cetak_laporan');
+$routes->get('/operator/reset_opname', 'OperatorController::reset_opname');
 // Routes Master Data
 $routes->get('/operator/halaman_data_barang', 'OperatorController::halaman_data_barang');
 $routes->get('/operator/halaman_input_barang', 'OperatorController::halaman_input_barang');
