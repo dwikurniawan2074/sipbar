@@ -100,7 +100,7 @@ class SubkorController extends BaseController
             'title' => 'Data Barang',
             'barang'=> $barang
         ];
-        return view('subkor/halaman_stok_barang',$data);
+        return view('subkor/halaman_stok_barang', $data);
 
     }
 
@@ -115,7 +115,7 @@ class SubkorController extends BaseController
             'title' => 'Data Barang',
             'barang' => $barang
         ];
-        return view('subkor/halaman_data_barang_masuk',$data);
+        return view('subkor/halaman_data_barang_masuk', $data);
 
     }
 }

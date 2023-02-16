@@ -57,16 +57,17 @@
                     <span class="menu-title">Data Permintaan</span>
                 </a>
             </li>
+            
             <li class="nav-item">
                 <a class="nav-link" href="/subkor/halaman_stok_barang">
-                    <i class="icon-bar-graph menu-icon"></i>
-                    <span class="menu-title"> Data  Stok Barang</span>
+                    <i class="icon-paper menu-icon"></i>
+                    <span class="menu-title">Data Stok Barang</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/subkor/halaman_stok_barang_masuk">
-                    <i class="icon-bar-graph menu-icon"></i>
-                    <span class="menu-title"> Data  Stok Barang Masuk</span>
+                    <i class="icon-paper menu-icon"></i>
+                    <span class="menu-title">Data Stok Barang Masuk</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -93,12 +94,6 @@
                 <a class="nav-link" href="/kabag/halaman_permintaan">
                     <i class="icon-bar-graph menu-icon"></i>
                     <span class="menu-title">Data Permintaan</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/kabag/halaman_stok_barang">
-                    <i class="icon-grid-2 menu-icon"></i>
-                    <span class="menu-title">Data Stok Barang</span>
                 </a>
             </li>
             <li class="nav-item">
