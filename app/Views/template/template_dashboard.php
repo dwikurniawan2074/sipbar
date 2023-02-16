@@ -5,13 +5,13 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Script -->
+    <!-- Script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
     <!-- jQuery UI -->
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-    
+
     <title>SIPBAR</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="/skydash/vendors/feather/feather.css">
@@ -56,7 +56,7 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav navbar-nav-right">
-                    
+
                 </ul>
                 <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
                     <span class="icon-menu"></span>
@@ -66,7 +66,9 @@
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <!-- partial:partials/_settings-panel.html -->
-            <div class="theme-setting-wrapper">
+
+            <!-- tempat setting tema -->
+            <!-- <div class="theme-setting-wrapper">
                 <div id="settings-trigger"><i class="ti-settings"></i></div>
                 <div id="theme-settings" class="settings-panel">
                     <i class="settings-close ti-close"></i>
@@ -87,7 +89,7 @@
                         <div class="tiles default"></div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div id="right-sidebar" class="settings-panel">
                 <i class="settings-close ti-close"></i>
                 <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
@@ -351,7 +353,17 @@
             <div class="main-panel">
                 <?= $this->renderSection('parentContent'); ?>
                 <!-- partial -->
+                <footer class="footer">
+                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023. </span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Universitas Lampung Intern Project</span>
+                    </div>
+                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="https://www.bpkp.go.id/lampung/konten/102/Struktur-Organisasi.bpkp" target="_blank">Badan Pengawasan Keuangan dan Pembangunan Perwakilan Lampung</a></span>
+                    </div>
+                </footer>
             </div>
+
             <!-- main-panel ends -->
         </div>
         <!-- page-body-wrapper ends -->
