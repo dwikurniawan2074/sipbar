@@ -78,6 +78,7 @@ $routes->post('/subkor/update_permintaan_persetujuan/(:num)', 'SubkorController:
 $routes->post('/subkor/setuju_permintaan/(:num)', 'SubkorController::Setuju_permintaan/$1');
 $routes->post('/subkor/tolak_permintaan/(:num)', 'SubkorController::Tolak_permintaan/$1');
 $routes->get('/subkor/halaman_stok_barang', 'SubkorController::halaman_stok_barang');
+$routes->get('/subkor/halaman_stok_barang_masuk', 'SubkorController::halaman_stok_barangMasuk');
 
 
 // Routes Operator Persediaan

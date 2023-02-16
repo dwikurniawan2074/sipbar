@@ -76,7 +76,7 @@ class OperatorController extends BaseController
             'satuan' => $this->request->getPost('satuan'),
             'stok_awal' => $this->request->getPost('stok_awal'),
             'stok_menjadi' => $this->request->getPost('stok_awal'),
-            'status' => '0',
+            'status_barang' => '0',
             'tanggal' => date('y-m-d'),
         ];
 
