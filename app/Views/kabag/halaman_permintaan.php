@@ -1,6 +1,33 @@
 <?= $this->extend('template/dashboard_user'); ?>
 
 <?= $this->section('content'); ?>
+<!-- fungsi konversi tanggal indonesia -->
+<?php
+function tanggal_indonesia($tanggal)
+{
+
+    $bulan = array(
+        1 =>     'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
+    );
+
+    $var = explode('-', $tanggal);
+
+    return $var[2] . ' ' . $bulan[(int)$var[1]] . ' ' . $var[0];
+    // var 0 = tanggal
+    // var 1 = bulan
+    // var 2 = tahun
+} ?>
 <div class="content-wrapper">
     <div class="card">
         <div class="card-body">
@@ -37,7 +64,7 @@
                                                     <td><?= $pr->nama_barang ?></td>
                                                     <td><?= $pr->jumlah_permintaan ?> <?= $pr->satuan  ?></td>
                                                     <td><?= $pr->keterangan  ?></td>
-                                                    <td><?= $pr->tanggal_permintaan  ?></td>
+                                                    <td><?php echo tanggal_indonesia($pr->tanggal_permintaan) ?></td>
                                                     <td>
                                                         <?php if (
                                                             $pr->jumlah_disetujui  == null
@@ -53,7 +80,7 @@
                                                         ) { ?>
                                                             -
                                                         <?php } else { ?>
-                                                            <?= $pr->tanggal_disetujui ?>
+                                                            <?php echo tanggal_indonesia($pr->tanggal_disetujui) ?>
                                                         <?php } ?>
                                                     </td>
                                                     <td>

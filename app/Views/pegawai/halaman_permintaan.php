@@ -8,6 +8,35 @@
         echo '</div>';
     }
     ?>
+
+    <?php
+
+    function tanggal_indonesia($tanggal)
+    {
+
+        $bulan = array(
+            1 =>     'Januari',
+            'Februari',
+            'Maret',
+            'April',
+            'Mei',
+            'Juni',
+            'Juli',
+            'Agustus',
+            'September',
+            'Oktober',
+            'November',
+            'Desember'
+        );
+
+        $var = explode('-', $tanggal);
+
+        return $var[2] . ' ' . $bulan[(int)$var[1]] . ' ' . $var[0];
+        // var 0 = tanggal
+        // var 1 = bulan
+        // var 2 = tahun
+    } ?>
+
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Data Pengajuan Permintaan Barang Pegawai</h4>
@@ -15,9 +44,9 @@
                 <div class="col-10"></div>
                 <div class="col-2">
                     <a class="btn btn-info mr-2" href="/pegawai/halaman_cetak_permintaan" style="height:30x">
-                    <i class="ti-printer"></i>
-                    Cetak Data Permintaan
-                </a>
+                        <i class="ti-printer"></i>
+                        Cetak Data Permintaan
+                    </a>
                 </div>
             </div>
             <div class="row">
@@ -49,12 +78,12 @@
                                             foreach ($permintaan as $pr) : ?>
                                                 <?php
                                                 if ($pr['nip'] == session()->get('nip')) {  ?>
-        
+
                                                     <tr>
                                                         <td><?= $no ?></td>
                                                         <td><?= session()->get('nama_pegawai'); ?></td>
                                                         <td><a class="btn btn-success" href="/pegawai/barang_permintaan/<?= $pr['id'] ?>" style="height: 30px"><label class="badge badge-success" style="color:white;">Detail Permintaan</label></a></td>
-                                                        <td><?= $pr['tanggal_permintaan'] ?></td>
+                                                        <td><?php echo tanggal_indonesia($pr['tanggal_permintaan']) ?></td>
                                                         <td class="sorting_1">
                                                             <div class="container-fluid" style="display: flex;">
                                                                 <a class="btn btn-info mr-2" href="/pegawai/cetak_permintaan/<?= $pr['id'] ?>" style="height:30x"><i class="ti-printer"></i></a>
