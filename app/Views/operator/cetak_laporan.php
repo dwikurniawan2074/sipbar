@@ -37,6 +37,34 @@
       <meta http-equiv="content-type" content="text/html;charset=iso-8859-1" />
       <link rel="icon" type="img/png" href="https://siakadu.unila.ac.id/assets/v1/img/logo_unila.png" sizes="16x16" />
 
+      <?php
+
+      function tanggal_indonesia($tanggal)
+      {
+
+        $bulan = array(
+          1 =>     'Januari',
+          'Februari',
+          'Maret',
+          'April',
+          'Mei',
+          'Juni',
+          'Juli',
+          'Agustus',
+          'September',
+          'Oktober',
+          'November',
+          'Desember'
+        );
+
+        $var = explode('-', $tanggal);
+
+        return $var[2] . ' ' . $bulan[(int)$var[1]] . ' ' . $var[0];
+        // var 0 = tanggal
+        // var 1 = bulan
+        // var 2 = tahun
+      } ?>
+
       <div align="center">
         <table width="900px">
           <tbody>
@@ -45,6 +73,28 @@
                 <font size="4"><strong>Laporan Stok Barang</strong></font>
               </td>
             </tr>
+
+            <table width="100%">
+              <tbody>
+                <tr>
+                  <td width="50%"></td>
+                  <td width="50%"></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Dari Tanggal : <?php echo tanggal_indonesia($tglawal); ?></td>
+                  <td>Sampai Tanggal : <?php echo tanggal_indonesia($tglakhir); ?> </td>
+                </tr>
+              </tbody>
+            </table>
+
           </tbody>
         </table>
         <br />
@@ -79,30 +129,34 @@
                 <font size="-1">Status</font>
               </td>
             </tr>
-              <?php
-              $no = 1;
-              foreach ($barang as $br) :
-              ?>
-            <tr valign="top" class="AlternateBG" style="font-size: 10pt">
-              <td align="center"><?= $no; ?></td>
-              <td align="center"><?= $br['kode_barang']; ?></td>
-              <td align="center"><?= $br['nama_barang']; ?></td>
-              <td align="center"><?= $br['satuan']; ?></td>
-              <td align="center"><?= $br['stok_awal']; ?></td>
-              <td align="center"><?= $br['stok_menjadi']; ?></td>
-              <?php if (
-                  $br['status'] == '0'
-                ) { ?>
-                <td align="center">Belum di Opname</td>
-              <?php } else if (
-                  $br['status'] == '1'
-                ) { ?>
-                <td align="center">Sudah di Opname</td>
-              <?php } ?>
-            </tr>
-          <?php $no++;
-              endforeach;
-          ?>
+            <?php
+            $no = 1;
+            foreach ($barang as $br) :
+            ?>
+            
+              <?php $tanggalBarang = new DateTime($br['tanggal']); ?>
+              <?php if (($tanggalBarang >= $tanggalawal) && ($tanggalBarang <= $tanggalakhir)) { ?>
+                <tr valign="top" class="AlternateBG" style="font-size: 10pt">
+                  <td align="center"><?= $no; ?></td>
+                  <td align="center"><?= $br['kode_barang']; ?></td>
+                  <td align="center"><?= $br['nama_barang']; ?></td>
+                  <td align="center"><?= $br['satuan']; ?></td>
+                  <td align="center"><?= $br['stok_awal']; ?></td>
+                  <td align="center"><?= $br['stok_menjadi']; ?></td>
+                  <?php if (
+                    $br['status_barang'] == '0'
+                  ) { ?>
+                    <td align="center">Belum di Opname</td>
+                  <?php } else if (
+                    $br['status_barang'] == '1'
+                  ) { ?>
+                    <td align="center">Sudah di Opname</td>
+                  <?php } ?>
+                </tr>
+            <?php $no++;
+            }
+            endforeach;
+            ?>
 
           </tbody>
         </table>
@@ -113,35 +167,7 @@
               <td width="50%"></td>
               <td width="50%">Bandar Lampung,
                 <!-- fungsi tanggal format indonesia -->
-                <?php
-
-                function tanggal_indonesia($tanggal)
-                {
-
-                  $bulan = array(
-                    1 =>     'Januari',
-                    'Februari',
-                    'Maret',
-                    'April',
-                    'Mei',
-                    'Juni',
-                    'Juli',
-                    'Agustus',
-                    'September',
-                    'Oktober',
-                    'November',
-                    'Desember'
-                  );
-
-                  $var = explode('-', $tanggal);
-
-                  return $var[2] . ' ' . $bulan[(int)$var[1]] . ' ' . $var[0];
-                  // var 0 = tanggal
-                  // var 1 = bulan
-                  // var 2 = tahun
-                }
-
-                echo tanggal_indonesia(date('Y-m-d')); ?>
+                <?php echo tanggal_indonesia(date('Y-m-d')); ?>
               </td>
             </tr>
             <tr>
@@ -213,9 +239,9 @@
       </style>
     </div>
   </div>
-  <script>
+  <!-- <script>
     window.print()
-  </script>
+  </script> -->
 </body>
 
 </html>

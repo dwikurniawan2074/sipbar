@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\ModelBarang;
 use App\Models\ModelBarangMasuk;
+use DateTime;
 
 class OperatorController extends BaseController
 {
@@ -20,15 +21,25 @@ class OperatorController extends BaseController
 
     public function cetak_laporan()
     {
-        // $tglawal = $this->request->request->getPost('tglawal');
-        // $tglakhir = $this->request->request->getPost('tglakhir');
+        $tglawal = $this->request->getVar('tglawal');
+        $tglakhir = $this->request->getVar('tglakhir');
+
+        $tanggalawal = new DateTime($tglawal);
+        $tanggalakhir = new DateTime($tglakhir);
+
+
         $data_barang = new ModelBarang();
         $barang = $data_barang->findAll();
 
         $data = [
             'title' => 'Data Barang',
-            'barang' => $barang
+            'barang' => $barang,
+            'tglawal' => $tglawal,
+            'tglakhir' => $tglakhir,
+            'tanggalawal' => $tanggalawal,
+            'tanggalakhir' => $tanggalakhir
         ];
+
 
         return view('operator/cetak_laporan', $data);
     }
