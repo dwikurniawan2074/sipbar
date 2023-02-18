@@ -5,7 +5,8 @@
     <div class="row">
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
-                <?= form_open('pegawai/cetak_permintaan/', ['target' => '_blank']); ?>
+                <?php $nip = session()->get('nip'); ?>
+                <?= form_open('/pegawai/cetak_data_permintaan/' . $nip,  ['target' => '_blank']) ?>
                 <div class="card-body">
                     <h4 class="card-title">Laporan Permintaan Barang</h4>
                     <p class="card-description">
