@@ -10,6 +10,34 @@
 </head>
 
 <body>
+  <?php
+
+  function tanggal_indonesia($tanggal)
+  {
+
+    $bulan = array(
+      1 =>     'Januari',
+      'Februari',
+      'Maret',
+      'April',
+      'Mei',
+      'Juni',
+      'Juli',
+      'Agustus',
+      'September',
+      'Oktober',
+      'November',
+      'Desember'
+    );
+
+    $var = explode('-', $tanggal);
+
+    return $var[2] . ' ' . $bulan[(int)$var[1]] . ' ' . $var[0];
+    // var 0 = tanggal
+    // var 1 = bulan
+    // var 2 = tahun
+  } ?>
+
   <div align="center">
     <div style="width: 1200px">
       <table style="width: 1100px">
@@ -133,24 +161,30 @@
             ?>
               <?php
               if ($pr['nip'] == session()->get('nip')) {  ?>
-              <?php $tanggalPermintaan = new DateTime($pr['tanggal_permintaan']); ?>
+                <?php $tanggalPermintaan = new DateTime($pr['tanggal_permintaan']); ?>
                 <?php if (($tanggalPermintaan >= $tanggalawal) && ($tanggalPermintaan <= $tanggalakhir)) { ?>
-                <tr valign="top" class="AlternateBG" style="font-size: 10pt">
-                  <td align="center"><?= $no; ?></td>
-                  <td align="center"><?= $pr['nama_barang']; ?></td>
-                  <td align="center"><?= $pr['jumlah_permintaan']; ?> <?= $pr['satuan'] ?></td>
-                  <td align="center"><?= $pr['jumlah_disetujui']; ?> <?= $pr['satuan'] ?></td>
-                  <td align="center"><?= $pr['tanggal_permintaan']; ?></td>
-                  <td align="center"><?= $pr['tanggal_disetujui'] ?></td>
-                  <?php if ($pr['status'] == "0") { ?>
-                    <td align="center">Tidak Disetujui</td>
-                  <?php } else if ($pr['status'] == "1") { ?>
-                    <td align="center">On Process</td>
-                  <?php }
-                  if ($pr['status'] == "2") { ?>
-                    <td align="center">Disetujui</td>
+                  <tr valign="top" class="AlternateBG" style="font-size: 10pt">
+                    <td align="center"><?= $no; ?></td>
+                    <td align="center"><?= $pr['nama_barang']; ?></td>
+                    <td align="center"><?= $pr['jumlah_permintaan']; ?> <?= $pr['satuan'] ?></td>
+                    <td align="center"><?= $pr['jumlah_disetujui']; ?> <?= $pr['satuan'] ?></td>
+                    <td align="center"><?php echo tanggal_indonesia($pr['tanggal_permintaan']); ?></td>
+                    <td align="center">
+                      <?php if ($pr['tanggal_disetujui'] == '') { ?>
+                        &nbsp;
+                      <?php } else { ?>
+                        <?php echo tanggal_indonesia($pr['tanggal_disetujui']); ?>
+                      <?php } ?>
+                    </td>
+                    <?php if ($pr['status'] == "0") { ?>
+                      <td align="center">Tidak Disetujui</td>
+                    <?php } else if ($pr['status'] == "1") { ?>
+                      <td align="center">On Process</td>
+                    <?php }
+                    if ($pr['status'] == "2") { ?>
+                      <td align="center">Disetujui</td>
+                    <?php } ?>
                   <?php } ?>
-                <?php } ?>
               <?php $no++;
               }
             endforeach;
@@ -164,35 +198,7 @@
               <td width="50%"></td>
               <td width="50%">Bandar Lampung,
                 <!-- fungsi tanggal format indonesia -->
-                <?php
-
-                function tanggal_indonesia($tanggal)
-                {
-
-                  $bulan = array(
-                    1 =>     'Januari',
-                    'Februari',
-                    'Maret',
-                    'April',
-                    'Mei',
-                    'Juni',
-                    'Juli',
-                    'Agustus',
-                    'September',
-                    'Oktober',
-                    'November',
-                    'Desember'
-                  );
-
-                  $var = explode('-', $tanggal);
-
-                  return $var[2] . ' ' . $bulan[(int)$var[1]] . ' ' . $var[0];
-                  // var 0 = tanggal
-                  // var 1 = bulan
-                  // var 2 = tahun
-                }
-
-                echo tanggal_indonesia(date('Y-m-d')); ?>
+                <?php echo tanggal_indonesia(date('Y-m-d')); ?>
               </td>
             </tr>
             <tr>
@@ -278,9 +284,9 @@
       </style>
     </div>
   </div>
-  <script>
+  <!-- <script>
     window.print()
-  </script>
+  </script> -->
 </body>
 
 </html>

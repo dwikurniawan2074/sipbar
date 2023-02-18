@@ -351,6 +351,7 @@
             <!-- menu utama -->
             <!-- partial -->
             <div class="main-panel">
+                
                 <?= $this->renderSection('parentContent'); ?>
                 <!-- partial -->
                 <footer class="footer">
