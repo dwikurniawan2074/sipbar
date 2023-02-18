@@ -67,7 +67,7 @@ $routes->get('/pegawai/barang_permintaan/(:num)', 'PegawaiController::halaman_Ba
 $routes->get('/pegawai/halaman_stok_barang', 'PegawaiController::halaman_stok_barang');
 $routes->get('/pegawai/halaman_cetak_permintaan', 'PegawaiController::halaman_cetak_permintaan');
 $routes->get('/pegawai/cetak_permintaan/(:num)', 'PegawaiController::cetak_permintaan/$1');
-$routes->post('/pegawai/cetak_data_permintaan/(:num)', 'PegawaiController::cetak_data_permintaan/$1');
+$routes->post('/pegawai/cetak_data_permintaan', 'PegawaiController::cetak_data_permintaan');
 
 
 // Routes Subkor
@@ -99,6 +99,8 @@ $routes->get('/operator/halaman_input_barang_masuk', 'OperatorController::halama
 $routes->post('/operator/simpan_data_barang_masuk', 'OperatorController::save_dataBarang_masuk');
 $routes->post('/operator/update_data_barang_masuk/(:num)', 'OperatorController::Update_dataBarang_masuk/$1');
 $routes->delete('/operator/delete_data_barang_masuk/(:num)', 'OperatorController::delete_dataBarang_masuk/$1');
+$routes->get('/operator/halaman_cetak_barang_masuk', 'OperatorController::halaman_cetak_barang_masuk');
+$routes->post('/operator/laporan_barang_masuk', 'OperatorController::laporan_barang_masuk');
 
 
 // Routes Kabag

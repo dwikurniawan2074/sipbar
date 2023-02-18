@@ -44,19 +44,20 @@ class OperatorController extends BaseController
         return view('operator/cetak_laporan', $data);
     }
 
-    public function reset_opname(){
+    public function reset_opname()
+    {
         $data_barang = new ModelBarang();
         $barang = $data_barang->findAll();
         // $barang = $data_barang->select('status_barang')->first();
 
-        for ($i=0; $i < count($barang); $i++) { 
+        for ($i = 0; $i < count($barang); $i++) {
             $id = $barang[$i]['id'];
-            
+
             $data = [
                 'status_barang' => '0'
             ];
 
-        $data_barang->update($id,$data);
+            $data_barang->update($id, $data);
         }
 
         return redirect()->to('/operator/halaman_data_barang');
@@ -77,7 +78,7 @@ class OperatorController extends BaseController
     {
         return view('operator/master_data/halaman_input_barang');
     }
-    
+
     public function save_dataBarang()
     {
         $data_barang = new ModelBarang();
@@ -125,8 +126,8 @@ class OperatorController extends BaseController
     {
         $data_barang = new ModelBarangMasuk();
         $barang = $data_barang->select('*')
-                -> join('data_barang','data_barang_masuk.id_barang=data_barang.id')
-                -> get();
+            ->join('data_barang', 'data_barang_masuk.id_barang=data_barang.id')
+            ->get();
 
         $data = [
             'title' => 'Data Barang',
@@ -144,7 +145,7 @@ class OperatorController extends BaseController
             'data_barang' => $data_barang,
         ];
 
-        return view('operator/barang_masuk/halaman_input_barang_masuk',$data);
+        return view('operator/barang_masuk/halaman_input_barang_masuk', $data);
     }
 
     public function save_dataBarang_masuk()
@@ -161,7 +162,7 @@ class OperatorController extends BaseController
         $data_barangMasuk->insert($data);
 
         $id = $this->request->getPost('nama_barang');
-        $barang = $data_barang->select('stok_menjadi')->where('id',$id)->first();
+        $barang = $data_barang->select('stok_menjadi')->where('id', $id)->first();
         $jumlah = $this->request->getPost('stok_masuk');
         $Masuk = $barang['stok_menjadi'] + $jumlah;
 
@@ -169,7 +170,7 @@ class OperatorController extends BaseController
             'stok_menjadi' => $Masuk
         ];
 
-        $data_barang->update($id,$dataMasuk);
+        $data_barang->update($id, $dataMasuk);
 
         return redirect()->to('/operator/halaman_data_barang_masuk');
     }
@@ -181,9 +182,9 @@ class OperatorController extends BaseController
         date_default_timezone_set('Asia/Jakarta');
 
         $id = $this->request->getPost('id_barang');
-        $barang = $data_barang->select('stok_menjadi')->where('id',$id)->first();
+        $barang = $data_barang->select('stok_menjadi')->where('id', $id)->first();
         $id_Masuk = $this->request->getPost('id_barang_masuk');
-        $barangMasuk = $data_barangMasuk->select('jumlah_barangMasuk')->where('id_barang_masuk',$id_Masuk)->first();
+        $barangMasuk = $data_barangMasuk->select('jumlah_barangMasuk')->where('id_barang_masuk', $id_Masuk)->first();
         $jumlah = $this->request->getPost('stok_masuk');
 
         $Masuk = $barang['stok_menjadi'] - $barangMasuk['jumlah_barangMasuk'];
@@ -193,7 +194,7 @@ class OperatorController extends BaseController
             'stok_menjadi' => $MasukFiks
         ];
 
-        $data_barang->update($id,$dataMasuk);
+        $data_barang->update($id, $dataMasuk);
 
         $data = [
             'jumlah_barangMasuk' => $this->request->getVar('stok_masuk'),
@@ -211,20 +212,48 @@ class OperatorController extends BaseController
         $data_barang = new ModelBarang();
         $data_barangMasuk = new ModelBarangMasuk();
 
-        $id_barang = $data_barangMasuk->select('id_barang')->where('id_barang_masuk',$id_barang_masuk)->first();
-        $stokMasuk = $data_barangMasuk->select('jumlah_barangMasuk')->where('id_barang_masuk',$id_barang_masuk)->first();
-        $stokMenjadi = $data_barang->select('stok_menjadi')->where('id',$id_barang)->first();
+        $id_barang = $data_barangMasuk->select('id_barang')->where('id_barang_masuk', $id_barang_masuk)->first();
+        $stokMasuk = $data_barangMasuk->select('jumlah_barangMasuk')->where('id_barang_masuk', $id_barang_masuk)->first();
+        $stokMenjadi = $data_barang->select('stok_menjadi')->where('id', $id_barang)->first();
 
-        $stokAkhir = $stokMenjadi['stok_menjadi']-$stokMasuk['jumlah_barangMasuk'];
+        $stokAkhir = $stokMenjadi['stok_menjadi'] - $stokMasuk['jumlah_barangMasuk'];
 
         $dataMasuk = [
             'stok_menjadi' => $stokAkhir
         ];
 
-        $data_barang->update($id_barang,$dataMasuk);
+        $data_barang->update($id_barang, $dataMasuk);
 
         $data_barangMasuk->delete($id_barang_masuk);
 
         return redirect()->to('/operator/halaman_data_barang_masuk');
+    }
+
+    public function halaman_cetak_barang_masuk()
+    {
+        return view('operator/halaman_cetak_barang_masuk');
+    }
+    public function laporan_barang_masuk()
+    {
+        $tglawal = $this->request->getVar('tglawal');
+        $tglakhir = $this->request->getVar('tglakhir');
+        $tanggalawal = new DateTime($tglawal);
+        $tanggalakhir = new DateTime($tglakhir);
+
+        $data_barang = new ModelBarangMasuk();
+        $barang = $data_barang->select('*')
+            ->join('data_barang', 'data_barang_masuk.id_barang=data_barang.id')
+            ->get();
+
+        $data = [
+            'title' => 'Data Barang',
+            'barang' => $barang,
+            'tglawal' => $tglawal,
+            'tglakhir' => $tglakhir,
+            'tanggalawal' => $tanggalawal,
+            'tanggalakhir' => $tanggalakhir
+        ];
+
+        return view('operator/laporan_barang_masuk', $data);
     }
 }
