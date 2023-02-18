@@ -121,6 +121,8 @@ class LoginController extends BaseController
                         'nip' => $cekUserLogin['nip'],
                         'nama_pegawai' => $cekUserLogin['nama_pegawai'],
                         'id_role' => $idRole,
+                        'id_bidang' => $cekUserLogin['id_bidang'],
+                        'id_pangkat' => $cekUserLogin['id_pangkat']
 
 
                         // 'iduser' => $idUser,

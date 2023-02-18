@@ -15,7 +15,7 @@
                 <div class="col-10"></div>
                 <div class="col-2">
                     <?php $nip = session()->get('nip'); ?>
-                    <a class="btn btn-info mr-2" href="/pegawai/cetak_data_permintaan/<?= $nip; ?>" style="height:30x">
+                    <a class="btn btn-info mr-2" href="/pegawai/halaman_cetak_permintaan" style="height:30x">
                     <i class="ti-printer"></i>
                     Cetak Data Permintaan
                 </a>
