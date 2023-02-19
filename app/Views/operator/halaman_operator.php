@@ -38,7 +38,7 @@
     <div class="row">
         <div class="col-md-12 grid-margin transparent" style="margin-bottom: 20px;">
             <div class="row">
-                <div class="col-md-4 mb-0 stretch-card transparent" style="cursor: pointer;" onclick="location.href='/operator/halaman_input_barang'">
+                <div class="col-md-4 mb-0 stretch-card transparent" style="cursor: pointer;" onclick="location.href='/operator/halaman_input_data_barang'">
                     <div class="card card-tale">
                         <div class="card-body">
                             <p class="mb-4">&nbsp;</p>
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-0 stretch-card transparent" style="cursor: pointer;" onclick="location.href='/operator/halaman_data_barang'">
+                <div class="col-md-4 mb-0 stretch-card transparent" style="cursor: pointer;" onclick="location.href='/operator/halaman_master_data_barang'">
                     <div class="card card-dark-blue">
                         <div class="card-body">
                             <p class="mb-4">&nbsp;</p>

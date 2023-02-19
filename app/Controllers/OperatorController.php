@@ -60,7 +60,7 @@ class OperatorController extends BaseController
             $data_barang->update($id, $data);
         }
 
-        return redirect()->to('/operator/halaman_data_barang');
+        return redirect()->to('/operator/halaman_master_data_barang');
     }
 
     public function halaman_data_barang()
@@ -94,7 +94,7 @@ class OperatorController extends BaseController
         ];
 
         $data_barang->insert($data);
-        return redirect()->to('/operator/halaman_data_barang');
+        return redirect()->to('/operator/halaman_master_data_barang');
     }
 
     public function Update_dataBarang($id)
@@ -112,7 +112,7 @@ class OperatorController extends BaseController
         ];
 
         $data_barang->update($id, $data);
-        return redirect()->to('/operator/halaman_data_barang');
+        return redirect()->to('/operator/halaman_master_data_barang');
     }
 
     public function delete_dataBarang($id)
@@ -120,7 +120,7 @@ class OperatorController extends BaseController
         $data_barang = new ModelBarang();
         $data_barang->delete($id);
 
-        return redirect()->to('/operator/halaman_data_barang');
+        return redirect()->to('/operator/halaman_master_data_barang');
     }
 
     public function halaman_data_barang_masuk()
@@ -256,5 +256,54 @@ class OperatorController extends BaseController
         ];
 
         return view('operator/laporan_barang_masuk', $data);
+    }
+
+    public function import()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        if ($this->request->getPost()) {
+            $fileName = $_FILES["csv"]["tmp_name"];
+
+            if ($_FILES['csv']['size'] > 0) {
+                $file = fopen($fileName, "r");
+
+                $modelData = new ModelBarang();
+
+                $builder = $modelData->builder();
+
+                $data = array();
+
+                while (!feof($file)) {
+                    $column = fgetcsv($file, 1000, ";");
+
+                    if (empty($column)) {
+                        $column = null;
+                    } else {
+                        $kode_barang = $column[0];
+                        $nama_barang = $column[1];
+                        $satuan = $column[2];
+                        $stok_awal = $column[3];
+                    }
+
+                    $row = [
+                        'kode_barang' => $kode_barang,
+                        'nama_barang' => $nama_barang,
+                        'satuan' => $satuan,
+                        'stok_awal' => $stok_awal,
+                        'stok_menjadi' => $stok_awal,
+                        'status_barang' => '0',
+                        'tanggal' => date('y-m-d'),
+                    ];
+
+                    array_push($data, $row);
+                }
+
+                $builder->insertBatch($data);
+                fclose($file);
+            }
+
+            return redirect()->to(site_url('/operator/halaman_master_data_barang'));
+        }
+        return view('/operator/hide_import_CSV');
     }
 }

@@ -33,9 +33,9 @@
             </div>
         </div>
     </div>
-
+    
     <div class="row">
-        <div class="col-md-12 grid-margin transparent">
+        <div class="col-md-8 grid-margin transparent">
             <div class="row">
                 <div class="col-md-6 mb-4 stretch-card transparent" style="cursor: pointer;" onclick="location.href='/kabag/halaman_permintaan'">
                     <div class="card card-tale">
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 mb-4 stretch-card transparent" style="cursor: pointer;" onclick="location.href='/kabag/halaman_stok_barang'">
+                <div class="col-md-6 mb-4 stretch-card transparent" style="cursor: pointer;" onclick="location.href='/kabag/halaman_data_stok_barang'">
                     <div class="card card-dark-blue">
                         <div class="card-body">
                             <p class="mb-4">&nbsp;</p>
@@ -56,7 +56,21 @@
                     </div>
                 </div>
             </div>
+        </div>
+            <div class="col-md-4 grid-margin transparent">
+            <div class="row">
+                <div class="col-md-12 mb-4 stretch-card transparent" style="cursor: pointer;" onclick="location.href='/kabag/halaman_stok_barang_masuk'">
+                    <div class="card card-light-danger">
+                        <div class="card-body">
+                            <p class="mb-4">&nbsp;</p>
+                            <p class="h3 mb-2">Data Stok Barang Masuk</p>
+                            <p>Monitoring Stok Barang Masuk</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+        
         </div>
         
     </div>
