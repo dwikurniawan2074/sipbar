@@ -60,7 +60,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/subkor/halaman_stok_barang">
+                <a class="nav-link" href="/subkor/halaman_data_stok_barang">
                     <i class="icon-paper menu-icon"></i>
                     <span class="menu-title">Data Stok Barang</span>
                 </a>
@@ -98,9 +98,15 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/kabag/halaman_stok_barang">
+                <a class="nav-link" href="/kabag/halaman_data_stok_barang">
                     <i class="icon-grid-2 menu-icon"></i>
                     <span class="menu-title">Data Stok Barang</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/kabag/halaman_stok_barang_masuk">
+                    <i class="icon-paper menu-icon"></i>
+                    <span class="menu-title">Data Stok Barang Masuk</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -125,13 +131,13 @@
             </li>
             <!-- ERROR -->
             <li class="nav-item">
-                <a class="nav-link" href="/operator/halaman_input_barang">
+                <a class="nav-link" href="/operator/halaman_input_data_barang">
                     <i class="icon-layout menu-icon"></i>
                     <span class="menu-title">Input Data Barang</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/operator/halaman_data_barang">
+                <a class="nav-link" href="/operator/halaman_master_data_barang">
                     <i class="icon-grid-2 menu-icon"></i>
                     <span class="menu-title">Data Barang</span>
                 </a>

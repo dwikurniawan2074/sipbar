@@ -46,7 +46,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 mb-4 stretch-card transparent" style="cursor: pointer;" onclick="location.href='/subkor/halaman_stok_barang'">
+                <div class="col-md-6 mb-4 stretch-card transparent" style="cursor: pointer;" onclick="location.href='/subkor/halaman_data_stok_barang'">
                     <div class="card card-dark-blue">
                         <div class="card-body">
                             <p class="mb-4">&nbsp;</p>

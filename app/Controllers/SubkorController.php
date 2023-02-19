@@ -118,4 +118,6 @@ class SubkorController extends BaseController
         return view('subkor/halaman_data_barang_masuk', $data);
 
     }
+
+    
 }
