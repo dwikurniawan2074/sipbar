@@ -70,7 +70,7 @@
                     <tbody>
                         <tr>
                             <td align="center">
-                                <font size="4"><strong>Laporan Stok Barang</strong></font>
+                                <font size="4"><strong>Laporan Barang Masuk</strong></font>
                             </td>
                         </tr>
 
