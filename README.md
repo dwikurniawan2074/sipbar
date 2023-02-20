@@ -1,5 +1,5 @@
 # SIPBAR
-## Project Sistem Informasi Permintaan Barang Pada Instansi Pemerintah
+## Project Sistem Informasi Persediaan Barang Pada Instansi Pemerintah
 ## Badan Pengawasan Keuangan dan Pembangunan (BPKP) Perwakilan Lampung
 
 ### Teknologi

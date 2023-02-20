@@ -10,6 +10,34 @@
 </head>
 
 <body>
+  <?php
+
+  function tanggal_indonesia($tanggal)
+  {
+
+    $bulan = array(
+      1 =>     'Januari',
+      'Februari',
+      'Maret',
+      'April',
+      'Mei',
+      'Juni',
+      'Juli',
+      'Agustus',
+      'September',
+      'Oktober',
+      'November',
+      'Desember'
+    );
+
+    $var = explode('-', $tanggal);
+
+    return $var[2] . ' ' . $bulan[(int)$var[1]] . ' ' . $var[0];
+    // var 0 = tanggal
+    // var 1 = bulan
+    // var 2 = tahun
+  } ?>
+
   <div align="center">
     <div style="width: 1200px">
       <table style="width: 1100px">
@@ -46,6 +74,47 @@
                 <font size="4"><strong>Laporan Permintaan Barang</strong></font>
               </td>
             </tr>
+            <br>
+
+            <table width="100%">
+              <tbody>
+                <tr>
+                  <td width="50%"></td>
+                  <td width="50%"></td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">
+                    NIP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= session()->get('nip'); ?>
+                  </td>
+                  <?php if (session()->get('id_bidang') == "1") { ?>
+                    <td>Bidang : Instansi Pemerintah Pusat</td>
+                  <?php } else if (session()->get('id_bidang') == "2") { ?>
+                    <td>Bidang : APD</td>
+                  <?php } else if (session()->get('id_bidang') == "3") { ?>
+                    <td>Bidang : Akuntan Negara</td>
+                  <?php } else if (session()->get('id_bidang') == "4") { ?>
+                    <td>Bidang : Keuangan</td>
+                  <?php } else if (session()->get('id_bidang') == "5") { ?>
+                    <td>Bidang : Kearsipan</td>
+                  <?php } else if (session()->get('id_bidang') == "6") { ?>
+                    <td>Bidang Investigasi</td>
+                  <?php } else if (session()->get('id_bidang') == "7") { ?>
+                    <td>Bidang : Umum</td>
+                  <?php } ?>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px;">Nama Pegawai : <?= session()->get('nama_pegawai'); ?> </td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+
           </tbody>
         </table>
         <br />
@@ -60,9 +129,6 @@
             <tr align="center" height="10" style="">
               <td class="HeaderBG">
                 <font size="-1">No</font>
-              </td>
-              <td class="HeaderBG">
-                <font size="-1">Nama Pegawai<br /></font>
               </td>
               <td class="HeaderBG">
                 <font size="-1">Nama Barang</font>
@@ -93,65 +159,46 @@
             $no = 1;
             foreach ($permintaan as $pr) :
             ?>
-            <?php
-            if ($pr['nip'] == session()->get('nip')) {  ?>
-              <tr valign="top" class="AlternateBG" style="font-size: 10pt">
-                <td align="center"><?= $no; ?></td>
-                <td align="center"><?= session()->get('nama_pegawai'); ?></td>
-                <td align="center"><?= $pr['nama_barang']; ?></td>
-                <td align="center"><?= $pr['jumlah_permintaan']; ?> <?= $pr['satuan']?></td>
-                <td align="center"><?= $pr['jumlah_disetujui'];?></td>
-                <td align="center"><?= $pr['tanggal_permintaan']; ?></td>
-                <td align="center"><?= $pr['tanggal_disetujui'] ?></td>
-                <?php if ($pr['status'] == "0") {?>
-                <td align="center">Tidak Disetujui</td>
-                <?php } else if ($pr['status'] == "1") {?>
-                <td align="center">Disetujui</td>
-                <?php } if ($pr['status'] == "2") {?>
-                <td align="center">Tidak Disetujui</td>
-                <?php } ?>
+              <?php
+              if ($pr['nip'] == session()->get('nip')) {  ?>
+                <?php $tanggalPermintaan = new DateTime($pr['tanggal_permintaan']); ?>
+                <?php if (($tanggalPermintaan >= $tanggalawal) && ($tanggalPermintaan <= $tanggalakhir)) { ?>
+                  <tr valign="top" class="AlternateBG" style="font-size: 10pt">
+                    <td align="center"><?= $no; ?></td>
+                    <td align="center"><?= $pr['nama_barang']; ?></td>
+                    <td align="center"><?= $pr['jumlah_permintaan']; ?> <?= $pr['satuan'] ?></td>
+                    <td align="center"><?= $pr['jumlah_disetujui']; ?> <?= $pr['satuan'] ?></td>
+                    <td align="center"><?php echo tanggal_indonesia($pr['tanggal_permintaan']); ?></td>
+                    <td align="center">
+                      <?php if ($pr['tanggal_disetujui'] == '') { ?>
+                        &nbsp;
+                      <?php } else { ?>
+                        <?php echo tanggal_indonesia($pr['tanggal_disetujui']); ?>
+                      <?php } ?>
+                    </td>
+                    <?php if ($pr['status'] == "0") { ?>
+                      <td align="center">Tidak Disetujui</td>
+                    <?php } else if ($pr['status'] == "1") { ?>
+                      <td align="center">On Process</td>
+                    <?php }
+                    if ($pr['status'] == "2") { ?>
+                      <td align="center">Disetujui</td>
+                    <?php } ?>
+                  <?php } ?>
               <?php $no++;
-            }
+              }
             endforeach;
               ?>
           </tbody>
         </table>
-        <br />
+        <br>
         <table width="100%" class="footer-table">
           <tbody>
             <tr>
               <td width="50%"></td>
               <td width="50%">Bandar Lampung,
                 <!-- fungsi tanggal format indonesia -->
-                <?php
-
-                function tanggal_indonesia($tanggal)
-                {
-
-                  $bulan = array(
-                    1 =>     'Januari',
-                    'Februari',
-                    'Maret',
-                    'April',
-                    'Mei',
-                    'Juni',
-                    'Juli',
-                    'Agustus',
-                    'September',
-                    'Oktober',
-                    'November',
-                    'Desember'
-                  );
-
-                  $var = explode('-', $tanggal);
-
-                  return $var[2] . ' ' . $bulan[(int)$var[1]] . ' ' . $var[0];
-                  // var 0 = tanggal
-                  // var 1 = bulan
-                  // var 2 = tahun
-                }
-
-                echo tanggal_indonesia(date('Y-m-d')); ?>
+                <?php echo tanggal_indonesia(date('Y-m-d')); ?>
               </td>
             </tr>
             <tr>
@@ -159,12 +206,26 @@
               <td></td>
             </tr>
             <tr>
-              <td></td>
+              <td style="padding-left: 24px;">Mengetahui</td>
               <td>Pengelola Pengadaan Barang/Jasa Muda
               </td>
             </tr>
             <tr>
-              <td></td>
+              <?php if (session()->get('id_bidang') == "1") { ?>
+                <td style="padding-left: 24px;">Bidang Instansi Pemerintah Pusat</td>
+              <?php } else if (session()->get('id_bidang') == "2") { ?>
+                <td style="padding-left: 24px;">Bidang APD</td>
+              <?php } else if (session()->get('id_bidang') == "3") { ?>
+                <td style="padding-left: 24px;">Bidang Akuntan Negara</td>
+              <?php } else if (session()->get('id_bidang') == "4") { ?>
+                <td style="padding-left: 24px;">Bidang Keuangan</td>
+              <?php } else if (session()->get('id_bidang') == "5") { ?>
+                <td style="padding-left: 24px;">Bidang Kearsipan</td>
+              <?php } else if (session()->get('id_bidang') == "6") { ?>
+                <td style="padding-left: 24px;">Bidang Investigasi</td>
+              <?php } else if (session()->get('id_bidang') == "7") { ?>
+                <td style="padding-left: 24px;">Bidang Umum</td>
+              <?php } ?>
               <td>Subkoordinator Pengelola Barang Milik Negara, Rumah Tangga dan Kearsipan
               </td>
             </tr>
@@ -191,7 +252,7 @@
               <td>Sutisna</td>
             </tr>
             <tr>
-              <td></td>
+              <td style="padding-left: 24px;">NIP.</td>
               <td>NIP. 196607051990031001</td>
             </tr>
           </tbody>
@@ -223,9 +284,9 @@
       </style>
     </div>
   </div>
-  <script>
+  <!-- <script>
     window.print()
-  </script>
+  </script> -->
 </body>
 
 </html>

@@ -5,9 +5,9 @@
     <div class="row">
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
-                <?= form_open('/pegawai/cetak_data_permintaan/',  ['target' => '_blank']) ?>
+                <?= form_open('/operator/laporan_barang_masuk',  ['target' => '_blank']) ?>
                 <div class="card-body">
-                    <h4 class="card-title">Laporan Permintaan Barang</h4>
+                    <h4 class="card-title">Laporan Barang Masuk</h4>
                     <p class="card-description">
                         Silahkan masukkan rentang tanggal permintaan dari laporan yang akan di generate
                     </p>

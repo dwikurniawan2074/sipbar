@@ -3,6 +3,7 @@
 
 <?= $this->section('sidebar'); ?>
 
+
 <!-- Sidebar Untuk Pegawai -->
 <?php if (session()->id_role == 1) : ?>
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -57,10 +58,17 @@
                     <span class="menu-title">Data Permintaan</span>
                 </a>
             </li>
+
             <li class="nav-item">
-                <a class="nav-link" href="/subkor/halaman_stok_barang">
-                    <i class="icon-bar-graph menu-icon"></i>
-                    <span class="menu-title"> Data  Stok Barang</span>
+                <a class="nav-link" href="/subkor/halaman_data_stok_barang">
+                    <i class="icon-paper menu-icon"></i>
+                    <span class="menu-title">Data Stok Barang</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/subkor/halaman_stok_barang_masuk">
+                    <i class="icon-paper menu-icon"></i>
+                    <span class="menu-title">Data Stok Barang Masuk</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -90,9 +98,15 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/kabag/halaman_stok_barang">
+                <a class="nav-link" href="/kabag/halaman_data_stok_barang">
                     <i class="icon-grid-2 menu-icon"></i>
                     <span class="menu-title">Data Stok Barang</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/kabag/halaman_stok_barang_masuk">
+                    <i class="icon-paper menu-icon"></i>
+                    <span class="menu-title">Data Stok Barang Masuk</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -115,15 +129,15 @@
                     <span class="menu-title">Dashboard</span>
                 </a>
             </li>
+            <!-- ERROR -->
             <li class="nav-item">
-                <a class="nav-link" href="/operator/halaman_input_barang">
+                <a class="nav-link" href="/operator/halaman_input_data_barang">
                     <i class="icon-layout menu-icon"></i>
                     <span class="menu-title">Input Data Barang</span>
                 </a>
             </li>
-            
             <li class="nav-item">
-                <a class="nav-link" href="/operator/halaman_data_barang/">
+                <a class="nav-link" href="/operator/halaman_master_data_barang">
                     <i class="icon-grid-2 menu-icon"></i>
                     <span class="menu-title">Data Barang</span>
                 </a>
@@ -134,8 +148,9 @@
                     <span class="menu-title">Input Barang Masuk</span>
                 </a>
             </li>
+            <!-- ERROR -->
             <li class="nav-item">
-                <a class="nav-link" href="/operator/halaman_data_barang_masuk/">
+                <a class="nav-link" href="/operator/halaman_data_barang_masuk">
                     <i class="icon-paper menu-icon"></i>
                     <span class="menu-title">Data Barang Masuk</span>
                 </a>
@@ -194,8 +209,8 @@
     </nav>
 <?php endif; ?>
 
-<?= $this->endSection(); ?>
 
+<?= $this->endSection(); ?>
 <?= $this->section('parentContent'); ?>
-    <?= $this->renderSection('content'); ?>
+<?= $this->renderSection('content'); ?>
 <?= $this->endSection(); ?>

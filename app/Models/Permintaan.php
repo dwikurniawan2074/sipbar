@@ -12,8 +12,8 @@ class Permintaan extends Model
         'nip','nama_barang', 'jumlah', 'satuan', 'keterangan','tanggal_permintaan','tanggal_disetujui','status_permintaan'
     ];
 
-    public function laporanPerPeriode($tglawal, $tglakhir)
-    {
-        return $this->table('permintaan')->where('tanggal_permintaan >=', $tglawal)->where('tanggal_permintaan <=', $tglakhir)->get();    
-    }
+    // public function laporanPerPeriode($tglawal, $tglakhir)
+    // {
+    //     return $this->table('permintaan_barang')->where('tanggal_permintaan >=', $tglawal)->where('tanggal_permintaan <=', $tglakhir)->get();    
+    // }
 }

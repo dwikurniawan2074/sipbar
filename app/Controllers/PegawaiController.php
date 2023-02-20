@@ -7,6 +7,7 @@ use App\Models\Permintaan;
 use App\Models\PermintaanSementara;
 use App\Models\ModelBarang;
 use App\Models\ModelBarangPermintaan;
+use DateTime;
 
 class PegawaiController extends BaseController
 {
@@ -159,7 +160,7 @@ class PegawaiController extends BaseController
     public function delete_permintaan_sementara($id)
     {
         $permintaan = new PermintaanSementara();
-    
+
         $permintaan->delete($id);
 
         return redirect()->to('/pegawai/halaman_input_permintaan');
@@ -213,21 +214,47 @@ class PegawaiController extends BaseController
         return view('pegawai/halaman_barang_permintaan', $data);
     }
 
+    public function halaman_cetak_permintaan()
+    {
+
+        return view('pegawai/halaman_cetak_permintaan');
+    }
+
     public function cetak_data_permintaan()
     {
+        $tglawal = $this->request->getVar('tglawal');
+        $tglakhir = $this->request->getVar('tglakhir');
+        $tanggalawal = new DateTime($tglawal);
+        $tanggalakhir = new DateTime($tglakhir);
+
+
+
+        // if ($permintaan['tanggal_permintaan'] >= $tglawal) && ($permintaan['tanggal_permintaan'] <= $tglakhir)
+        
+        // $tanggalawal = strtotime($tglawal);
+        
+
+        // dd($tanggalawal);
+
         $permintaanNew = new ModelBarangPermintaan();
+
 
         $permintaan = $permintaanNew->select('*')
             ->join('permintaan_barang', 'barang_permintaan.id_permintaan=permintaan_barang.id')
             ->join('data_barang', 'barang_permintaan.id_barang=data_barang.id')
             ->join('pegawai', 'barang_permintaan.nip=pegawai.nip')
+            ->join('bidang', 'pegawai.id_bidang=bidang.id')
             ->findAll();
 
 
-            $data = [
-                'title' => 'Permintaan',
-                'permintaan' => $permintaan,
-            ];
+
+
+        $data = [
+            'title' => 'Permintaan',
+            'permintaan' => $permintaan,
+            'tanggalawal' => $tanggalawal,
+            'tanggalakhir' => $tanggalakhir
+        ];
 
         return view('pegawai/cetak_data_permintaan', $data);
     }

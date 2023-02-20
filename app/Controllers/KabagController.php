@@ -7,6 +7,7 @@ use App\Models\Permintaan;
 use App\Models\ModelBarang;
 use App\Models\ModelBarangPermintaan;
 use App\Models\ModelPegawai;
+use App\Models\ModelBarangMasuk;
 
 class KabagController extends BaseController
 {
@@ -40,5 +41,20 @@ class KabagController extends BaseController
             'barang'=> $barang
         ];
         return view('kabag/halaman_stok_barang',$data);
+    }
+
+    public function halaman_stok_barangMasuk()
+    {
+        $data_barang = new ModelBarangMasuk();
+        $barang = $data_barang->select('*')
+                -> join('data_barang','data_barang_masuk.id_barang=data_barang.id')
+                -> get();
+
+        $data = [
+            'title' => 'Data Barang',
+            'barang' => $barang
+        ];
+        return view('kabag/halaman_data_barang_masuk', $data);
+
     }
 }
