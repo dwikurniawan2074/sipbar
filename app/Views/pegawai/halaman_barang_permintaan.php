@@ -147,13 +147,31 @@ function tanggal_indonesia($tanggal)
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <?= form_open('/pegawai/delete_permintaan_barang/' . $pr->id_barang_permintaan) ?>
-                                                                <?= csrf_field(); ?>
-                                                                <form action="/pegawai/delete_permintaan/<?= $pr->id_barang_permintaan ?>" method="post">
-                                                                    <input type="hidden" name="_method" value="DELETE">
-                                                                    <button type="submit" class="btn btn-danger" style="height: 30px"><i class="ti-trash"></i></button>
-                                                                </form>
-                                                                <?= form_close(); ?>
+                                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteBarangPermintaan<?= $pr->id_barang_permintaan ?>" style="height: 30px"><i class="ti-trash"></i></button>
+                                                                    <div class="modal fade" id="DeleteBarangPermintaan<?= $pr->id_barang_permintaan ?>">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title" id="DeleteLabel">Hapus Data Permintaan Barang <?= $pr->nama_barang ?></h1>
+                                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                            <span aria-hidden="true">&times;</span></button>
+                                                                                </div>
+                                                                                <?= form_open('/pegawai/delete_permintaan_barang/' . $pr->id_barang_permintaan) ?>
+                                                                                <?= csrf_field(); ?>
+                                                                                <form action="/pegawai/delete_permintaan_barang/<?= $pr->id_barang_permintaan ?>" method="POST">
+                                                                                    <div class="modal-body">
+                                                                                        <p>Apakah Anda Yakin Ingin Menghapus Data ini?</p>
+                                                                                        <input type="hidden" name="_method" value="DELETE">
+                                                                                    </div>
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button" class="btn btn-light" data-dismiss="modal" style="height: 50px">Kembali</button>
+                                                                                        <button type="submit" class="btn btn-danger" style="height: 50px">Hapus <i class="ti-trash"></i></button>
+                                                                                    </div>
+                                                                                </form>
+                                                                                <?= form_close(); ?>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                             <?php } else if ($pr->status == "2") { ?>
                                                                 <a class="disabled btn btn-warning mr-2" href="/keluar/edit/<?= $pr->id_barang_permintaan ?>" style="height: 30px"><i class="ti-pencil-alt"></i></a>
                                                                 <form action="/pegawai/delete_permintaan_barang/<?= $pr->id_barang_permintaan ?>" method="post">

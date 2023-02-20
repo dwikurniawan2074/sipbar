@@ -189,13 +189,31 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <?= form_open('/admin/hapus_akun/'. $peg['nip']) ?>
-                                                            <?= csrf_field(); ?>
-                                                            <form method="post">
-                                                                <input type="hidden" name="_method" value="DELETE">
-                                                                <button type="submit" class="btn btn-danger" style="height: 30px"><i class="ti-trash"></i></button>
-                                                            </form>
-                                                            <?= form_close(); ?>
+                                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteAkun<?= $peg['nip'] ?>" style="height: 30px"><i class="ti-trash"></i></button>
+                                                                    <div class="modal fade" id="DeleteAkun<?= $peg['nip'] ?>">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title" id="DeleteLabel">Hapus Data Akun </h1>
+                                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                            <span aria-hidden="true">&times;</span></button>
+                                                                                </div>
+                                                                                <?= form_open('/admin/hapus_akun/' . $peg['nip']) ?>
+                                                                                <?= csrf_field(); ?>
+                                                                                <form action="/admin/hapus_akun/<?= $peg['nip'] ?>" method="POST">
+                                                                                    <div class="modal-body">
+                                                                                        <p>Apakah Anda Yakin Ingin Menghapus Akun ini?</p>
+                                                                                        <input type="hidden" name="_method" value="DELETE">
+                                                                                    </div>
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button" class="btn btn-light" data-dismiss="modal" style="height: 50px">Kembali</button>
+                                                                                        <button type="submit" class="btn btn-danger" style="height: 50px">Hapus <i class="ti-trash"></i></button>
+                                                                                    </div>
+                                                                                </form>
+                                                                                <?= form_close(); ?>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                         </div>
                                                     </td>
                                                 </tr>
