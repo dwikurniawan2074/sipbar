@@ -62,7 +62,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
+                                    <table id="order-listing" class="table table-bordered" role="grid" aria-describedby="order-listing_info">
                                         <thead>
                                             <tr role="row">
                                                 <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1">No.</th>
@@ -82,11 +82,11 @@
                                                     <tr>
                                                         <td><?= $no ?></td>
                                                         <td><?= session()->get('nama_pegawai'); ?></td>
-                                                        <td><a class="btn btn-success" href="/pegawai/barang_permintaan/<?= $pr['id'] ?>" style="height: 30px"><label class="badge badge-success" style="color:white;">Detail Permintaan</label></a></td>
+                                                        <td><a class="btn btn-success" href="/pegawai/barang_permintaan/<?= $pr['id'] ?>" style="height: 40px"><label class="badge badge-success" style="color:white;margin-top:-10px">Detail Permintaan</label></a></td>
                                                         <td><?php echo tanggal_indonesia($pr['tanggal_permintaan']) ?></td>
                                                         <td class="sorting_1">
                                                             <div class="container-fluid" style="display: flex;">
-                                                                <a class="btn btn-info mr-2" href="/pegawai/cetak_permintaan/<?= $pr['id'] ?>" style="height:30x"><i class="ti-printer"></i></a>
+                                                                <a class="btn btn-info mr-2" href="/pegawai/cetak_permintaan/<?= $pr['id'] ?>" style="height:40px"><i class="ti-printer"></i></a>
 
                                                                 <?php if ($pr['status_permintaan'] == "0") { ?>
                                                                     <form action="/pegawai/delete_permintaan/<?= $pr['id'] ?>" method="post">
@@ -94,7 +94,7 @@
                                                                         <button type="submit" class="btn btn-danger" style="height: 30px" disabled><i class="ti-trash"></i></button>
                                                                     </form>
                                                                 <?php } else if ($pr['status_permintaan'] == "1") { ?>
-                                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeletePermintaan<?= $pr['id'] ?>" style="height: 30px"><i class="ti-trash"></i></button>
+                                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeletePermintaan<?= $pr['id'] ?>" style="height: 40px"><i class="ti-trash"></i></button>
                                                                     <div class="modal fade" id="DeletePermintaan<?= $pr['id'] ?>">
                                                                         <div class="modal-dialog">
                                                                             <div class="modal-content">
@@ -122,7 +122,7 @@
                                                                 <?php } else if ($pr['status_permintaan'] == "2") { ?>
                                                                     <form action="/pegawai/delete_permintaan/<?= $pr['id'] ?>" method="post">
                                                                         <input type="hidden" name="_method" value="DELETE">
-                                                                        <button type="submit" class="btn btn-danger" style="height: 30px" disabled><i class="ti-trash"></i></button>
+                                                                        <button type="submit" class="btn btn-danger" style="height: 40px" disabled><i class="ti-trash"></i></button>
                                                                     </form>
                                                                 <?php } ?>
 
@@ -146,4 +146,12 @@
         </div>
     </div>
 </div>
+<script language="JavaScript" type="text/javascript">
+      $(document).ready(function() {
+            let x = new RdataTB('order-listing',{
+                SelectionNumber:[5,10,20,30,40,50,100,1000]
+            });
+        });
+
+</script>
 <?= $this->endSection() ?>

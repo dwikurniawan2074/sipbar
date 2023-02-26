@@ -55,7 +55,7 @@
 
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
+                                            <table id="order-listing" class="table table-bordered" role="grid" aria-describedby="order-listing_info">
                                                 <thead>
                                                     <tr role="row">
                                                         <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1">No.</th>
@@ -80,7 +80,7 @@
                                                             <td><?php echo tanggal_indonesia($br->tanggal_barangMasuk) ?></td>
                                                             <td class="sorting_1">
                                                                 <div class="container-fluid" style="display: flex;">
-                                                                    <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#staticBackdrop<?= $br->id_barang_masuk ?>" style="height: 30px"><i class="ti-pencil-alt"></i></button>
+                                                                    <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#staticBackdrop<?= $br->id_barang_masuk ?>" style="height: 40px"><i class="ti-pencil-alt"></i></button>
                                                                     <div class="modal fade bd-example-modal-xl" id="staticBackdrop<?= $br->id_barang_masuk ?>" tabindex="-1" aria-labelledby="myLargeModalLabel" role="dialog">
                                                                         <div class="modal-dialog modal-xl">
                                                                             <div class="modal-content">
@@ -122,7 +122,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Delete<?= $br->id_barang_masuk ?>" style="height: 30px"><i class="ti-trash"></i></button>
+                                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Delete<?= $br->id_barang_masuk ?>" style="height: 40px"><i class="ti-trash"></i></button>
                                                                     <div class="modal fade" id="Delete<?= $br->id_barang_masuk ?>">
                                                                         <div class="modal-dialog">
                                                                             <div class="modal-content">
@@ -158,20 +158,7 @@
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-5">
-                                            <div class="dataTables_info" id="order-listing_info" role="status" aria-live="polite"></div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-7">
-                                            <div class="dataTables_paginate paging_simple_numbers" id="order-listing_paginate">
-                                                <ul class="pagination">
-                                                    <!-- <li class="paginate_button page-item previous disabled" id="order-listing_previous"><a href="#" aria-controls="order-listing" data-dt-idx="0" tabindex="0" class="page-link"></a></li>
-                                                <li class="paginate_button page-item active"><a href="#" aria-controls="order-listing" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                                                <li class="paginate_button page-item next disabled" id="order-listing_next"><a href="#" aria-controls="order-listing" data-dt-idx="2" tabindex="0" class="page-link">Next</a></li> -->
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
+                                   
                                 </div>
                             </div>
                         </div>
@@ -182,8 +169,14 @@
     </div>
 </div>
 <script language="JavaScript" type="text/javascript">
-    function checkDelete() {
-        return confirm('Anda ingin Menghapusnya?');
-    }
+       $(document).ready(function() {
+         function checkDelete() {
+            return confirm('Anda ingin Menghapusnya?');
+            }
+            let x = new RdataTB('order-listing',{
+                SelectionNumber:[5,10,20,30,40,50,100,1000]
+            });
+        });
+   
 </script>
 <?= $this->endSection(); ?>

@@ -58,7 +58,12 @@
                     <span class="menu-title">Data Permintaan</span>
                 </a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link" href="/subkor/halaman_data_barang_keluar">
+                    <i class="icon-paper menu-icon"></i>
+                    <span class="menu-title">Data Barang Keluar</span>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="/subkor/halaman_data_stok_barang">
                     <i class="icon-paper menu-icon"></i>
@@ -95,6 +100,12 @@
                 <a class="nav-link" href="/kabag/halaman_permintaan">
                     <i class="icon-bar-graph menu-icon"></i>
                     <span class="menu-title">Data Permintaan</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/kabag/halaman_data_barang_keluar">
+                    <i class="icon-paper menu-icon"></i>
+                    <span class="menu-title">Data Barang Keluar</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -156,6 +167,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/operator/halaman_data_barang_keluar">
+                    <i class="icon-paper menu-icon"></i>
+                    <span class="menu-title">Data Barang Keluar</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/operator/halaman_laporan_stok">
                     <i class="icon-bar-graph menu-icon"></i>
                     <span class="menu-title">Laporan Stok Barang</span>
@@ -209,6 +226,8 @@
     </nav>
 <?php endif; ?>
 
+
+      <script src="https://cdn.jsdelivr.net/gh/Rakhmadi/RdataTB@master/dist/index.js"></script>
 
 <?= $this->endSection(); ?>
 <?= $this->section('parentContent'); ?>

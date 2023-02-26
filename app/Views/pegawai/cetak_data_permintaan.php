@@ -63,7 +63,7 @@
       </table>
       <hr style="border: 0; border-top: 5px double #8c8c8c; margin-top: 0" />
       <meta http-equiv="content-type" content="text/html;charset=iso-8859-1" />
-      <link rel="icon" type="img/png" href="https://siakadu.unila.ac.id/assets/v1/img/logo_unila.png" sizes="16x16" />
+      <link rel="icon" type="img/png" href="/Images/bpkp_logo.png" sizes="16x16" />
 
 
       <div align="center">

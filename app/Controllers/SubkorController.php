@@ -8,8 +8,8 @@ use App\Models\ModelBarangPermintaan;
 use App\Models\Permintaan;
 use App\Models\ModelPegawai;
 use App\Models\ModelBarangMasuk;
-
-
+use App\Models\ModelBidang;
+use DateTime;
 class SubkorController extends BaseController
 {
     public function halaman_subkor()
@@ -25,6 +25,7 @@ class SubkorController extends BaseController
                     ->join('data_barang','barang_permintaan.id_barang=data_barang.id')
                     ->join('pegawai','permintaan_barang.nip=pegawai.nip')
                     ->join('bidang','pegawai.id_bidang=bidang.id')
+                    ->where('barang_permintaan.status','1')
                     ->get();
         $data = [
             'title' => 'Permintaan',
@@ -117,6 +118,81 @@ class SubkorController extends BaseController
         ];
         return view('subkor/halaman_data_barang_masuk', $data);
 
+    }
+        public function halaman_data_barang_keluar()
+    {
+        $permintaanNew = new ModelBarangPermintaan();
+        $permintaan     = $permintaanNew->select('*')
+                    ->join('permintaan_barang','barang_permintaan.id_permintaan=permintaan_barang.id')
+                    ->join('data_barang','barang_permintaan.id_barang=data_barang.id')
+                    ->join('pegawai','permintaan_barang.nip=pegawai.nip')
+                    ->join('bidang','pegawai.id_bidang=bidang.id')
+                    ->where('barang_permintaan.status','2')
+                    ->get();
+
+        $data = [
+            'title' => 'Data Barang',
+            'permintaan' => $permintaan
+        ];
+        return view('subkor/halaman_data_barang_keluar', $data);
+    }
+
+    public function halaman_cetak_barang_keluar()
+    {
+
+       $bidangModel = new ModelBidang();
+       $bidang = $bidangModel->findAll();
+        $data = [
+            'bidang' => $bidang,
+        ];
+        return view('subkor/halaman_cetak_barang_keluar',$data);
+    }
+    public function laporan_barang_keluar()
+    {
+        $tglawal = $this->request->getVar('tglawal');
+        $tglakhir = $this->request->getVar('tglakhir');
+        $bidang = $this->request->getVar('bidang') ?? 'kosong';
+        $tanggalawal = new DateTime($tglawal);
+        $tanggalakhir = new DateTime($tglakhir);
+        $mdlbidang = new ModelBidang();
+        $bid2 = $mdlbidang->select('nama_bidang')->where('bidang.id',$bidang)->findAll();
+        $bidangs = $bid2[0]['nama_bidang']??'Semua Bidang';
+        $permintaanNew = new ModelBarangPermintaan();
+        if($bidang=='kosong')
+        {
+          $permintaan   = $permintaanNew->select('*')
+                        ->join('permintaan_barang','barang_permintaan.id_permintaan=permintaan_barang.id')
+                        ->join('data_barang','barang_permintaan.id_barang=data_barang.id')
+                        ->join('pegawai','permintaan_barang.nip=pegawai.nip')
+                        ->join('bidang','pegawai.id_bidang=bidang.id')
+                        ->where('barang_permintaan.status','2')
+                        // ->where('barang_permintaan.tanggal_disetujui','>=',$tglawal)
+                        // ->where('barang_permintaan.tanggal_disetujui','<=',$tglakhir)
+                        ->get();
+
+        }else{
+            $permintaan   = $permintaanNew->select('*')
+                        ->join('permintaan_barang','barang_permintaan.id_permintaan=permintaan_barang.id')
+                        ->join('data_barang','barang_permintaan.id_barang=data_barang.id')
+                        ->join('pegawai','permintaan_barang.nip=pegawai.nip')
+                        ->join('bidang','pegawai.id_bidang=bidang.id')
+                        ->where('barang_permintaan.status','2')
+                        // ->where('barang_permintaan.tanggal_disetujui >=',$tglawal)
+                        // ->where('barang_permintaan.tanggal_disetujui <=',$tglakhir)
+                        ->where('bidang.id',$bidang)
+                        ->get();
+        }
+
+        $data = [
+            'title' => 'Data Barang',
+            'barang' => $permintaan,
+            'tglawal' => $tglawal,
+            'tglakhir' => $tglakhir,
+            'tanggalawal' => $tanggalawal,
+            'tanggalakhir' => $tanggalakhir,
+            'bidang'=>$bidangs
+        ];
+        return view('subkor/laporan_barang_keluar', $data);
     }
 
     

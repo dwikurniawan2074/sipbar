@@ -31,7 +31,16 @@ function tanggal_indonesia($tanggal)
 <div class="content-wrapper">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Data Pengajuan Permintaan Barang Pegawai</h4>
+            <h4 class="card-title">Data Barang Keluar</h4>
+                   <div class="row">
+                        <div class="col-10"></div>
+                        <div class="col-2">
+                            <a class="btn btn-info mr-2" href="/operator/halaman_cetak_barang_keluar" style="height:30x">
+                                <i class="ti-printer"></i>
+                                Cetak Barang Keluar
+                            </a>
+                        </div>
+                    </div>
             <div class="row">
                 <div class="col-12">
                     <div class="table-responsive pt-3">

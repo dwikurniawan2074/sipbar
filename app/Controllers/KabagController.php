@@ -8,7 +8,8 @@ use App\Models\ModelBarang;
 use App\Models\ModelBarangPermintaan;
 use App\Models\ModelPegawai;
 use App\Models\ModelBarangMasuk;
-
+use App\Models\ModelBidang;
+use DateTime;
 class KabagController extends BaseController
 {
     public function halaman_kabag()
@@ -23,6 +24,7 @@ class KabagController extends BaseController
                     ->join('data_barang','barang_permintaan.id_barang=data_barang.id')
                     ->join('pegawai','permintaan_barang.nip=pegawai.nip')
                     ->join('bidang','pegawai.id_bidang=bidang.id')
+                    ->where('barang_permintaan.status','1')
                     ->get();
         $data = [
             'title' => 'Permintaan',
@@ -56,5 +58,22 @@ class KabagController extends BaseController
         ];
         return view('kabag/halaman_data_barang_masuk', $data);
 
+    }
+    public function halaman_data_barang_keluar()
+    {
+        $permintaanNew = new ModelBarangPermintaan();
+        $permintaan     = $permintaanNew->select('*')
+                    ->join('permintaan_barang','barang_permintaan.id_permintaan=permintaan_barang.id')
+                    ->join('data_barang','barang_permintaan.id_barang=data_barang.id')
+                    ->join('pegawai','permintaan_barang.nip=pegawai.nip')
+                    ->join('bidang','pegawai.id_bidang=bidang.id')
+                    ->where('barang_permintaan.status','2')
+                    ->get();
+
+        $data = [
+            'title' => 'Data Barang',
+            'permintaan' => $permintaan
+        ];
+        return view('kabag/halaman_data_barang_keluar', $data);
     }
 }

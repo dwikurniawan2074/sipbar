@@ -37,7 +37,7 @@ function tanggal_indonesia($tanggal)
                         <div id="order-listing_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
+                                    <table id="order-listing" class="table table-bordered" role="grid" aria-describedby="order-listing_info">
                                         <thead>
                                             <tr role="row">
                                                 <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1">No.</th>
@@ -111,17 +111,17 @@ function tanggal_indonesia($tanggal)
                                                     <td class="sorting_1">
                                                         <div class="container-fluid" style="display: flex;">
                                                             <?php if ($pr->status == "0") { ?>
-                                                                <a class="disabled btn btn-warning mr-2" href="/keluar/edit/<?= $pr->id ?>" style="height: 30px"><i class="ti-pencil-alt"></i></a>
+                                                                <a class="disabled btn btn-warning mr-2" href="/keluar/edit/<?= $pr->id ?>" style="height: 40px"><i class="ti-pencil-alt"></i></a>
                                                                 <form action="/pegawai/delete_permintaan/<?= $pr->id ?>" method="post">
                                                                     <input type="hidden" name="_method" value="DELETE">
-                                                                    <button type="submit" class="btn btn-success mr-2" style="height: 30px" disabled><i class="ti-check"></i></button>
+                                                                    <button type="submit" class="btn btn-success mr-2" style="height: 40px" disabled><i class="ti-check"></i></button>
                                                                 </form>
                                                                 <form action="/pegawai/delete_permintaan/<?= $pr->id ?>" method="post">
                                                                     <input type="hidden" name="_method" value="DELETE">
-                                                                    <button type="submit" class="btn btn-danger" style="height: 30px" disabled><i class="ti-close"></i></button>
+                                                                    <button type="submit" class="btn btn-danger" style="height: 40px" disabled><i class="ti-close"></i></button>
                                                                 </form>
                                                             <?php } else if ($pr->status == "1") { ?>
-                                                                <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#staticBackdrop<?= $pr->id ?>" style="height: 30px"><i class="ti-pencil-alt"></i></button>
+                                                                <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#staticBackdrop<?= $pr->id ?>" style="height: 40px"><i class="ti-pencil-alt"></i></button>
                                                                 <div class="modal fade bd-example-modal-xl" id="staticBackdrop<?= $pr->id ?>" tabindex="-1" aria-labelledby="myLargeModalLabel" role="dialog">
                                                                     <div class="modal-dialog modal-xl">
                                                                         <div class="modal-content">
@@ -162,7 +162,7 @@ function tanggal_indonesia($tanggal)
                                                                 </div>
 
 
-                                                                <button type="button" class="btn btn-success mr-2" style="height: 30px" data-toggle="modal" data-target="#Setuju"><i class="ti-check"></i></button>
+                                                                <button type="button" class="btn btn-success mr-2" style="height: 40px" data-toggle="modal" data-target="#Setuju"><i class="ti-check"></i></button>
                                                                 <div class="modal fade" id="Setuju">
                                                                     <div class="modal-dialog">
                                                                         <div class="modal-content">
@@ -189,7 +189,7 @@ function tanggal_indonesia($tanggal)
                                                                 </form>
                                                                 <?= form_close(); ?>
 
-                                                                <button type="button" class="btn btn-danger" style="height: 30px" data-toggle="modal" data-target="#Tolak"><i class="ti-close"></i></button>
+                                                                <button type="button" class="btn btn-danger" style="height: 40px" data-toggle="modal" data-target="#Tolak"><i class="ti-close"></i></button>
                                                                 <div class="modal fade" id="Tolak">
                                                                     <div class="modal-dialog">
                                                                         <div class="modal-content">
@@ -216,14 +216,14 @@ function tanggal_indonesia($tanggal)
                                                                 </form>
                                                                 <?= form_close(); ?>
                                                             <?php } else if ($pr->status == "2") { ?>
-                                                                <a class="disabled btn btn-warning mr-2" href="/keluar/edit/<?= $pr->id ?>" style="height: 30px"><i class="ti-pencil-alt"></i></a>
+                                                                <a class="disabled btn btn-warning mr-2" href="/keluar/edit/<?= $pr->id ?>" style="height: 40px"><i class="ti-pencil-alt"></i></a>
                                                                 <form action="/pegawai/delete_permintaan/<?= $pr->id ?>" method="post">
                                                                     <input type="hidden" name="_method" value="DELETE">
-                                                                    <button type="submit" class="btn btn-success mr-2" style="height: 30px" disabled><i class="ti-check"></i></button>
+                                                                    <button type="submit" class="btn btn-success mr-2" style="height: 40px" disabled><i class="ti-check"></i></button>
                                                                 </form>
                                                                 <form action="/pegawai/delete_permintaan/<?= $pr->id ?>" method="post">
                                                                     <input type="hidden" name="_method" value="DELETE">
-                                                                    <button type="submit" class="btn btn-danger" style="height: 30px" disabled><i class="ti-close"></i></button>
+                                                                    <button type="submit" class="btn btn-danger" style="height: 40px" disabled><i class="ti-close"></i></button>
                                                                 </form>
                                                             <?php } ?>
 
@@ -247,12 +247,18 @@ function tanggal_indonesia($tanggal)
     </div>
 </div>
 <script language="JavaScript" type="text/javascript">
-    function checkSetuju() {
-        return confirm('Anda ingin Menyetujuinya?');
-    }
+      $(document).ready(function() {
+             function checkSetuju() {
+                return confirm('Anda ingin Menyetujuinya?');
+            }
 
-    function checkTolak() {
-        return confirm('Anda ingin Menolaknya?');
-    }
+            function checkTolak() {
+                return confirm('Anda ingin Menolaknya?');
+            }
+            let x = new RdataTB('order-listing',{
+                SelectionNumber:[5,10,20,30,40,50,100,1000]
+            });
+        });
+
 </script>
 <?= $this->endSection(); ?>

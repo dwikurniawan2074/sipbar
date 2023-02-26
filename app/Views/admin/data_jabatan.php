@@ -25,7 +25,7 @@
 
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
+                                    <table id="order-listing" class="table table-bordered" role="grid" aria-describedby="order-listing_info">
                                         <thead>
                                             <tr role="row">
                                                 <th width="5%">No.</th>
@@ -46,7 +46,7 @@
                                                     <td class="sorting_1">
                                                         <div class="container-fluid" style="display: flex;">
                                                             <!-- button edit barang -->
-                                                            <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#staticBackdrop<?= $jabat['id'] ?>" style="height: 30px"><i class="ti-pencil-alt"></i></button>
+                                                            <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#staticBackdrop<?= $jabat['id'] ?>" style="height: 40px"><i class="ti-pencil-alt"></i></button>
                                                             <div class="modal fade bd-example-modal-xl" id="staticBackdrop<?= $jabat['id'] ?>" tabindex="-1" aria-labelledby="myLargeModalLabel" role="dialog">
                                                                 <div class="modal-dialog modal-xl">
                                                                     <div class="modal-content">
@@ -78,7 +78,7 @@
                                                             <!-- button hapus barang -->
                                                             <form method="post">
                                                                 <input type="hidden" name="_method" value="DELETE">
-                                                                <button type="submit" class="btn btn-danger" style="height: 30px"><i class="ti-trash"></i></button>
+                                                                <button type="submit" class="btn btn-danger" style="height: 40px"><i class="ti-trash"></i></button>
                                                             </form>
 
                                                             <?= form_close(); ?>
@@ -100,4 +100,12 @@
         </div>
     </div>
 </div>
+<script language="JavaScript" type="text/javascript">
+      $(document).ready(function() {
+            let x = new RdataTB('order-listing',{
+                SelectionNumber:[5,10,20,30,40,50,100,1000]
+            });
+        });
+
+</script>
 <?= $this->endSection(); ?>

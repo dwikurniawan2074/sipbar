@@ -64,7 +64,7 @@
       </table>
       <hr style="border: 0; border-top: 5px double #8c8c8c; margin-top: 0" />
       <meta http-equiv="content-type" content="text/html;charset=iso-8859-1" />
-      <link rel="icon" type="img/png" href="https://siakadu.unila.ac.id/assets/v1/img/logo_unila.png" sizes="16x16" />
+      <link rel="icon" type="img/png" href="/Images/bpkp_logo.png" sizes="16x16" />
 
 
       <div align="center">
@@ -72,7 +72,7 @@
           <tbody>
             <tr>
               <td align="center">
-                <font size="4"><strong>Laporan Permintaan Barang</strong></font>
+                <font size="4"><strong>Formulir Permintaan Barang</strong></font>
               </td>
             </tr>
             <br>
@@ -205,19 +205,21 @@
             </tr>
             <tr>
               <?php if (session()->get('id_bidang') == "1") { ?>
-                <td style="padding-left: 24px;">Bidang Instansi Pemerintah Pusat</td>
+                <td style="padding-left: 24px;">Korwas/Pengendali Teknis Bidang Instansi Pemerintah Pusat</td>
               <?php } else if (session()->get('id_bidang') == "2") { ?>
-                <td style="padding-left: 24px;">Bidang APD</td>
+                <td style="padding-left: 24px;">Korwas/Pengendali Teknis Bidang APD</td>
               <?php } else if (session()->get('id_bidang') == "3") { ?>
-                <td style="padding-left: 24px;">Bidang Akuntan Negara</td>
+                <td style="padding-left: 24px;">Korwas/Pengendali Teknis Bidang Akuntan Negara</td>
               <?php } else if (session()->get('id_bidang') == "4") { ?>
-                <td style="padding-left: 24px;">Bidang Keuangan</td>
+                <td style="padding-left: 24px;">Sub Koordinator Keuangan</td>
               <?php } else if (session()->get('id_bidang') == "5") { ?>
-                <td style="padding-left: 24px;">Bidang Kearsipan</td>
+                <td style="padding-left: 24px;">Sub Koordinator BMN, RT dan Kearsipan</td>
               <?php } else if (session()->get('id_bidang') == "6") { ?>
-                <td style="padding-left: 24px;">Bidang Investigasi</td>
+                <td style="padding-left: 24px;">Korwas/Pengendali Teknis Bidang Investigasi</td>
               <?php } else if (session()->get('id_bidang') == "7") { ?>
-                <td style="padding-left: 24px;">Bidang Umum</td>
+                <td style="padding-left: 24px;">Korwas/Pengendali Teknis Bidang P3A</td>
+              <?php } else if (session()->get('id_bidang') == "8") { ?>
+                <td style="padding-left: 24px;">Sub Koordinator Kepegawaian</td>
               <?php } ?>
               <td>Subkoordinator Pengelola Barang Milik Negara, Rumah Tangga dan Kearsipan
               </td>
