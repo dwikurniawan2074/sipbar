@@ -35,7 +35,7 @@ function tanggal_indonesia($tanggal)
                    <div class="row">
                         <div class="col-10"></div>
                         <div class="col-2">
-                            <a class="btn btn-info mr-2" href="/operator/halaman_cetak_barang_keluar" style="height:30x">
+                            <a class="btn btn-info mr-2" href="<?php echo base_url()?>/operator/halaman_cetak_barang_keluar" style="height:30x">
                                 <i class="ti-printer"></i>
                                 Cetak Barang Keluar
                             </a>
@@ -127,8 +127,7 @@ function tanggal_indonesia($tanggal)
 </div>
 <script language="JavaScript" type="text/javascript">
       $(document).ready(function() {
-            let x = new RdataTB('order-listing',{
-                SelectionNumber:[5,10,20,30,40,50,100,1000]
+            let x = new DataTable('#order-listing',{
             });
         });
 

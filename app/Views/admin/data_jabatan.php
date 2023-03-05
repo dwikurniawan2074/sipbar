@@ -9,7 +9,7 @@
             <div class="row">
 
                 <div class="col-10">
-                    <a class="btn btn-primary btn-icon-text" href="/admin/input_jabatan">
+                    <a class="btn btn-primary btn-icon-text" href="<?php echo base_url()?>/admin/input_jabatan">
                         <i class="ti-plus btn-icon-prepend"></i>
                         Tambah Data
                     </a>
@@ -18,7 +18,7 @@
 
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="padding-top:25px;">
                 <div class="col-12">
                     <div class="table-responsive">
                         <div id="order-listing_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
@@ -102,8 +102,7 @@
 </div>
 <script language="JavaScript" type="text/javascript">
       $(document).ready(function() {
-            let x = new RdataTB('order-listing',{
-                SelectionNumber:[5,10,20,30,40,50,100,1000]
+            let x = new DataTable('#order-listing',{
             });
         });
 

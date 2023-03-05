@@ -128,7 +128,7 @@
                                                                                 </div>
                                                                                 <?= form_open('/admin/hapus_akun/' . $peg['nip']) ?>
                                                                                 <?= csrf_field(); ?>
-                                                                                <form action="/admin/hapus_akun/<?= $peg['nip'] ?>" method="POST">
+                                                                                <form action="<?php echo base_url()?>/admin/hapus_akun/<?= $peg['nip'] ?>" method="POST">
                                                                                     <div class="modal-body">
                                                                                         <p>Apakah Anda Yakin Ingin Menghapus Akun ini?</p>
                                                                                         <input type="hidden" name="_method" value="DELETE">
@@ -162,9 +162,8 @@
 </div>
 <script language="JavaScript" type="text/javascript">
       $(document).ready(function() {
-            let x = new RdataTB('order-listing',{
-                SelectionNumber:[5,10,20,30,40,50,100,1000]
-            });
+             let x = new DataTable('#order-listing',{
+             });
         });
 
 </script>

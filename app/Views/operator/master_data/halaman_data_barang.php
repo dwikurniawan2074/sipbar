@@ -62,7 +62,7 @@
                                                         </div>
                                                         <?= form_open('/operator/reset_opname') ?>
                                                         <?= csrf_field(); ?>
-                                                        <form action="/operator/reset_opname" method="POST">
+                                                        <form action="<?php echo base_url()?>/operator/reset_opname" method="POST">
                                                             <div class="modal-body">
                                                                 <p>Apakah Anda Yakin Ingin Mereset Data ini?</p>
                                                             </div>
@@ -88,7 +88,7 @@
                                                         <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1">Nama Barang</th>
                                                         <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1">Satuan</th>
                                                         <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1">Stok Awal</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1">Stok Menjadi</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1">Stok Saat Ini</th>
                                                         <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1">Tanggal</th>
                                                         <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-sort="descending">Status</th>
                                                         <th class="sorting_desc" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-sort="descending" style="width: 126.016px;">Actions</th>
@@ -131,7 +131,7 @@
                                                                                 </div>
                                                                                 <?= form_open('/operator/update_data_barang/' . $br['id']) ?>
                                                                                 <?= csrf_field(); ?>
-                                                                                <form action="/operator/update_data_barang/<?= $br['id'] ?>" method="POST" enctype="multipart/form-data">
+                                                                                <form action="<?php echo base_url()?>/operator/update_data_barang/<?= $br['id'] ?>" method="POST" enctype="multipart/form-data">
                                                                                     <div class="modal-body">
                                                                                         <div class="form-group">
                                                                                             <label for="exampleInputName1">Kode Barang</label>
@@ -188,8 +188,8 @@
             function checkReset() {
                 return confirm('Anda ingin Meresetnya?');
             }
-            let x = new RdataTB('order-listing',{
-                SelectionNumber:[5,10,20,30,40,50,100,1000]
+            let x = new DataTable('#order-listing',{
+              
             });
         });
 

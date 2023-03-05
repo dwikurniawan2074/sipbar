@@ -112,11 +112,11 @@ function tanggal_indonesia($tanggal)
                                                         <div class="container-fluid" style="display: flex;">
                                                             <?php if ($pr->status == "0") { ?>
                                                                 <a class="disabled btn btn-warning mr-2" href="/keluar/edit/<?= $pr->id ?>" style="height: 40px"><i class="ti-pencil-alt"></i></a>
-                                                                <form action="/pegawai/delete_permintaan/<?= $pr->id ?>" method="post">
+                                                                <form action="<?php echo base_url()?>/pegawai/delete_permintaan/<?= $pr->id ?>" method="post">
                                                                     <input type="hidden" name="_method" value="DELETE">
                                                                     <button type="submit" class="btn btn-success mr-2" style="height: 40px" disabled><i class="ti-check"></i></button>
                                                                 </form>
-                                                                <form action="/pegawai/delete_permintaan/<?= $pr->id ?>" method="post">
+                                                                <form action="<?php echo base_url()?>/pegawai/delete_permintaan/<?= $pr->id ?>" method="post">
                                                                     <input type="hidden" name="_method" value="DELETE">
                                                                     <button type="submit" class="btn btn-danger" style="height: 40px" disabled><i class="ti-close"></i></button>
                                                                 </form>
@@ -132,7 +132,7 @@ function tanggal_indonesia($tanggal)
                                                                             </div>
                                                                             <?= form_open('/subkor/update_permintaan_persetujuan/' . $pr->id_barang_permintaan) ?>
                                                                             <?= csrf_field(); ?>
-                                                                            <form action="/subkor/update_permintaan_persetujuan/<?= $pr->id_barang_permintaan ?>" method="POST" enctype="multipart/form-data">
+                                                                            <form action="<?php echo base_url()?>/subkor/update_permintaan_persetujuan/<?= $pr->id_barang_permintaan ?>" method="POST" enctype="multipart/form-data">
                                                                                 <div class="modal-body">
                                                                                     <div class="form-group">
                                                                                         <label for="exampleInputName1">Nama Barang</label>
@@ -173,7 +173,7 @@ function tanggal_indonesia($tanggal)
                                                                             </div>
                                                                             <?= form_open('/subkor/setuju_permintaan/' . $pr->id_barang_permintaan) ?>
                                                                             <?= csrf_field(); ?>
-                                                                            <form action="/subkor/setuju_permintaan/<?= $pr->id_barang_permintaan ?>" method="post">
+                                                                            <form action="<?php echo base_url()?>/subkor/setuju_permintaan/<?= $pr->id_barang_permintaan ?>" method="post">
                                                                                 <div class="modal-body">
                                                                                     <p>Apakah Anda Yakin Ingin Menyetujui Permintaan ini?</p>
                                                                                 </div>
@@ -200,7 +200,7 @@ function tanggal_indonesia($tanggal)
                                                                             </div>
                                                                             <?= form_open('/subkor/tolak_permintaan/' . $pr->id_barang_permintaan) ?>
                                                                             <?= csrf_field(); ?>
-                                                                            <form action="/subkor/tolak_permintaan/<?= $pr->id_barang_permintaan ?>" method="post">
+                                                                            <form action="<?php echo base_url()?>/subkor/tolak_permintaan/<?= $pr->id_barang_permintaan ?>" method="post">
                                                                                 <div class="modal-body">
                                                                                     <p>Apakah Anda Yakin Ingin Menolak Permintaan ini?</p>
                                                                                 </div>
@@ -217,11 +217,11 @@ function tanggal_indonesia($tanggal)
                                                                 <?= form_close(); ?>
                                                             <?php } else if ($pr->status == "2") { ?>
                                                                 <a class="disabled btn btn-warning mr-2" href="/keluar/edit/<?= $pr->id ?>" style="height: 40px"><i class="ti-pencil-alt"></i></a>
-                                                                <form action="/pegawai/delete_permintaan/<?= $pr->id ?>" method="post">
+                                                                <form action="<?php echo base_url()?>/pegawai/delete_permintaan/<?= $pr->id ?>" method="post">
                                                                     <input type="hidden" name="_method" value="DELETE">
                                                                     <button type="submit" class="btn btn-success mr-2" style="height: 40px" disabled><i class="ti-check"></i></button>
                                                                 </form>
-                                                                <form action="/pegawai/delete_permintaan/<?= $pr->id ?>" method="post">
+                                                                <form action="<?php echo base_url()?>/pegawai/delete_permintaan/<?= $pr->id ?>" method="post">
                                                                     <input type="hidden" name="_method" value="DELETE">
                                                                     <button type="submit" class="btn btn-danger" style="height: 40px" disabled><i class="ti-close"></i></button>
                                                                 </form>
@@ -255,8 +255,8 @@ function tanggal_indonesia($tanggal)
             function checkTolak() {
                 return confirm('Anda ingin Menolaknya?');
             }
-            let x = new RdataTB('order-listing',{
-                SelectionNumber:[5,10,20,30,40,50,100,1000]
+          let x = new DataTable('#order-listing',{
+                order: [[6, 'desc']],
             });
         });
 

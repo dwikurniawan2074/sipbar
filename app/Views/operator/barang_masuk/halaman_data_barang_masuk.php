@@ -42,7 +42,7 @@
                     <div class="row">
                         <div class="col-10"></div>
                         <div class="col-2">
-                            <a class="btn btn-info mr-2" href="/operator/halaman_cetak_barang_masuk" style="height:30x">
+                            <a class="btn btn-info mr-2" href="<?php echo base_url()?>/operator/halaman_cetak_barang_masuk" style="height:30x">
                                 <i class="ti-printer"></i>
                                 Cetak Barang Masuk
                             </a>
@@ -91,7 +91,7 @@
                                                                                 </div>
                                                                                 <?= form_open('/operator/update_data_barang_masuk/' . $br->id_barang_masuk) ?>
                                                                                 <?= csrf_field(); ?>
-                                                                                <form action="/operator/update_data_barang_masuk/<?= $br->id_barang_masuk ?>" method="POST" enctype="multipart/form-data">
+                                                                                <form action="<?php echo base_url()?>/operator/update_data_barang_masuk/<?= $br->id_barang_masuk ?>" method="POST" enctype="multipart/form-data">
                                                                                     <div class="modal-body">
                                                                                         <div class="form-group">
                                                                                             <label for="exampleInputName1">Kode Barang</label>
@@ -133,7 +133,7 @@
                                                                                 </div>
                                                                                 <?= form_open('/operator/delete_data_barang_masuk/' . $br->id_barang_masuk) ?>
                                                                                 <?= csrf_field(); ?>
-                                                                                <form action="/operator/delete_data_barang_masuk/<?= $br->id_barang_masuk ?>" method="POST">
+                                                                                <form action="<?php echo base_url()?>/operator/delete_data_barang_masuk/<?= $br->id_barang_masuk ?>" method="POST">
                                                                                     <div class="modal-body">
                                                                                         <p>Apakah Anda Yakin Ingin Menghapus Data ini?</p>
                                                                                         <input type="hidden" name="_method" value="DELETE">
@@ -173,8 +173,8 @@
          function checkDelete() {
             return confirm('Anda ingin Menghapusnya?');
             }
-            let x = new RdataTB('order-listing',{
-                SelectionNumber:[5,10,20,30,40,50,100,1000]
+           let x = new DataTable('#order-listing',{
+                order: [[5, 'desc']],
             });
         });
    

@@ -7,18 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>SIPBAR LOGIN</title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="/skydash/vendors/feather/feather.css">
-  <link rel="stylesheet" href="/skydash/vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" href="/skydash/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>/skydash/vendors/feather/feather.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>/skydash/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>/skydash/vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
   <!-- Plugin css for this page -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="/skydash/css/vertical-layout-light/style.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>/skydash/css/vertical-layout-light/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="/Images/bpkp_logo.png" />
+  <link rel="shortcut icon" href="<?php echo base_url()?>/Images/bpkp_logo.png" />
 </head>
 
 <body>
@@ -29,7 +29,7 @@
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
               <div class="brand-logo">
-                <img src="/Images/bpkp_logo_edited.png" alt="logo">
+                <img src="<?php echo base_url()?>/Images/bpkp_logo_edited.png" alt="logo">
               </div>
               <h4>Selamat Datang di Web Sistem Informasi Permintaan Barang</h4>
               <h6 class="font-weight-light">Silahkan Login Menggunakan Akun Yang Anda Miliki</h6>
@@ -105,16 +105,16 @@
   </div>
   <!-- container-scroller -->
   <!-- plugins:js -->
-  <script src="/skydash/vendors/js/vendor.bundle.base.js"></script>
+  <script src="<?php echo base_url()?>/skydash/vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
   <!-- End plugin js for this page -->
   <!-- inject:js -->
-  <script src="/skydash/js/off-canvas.js"></script>
-  <script src="/skydash/js/hoverable-collapse.js"></script>
-  <script src="/skydash/js/template.js"></script>
-  <script src="/skydash/js/settings.js"></script>
-  <script src="/skydash/js/todolist.js"></script>
+  <script src="<?php echo base_url()?>/skydash/js/off-canvas.js"></script>
+  <script src="<?php echo base_url()?>/skydash/js/hoverable-collapse.js"></script>
+  <script src="<?php echo base_url()?>/skydash/js/template.js"></script>
+  <script src="<?php echo base_url()?>/skydash/js/settings.js"></script>
+  <script src="<?php echo base_url()?>/skydash/js/todolist.js"></script>
   <!-- endinject -->
 </body>
 

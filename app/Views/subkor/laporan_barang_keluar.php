@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cetak Laporan Barang</title>
-    <link rel="shortcut icon" href="/Images/bpkp_logo.png" />
+    <link rel="shortcut icon" href="<?php echo base_url()?>/Images/bpkp_logo.png" />
 </head>
 
 <body>
@@ -16,7 +16,7 @@
                 <tbody>
                     <tr>
                         <td style="width: 15%; " align="center">
-                            <img src="/Images/bpkp_logo.png" width="100%" height="60" />
+                            <img src="<?php echo base_url()?>/Images/bpkp_logo.png" width="100%" height="60" />
                         </td>
                         <td align="center">
                             <p>
@@ -35,7 +35,7 @@
             </table>
             <hr style="border: 0; border-top: 5px double #8c8c8c; margin-top: 0" />
             <meta http-equiv="content-type" content="text/html;charset=iso-8859-1" />
-            <link rel="icon" type="img/png" href="/Images/bpkp_logo.png" sizes="16x16" />
+            <link rel="icon" type="img/png" href="<?php echo base_url()?>/Images/bpkp_logo.png" sizes="16x16" />
 
             <?php
 

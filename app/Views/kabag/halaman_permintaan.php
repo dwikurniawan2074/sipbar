@@ -118,8 +118,8 @@ function tanggal_indonesia($tanggal)
 </div>
 <script language="JavaScript" type="text/javascript">
       $(document).ready(function() {
-            let x = new RdataTB('order-listing',{
-                SelectionNumber:[5,10,20,30,40,50,100,1000]
+            let x = new DataTable('#order-listing',{
+                 order: [[6, 'desc']],
             });
         });
 
