@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cetak Laporan Barang</title>
-    <link rel="shortcut icon" href="/Images/bpkp_logo.png" />
+    <link rel="shortcut icon" href="<?php echo base_url()?>/Images/bpkp_logo.png" />
 </head>
 
 <body>
@@ -70,7 +70,7 @@
                     <tbody>
                         <tr>
                             <td align="center">
-                                <font size="4"><strong>Laporan Barang Masuk</strong></font>
+                                <font size="4"><strong>Laporan Barang Keluar</strong></font>
                             </td>
                         </tr>
 
@@ -91,6 +91,9 @@
                                 <tr>
                                     <td>Dari Tanggal : <?php echo tanggal_indonesia($tglawal); ?></td>
                                     <td>Sampai Tanggal : <?php echo tanggal_indonesia($tglakhir); ?> </td>
+                                </tr>
+                                <tr>
+                                    <td>Bidang : <?php echo $bidang; ?></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -117,29 +120,37 @@
                                 <font size="-1">Nama Barang</font>
                             </td>
                             <td class="HeaderBG">
-                                <font size="-1">Stok Masuk</font>
+                                <font size="-1">Stok Keluar</font>
                             </td>
                             <td class="HeaderBG">
-                                <font size="-1">Tanggal</font>
+                                <font size="-1">Tanggal Keluar</font>
+                            </td>
+                            <td class="HeaderBG">
+                                <font size="-1">Nama</font>
+                            </td>
+                            <td class="HeaderBG">
+                                <font size="-1">Bidang</font>
                             </td>
                         </tr>
                         <?php
                         $no = 1;
                         foreach ($barang->getResult() as $key => $br) : ?>
-                            <?php $tanggalBarangMasuk = new DateTime($br->tanggal_barangMasuk); ?>
-                            <?php if (($tanggalBarangMasuk >= $tanggalawal) && ($tanggalBarangMasuk <= $tanggalakhir)) { ?>
+    
+                            <?php if (($br->tanggal_disetujui >= $tglawal) && ($br->tanggal_disetujui <= $tglakhir)) { ?>
                                 <tr valign="top" class="AlternateBG" style="font-size: 10pt">
                                     <td align="center"><?= $no ?></td>
                                     <td align="center"><?= $br->kode_barang ?></td>
                                     <td align="center"><?= $br->nama_barang ?></td>
-                                    <td align="center"><?= $br->jumlah_barangMasuk ?> <?= $br->satuan ?></td>
+                                    <td align="center"><?= $br->jumlah_disetujui ?> <?= $br->satuan ?></td>
                                     <td align="center">
-                                        <?php if ($br->tanggal_barangMasuk == '') { ?>
+                                        <?php if ($br->tanggal_disetujui == '') { ?>
                                             &nbsp;
                                         <?php } else { ?>
-                                            <?php echo tanggal_indonesia($br->tanggal_barangMasuk); ?>
+                                            <?php echo tanggal_indonesia($br->tanggal_disetujui); ?>
                                         <?php } ?>
                                     </td>
+                                    <td align="center"><?= $br->nama_pegawai ?></td>
+                                    <td align="center"><?= $br->nama_bidang ?></td>
                                 </tr>
                         <?php $no++;
                             }

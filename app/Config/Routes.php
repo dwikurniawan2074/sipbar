@@ -79,7 +79,9 @@ $routes->post('/subkor/setuju_permintaan/(:num)', 'SubkorController::Setuju_perm
 $routes->post('/subkor/tolak_permintaan/(:num)', 'SubkorController::Tolak_permintaan/$1');
 $routes->get('/subkor/halaman_data_stok_barang', 'SubkorController::halaman_stok_barang');
 $routes->get('/subkor/halaman_stok_barang_masuk', 'SubkorController::halaman_stok_barangMasuk');
-
+$routes->get('/subkor/halaman_data_barang_keluar', 'SubkorController::halaman_data_barang_keluar');
+$routes->get('/subkor/halaman_cetak_barang_keluar', 'SubkorController::halaman_cetak_barang_keluar');
+$routes->post('/subkor/laporan_barang_keluar', 'SubkorController::laporan_barang_keluar');
 // Routes Operator Persediaan
 $routes->get('operator/', 'OperatorController::halaman_operator');
 $routes->get('/operator/halaman_operator', 'OperatorController::halaman_operator');
@@ -103,6 +105,10 @@ $routes->post('/operator/laporan_barang_masuk', 'OperatorController::laporan_bar
 //Routes Hide Import CSV
 $routes->get('/operator/hide_import_CSV','OperatorController::import');
 $routes->post('/operator/save_hide_import_CSV','OperatorController::import');
+// Routes Barang Keluar
+$routes->get('/operator/halaman_data_barang_keluar', 'OperatorController::halaman_data_barang_keluar');
+$routes->get('/operator/halaman_cetak_barang_keluar', 'OperatorController::halaman_cetak_barang_keluar');
+$routes->post('/operator/laporan_barang_keluar', 'OperatorController::laporan_barang_keluar');
 
 
 // Routes Kabag
@@ -111,7 +117,7 @@ $routes->get('/kabag/halaman_kabag', 'KabagController::halaman_kabag');
 $routes->get('/kabag/halaman_permintaan', 'KabagController::halaman_permintaan');
 $routes->get('/kabag/halaman_data_stok_barang', 'KabagController::halaman_stok_barang');
 $routes->get('/kabag/halaman_stok_barang_masuk', 'KabagController::halaman_stok_barangMasuk');
-
+$routes->get('/kabag/halaman_data_barang_keluar', 'KabagController::halaman_data_barang_keluar');
 //Routes API
 $routes->resource('api/home', ['controller' => 'Api\Home']);
 /*

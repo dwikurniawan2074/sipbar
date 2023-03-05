@@ -1,78 +1,6 @@
 <?= $this->extend('template/dashboard_user'); ?>
 
 <?= $this->section('content'); ?>
-
-<!-- <div class="content-wrapper">
-    <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">Data Akun</h4>
-            <div class="row">
-                <div class="col-12">
-                    <div class="table-responsive">
-                        <div class="order-listing_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                            <div class="row">
-                                <div class="col-sm-12 col-md-6">
-                                    <div class="dataTables_length" id="order-listing_length">
-                                        <label>Show <select name="order-listing_length" aria-controls="order-listing" class="custom-select custom-select-sm form-control">
-                                                <option value="5">5</option>
-                                                <option value="10">10</option>
-                                                <option value="15">15</option>
-                                                <option value="-1">All</option>
-                                            </select> entries
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-6">
-                                    <div id="order-listing_filter" class="dataTables_filter">
-                                        <label><input type="search" class="form-control" placeholder="Search" aria-controls="order-listing"></label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
-                                        <thead>
-                                            <tr role="row">
-                                                <th>
-                                                    #
-                                                </th>
-                                                <th>
-                                                    NIP
-                                                </th>
-                                                <th>
-                                                    Nama Pegawai
-                                                </th>
-                                                <th>
-                                                    Pangkat Golongan
-                                                </th>
-                                                <th>
-                                                    Bidang
-                                                </th>
-                                                <th>
-                                                    Jabatan
-                                                </th>
-                                                <th>
-                                                    Role Sistem
-                                                </th>
-                                                <th>
-                                                    Actions
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                           
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-
 <div class="content-wrapper">
     <div class="card">
         <div class="card-body">
@@ -84,7 +12,7 @@
                            
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
+                                    <table id="order-listing" class="table table-bordered" role="grid" aria-describedby="order-listing_info">
                                         <thead>
                                             <tr role="row">
                                                 <th>No.</th>
@@ -125,7 +53,7 @@
                                                     <td class="sorting_1">
                                                         <div class="container-fluid" style="display: flex;">
                                                             <!-- button edit barang -->
-                                                            <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#staticBackdrop<?= $peg['nip'] ?>" style="height: 30px"><i class="ti-pencil-alt"></i></button>
+                                                            <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#staticBackdrop<?= $peg['nip'] ?>" style="height: 40px"><i class="ti-pencil-alt"></i></button>
                                                             <!-- modal -->
                                                             <div class="modal fade bd-example-modal-xl" id="staticBackdrop<?= $peg['nip'] ?>" tabindex="-1" aria-labelledby="myLargeModalLabel" role="dialog">
                                                                 <div class="modal-dialog modal-xl">
@@ -189,7 +117,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteAkun<?= $peg['nip'] ?>" style="height: 30px"><i class="ti-trash"></i></button>
+                                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteAkun<?= $peg['nip'] ?>" style="height: 40px"><i class="ti-trash"></i></button>
                                                                     <div class="modal fade" id="DeleteAkun<?= $peg['nip'] ?>">
                                                                         <div class="modal-dialog">
                                                                             <div class="modal-content">
@@ -200,7 +128,7 @@
                                                                                 </div>
                                                                                 <?= form_open('/admin/hapus_akun/' . $peg['nip']) ?>
                                                                                 <?= csrf_field(); ?>
-                                                                                <form action="/admin/hapus_akun/<?= $peg['nip'] ?>" method="POST">
+                                                                                <form action="<?php echo base_url()?>/admin/hapus_akun/<?= $peg['nip'] ?>" method="POST">
                                                                                     <div class="modal-body">
                                                                                         <p>Apakah Anda Yakin Ingin Menghapus Akun ini?</p>
                                                                                         <input type="hidden" name="_method" value="DELETE">
@@ -235,4 +163,11 @@
         </div>
     </div>
 </div>
+<script language="JavaScript" type="text/javascript">
+      $(document).ready(function() {
+             let x = new DataTable('#order-listing',{
+             });
+        });
+
+</script>
 <?= $this->endSection(); ?>

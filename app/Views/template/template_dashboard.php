@@ -14,21 +14,23 @@
 
     <title>SIPBAR</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="/skydash/vendors/feather/feather.css">
-    <link rel="stylesheet" href="/skydash/vendors/ti-icons/css/themify-icons.css">
-    <link rel="stylesheet" href="/skydash/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="<?php echo base_url()?>/skydash/vendors/feather/feather.css">
+    <link rel="stylesheet" href="<?php echo base_url()?>/skydash/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="<?php echo base_url()?>/skydash/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="/skydash/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-    <link rel="stylesheet" href="/skydash/vendors/ti-icons/css/themify-icons.css">
-    <link rel="stylesheet" type="text/css" href="/skydash/js/select.dataTables.min.css">
-    <link rel="stylesheet" href="/skydash/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="<?php echo base_url()?>/skydash/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="<?php echo base_url()?>/skydash/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>/skydash/js/select.dataTables.min.css">
+    <link rel="stylesheet" href="<?php echo base_url()?>/skydash/vendors/mdi/css/materialdesignicons.min.css">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="/skydash/css/vertical-layout-light/style.css">
+    <link rel="stylesheet" href="<?php echo base_url()?>/skydash/css/vertical-layout-light/style.css">
     <!-- endinject -->
-    <link rel="shortcut icon" href="/Images/bpkp_logo.png" />
+    <link rel="shortcut icon" href="<?php echo base_url()?>/Images/bpkp_logo.png" />
 
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -36,8 +38,8 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo mr-5" href="/"><img src="/Images/bpkp_logo_edited.png" class="mr-2" alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="/"><img src="/Images/bpkp_logo.png" alt="logo" /></a>
+                <a class="navbar-brand brand-logo mr-5" href="/"><img src="<?php echo base_url()?>/Images/bpkp_logo_edited.png" class="mr-2" alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="/"><img src="<?php echo base_url()?>/Images/bpkp_logo.png" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -185,7 +187,7 @@
                         </div>
                         <ul class="chat-list">
                             <li class="list active">
-                                <div class="profile"><img src="/skydash/images/faces/face1.jpg" alt="image"><span class="online"></span></div>
+                                <div class="profile"><img src="<?php echo base_url()?>/skydash/images/faces/face1.jpg" alt="image"><span class="online"></span></div>
                                 <div class="info">
                                     <p>Thomas Douglas</p>
                                     <p>Available</p>
@@ -193,7 +195,7 @@
                                 <small class="text-muted my-auto">19 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="/skydash/images/faces/face2.jpg" alt="image"><span class="offline"></span></div>
+                                <div class="profile"><img src="<?php echo base_url()?>/skydash/images/faces/face2.jpg" alt="image"><span class="offline"></span></div>
                                 <div class="info">
                                     <div class="wrapper d-flex">
                                         <p>Catherine</p>
@@ -204,7 +206,7 @@
                                 <small class="text-muted my-auto">23 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="/skydash/images/faces/face3.jpg" alt="image"><span class="online"></span></div>
+                                <div class="profile"><img src="<?php echo base_url()?>/skydash/images/faces/face3.jpg" alt="image"><span class="online"></span></div>
                                 <div class="info">
                                     <p>Daniel Russell</p>
                                     <p>Available</p>
@@ -212,7 +214,7 @@
                                 <small class="text-muted my-auto">14 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="/skydash/images/faces/face4.jpg" alt="image"><span class="offline"></span></div>
+                                <div class="profile"><img src="<?php echo base_url()?>/skydash/images/faces/face4.jpg" alt="image"><span class="offline"></span></div>
                                 <div class="info">
                                     <p>James Richardson</p>
                                     <p>Away</p>
@@ -220,7 +222,7 @@
                                 <small class="text-muted my-auto">2 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="/skydash/images/faces/face5.jpg" alt="image"><span class="online"></span></div>
+                                <div class="profile"><img src="<?php echo base_url()?>/skydash/images/faces/face5.jpg" alt="image"><span class="online"></span></div>
                                 <div class="info">
                                     <p>Madeline Kennedy</p>
                                     <p>Available</p>
@@ -228,7 +230,7 @@
                                 <small class="text-muted my-auto">5 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="/skydash/images/faces/face6.jpg" alt="image"><span class="online"></span></div>
+                                <div class="profile"><img src="<?php echo base_url()?>/skydash/images/faces/face6.jpg" alt="image"><span class="online"></span></div>
                                 <div class="info">
                                     <p>Sarah Graves</p>
                                     <p>Available</p>
@@ -357,10 +359,10 @@
                 <footer class="footer">
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
                         <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023. </span>
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Universitas Lampung Intern Project</span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"></span>
                     </div>
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="https://www.bpkp.go.id/lampung/konten/102/Struktur-Organisasi.bpkp" target="_blank">Badan Pengawasan Keuangan dan Pembangunan Perwakilan Lampung</a></span>
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block"><a href="https://www.bpkp.go.id/lampung/konten/102/Struktur-Organisasi.bpkp" target="_blank">Badan Pengawasan Keuangan dan Pembangunan Perwakilan Lampung</a></span>
                     </div>
                 </footer>
             </div>
@@ -372,27 +374,28 @@
     <!-- container-scroller -->
 
     <!-- plugins:js -->
-    <script src="/skydash/vendors/js/vendor.bundle.base.js"></script>
+    <script src="<?php echo base_url()?>/skydash/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
-    <script src="/skydash/vendors/chart.js/Chart.min.js"></script>
-    <script src="/skydash/vendors/datatables.net/jquery.dataTables.js"></script>
-    <script src="/skydash/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-    <script src="/skydash/js/dataTables.select.min.js"></script>
+    <script src="<?php echo base_url()?>/skydash/vendors/chart.js/Chart.min.js"></script>
+    <script src="<?php echo base_url()?>/skydash/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="<?php echo base_url()?>/skydash/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="<?php echo base_url()?>/skydash/js/dataTables.select.min.js"></script>
 
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="/skydash/js/off-canvas.js"></script>
-    <script src="/skydash/js/hoverable-collapse.js"></script>
-    <script src="/skydash/js/template.js"></script>
-    <script src="/skydash/js/settings.js"></script>
-    <script src="/skydash/js/todolist.js"></script>
+    <script src="<?php echo base_url()?>/skydash/js/off-canvas.js"></script>
+    <script src="<?php echo base_url()?>/skydash/js/hoverable-collapse.js"></script>
+    <script src="<?php echo base_url()?>/skydash/js/template.js"></script>
+    <script src="<?php echo base_url()?>/skydash/js/settings.js"></script>
+    <script src="<?php echo base_url()?>/skydash/js/todolist.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page-->
-    <script src="/skydash/js/dashboard.js"></script>
-    <script src="/skydash/js/Chart.roundedBarCharts.js"></script>
-
-    <!-- End custom js for this page-->
+    <script src="<?php echo base_url()?>/skydash/js/dashboard.js"></script>
+    <script src="<?php echo base_url()?>/skydash/js/Chart.roundedBarCharts.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+   <!-- End custom js for this page-->
 </body>
 
 </html>

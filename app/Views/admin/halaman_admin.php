@@ -16,7 +16,7 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card tale-bg">
                 <div class="card-people mt-auto">
-                    <img src="/skydash/images/dashboard/people.svg" height="300" alt="people">
+                    <img src="<?php echo base_url()?>/skydash/images/dashboard/people.svg" height="300" alt="people">
                     <div class="weather-info">
                         <div class="d-flex">
                             <div>
@@ -36,7 +36,7 @@
     <div class="row">
         <div class="col-md-8 grid-margin transparent">
             <div class="row">
-                <div class="col-md-6 mb-4 stretch-card transparent" style="cursor: pointer;" onclick="location.href='/admin/data_akun'">
+                <div class="col-md-6 mb-4 stretch-card transparent" style="cursor: pointer;" onclick="location.href='<?php echo base_url()?>/admin/data_akun'">
                     <div class="card card-tale">
                         <div class="card-body">
                             <p class="mb-4">&nbsp;</p>
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 mb-4 stretch-card transparent" style="cursor: pointer;" onclick="location.href='/admin/input_data'">
+                <div class="col-md-6 mb-4 stretch-card transparent" style="cursor: pointer;" onclick="location.href='<?php echo base_url()?>/admin/input_data'">
                     <div class="card card-dark-blue">
                         <div class="card-body">
                             <p class="mb-4">&nbsp;</p>
@@ -59,7 +59,7 @@
         </div>
         <div class="col-md-4 grid-margin transparent">
             <div class="row">
-                <div class="col-md-12 mb-4 stretch-card transparent" style="cursor: pointer;" onclick="location.href='/admin/data_jabatan'">
+                <div class="col-md-12 mb-4 stretch-card transparent" style="cursor: pointer;" onclick="location.href='<?php echo base_url()?>/admin/data_jabatan'">
                     <div class="card card-light-danger">
                         <div class="card-body">
                             <p class="mb-4">&nbsp;</p>

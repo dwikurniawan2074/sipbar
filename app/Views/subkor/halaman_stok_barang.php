@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Data Stok Barang</h4>
                     <div class="table-responsive pt-3">
-                        <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
+                        <table id="order-listing" class="table table-bordered" role="grid" aria-describedby="order-listing_info">
                             <thead>
                                 <tr role="row">
                                     <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1">
@@ -66,4 +66,13 @@
         </div>
     </div>
 </div>
+<script language="JavaScript" type="text/javascript">
+      $(document).ready(function() {
+             let x = new DataTable('#order-listing',{
+                order: [[4, 'asc']],
+            });
+
+        });
+
+</script>
 <?= $this->endSection(); ?>

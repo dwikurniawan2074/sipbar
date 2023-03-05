@@ -17,7 +17,7 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card tale-bg">
                 <div class="card-people mt-auto">
-                    <img src="/skydash/images/dashboard/people.svg" height="300" alt="people">
+                    <img src="<?php echo base_url()?>/skydash/images/dashboard/people.svg" height="300" alt="people">
                     <div class="weather-info">
                         <div class="d-flex">
                             <div>
@@ -37,7 +37,7 @@
     <div class="row">
         <div class="col-md-12 grid-margin transparent" style="margin-bottom: 20px;">
             <div class="row">
-                <div class="col-md-4 mb-0 stretch-card transparent" style="cursor: pointer;" onclick="location.href='/pegawai/halaman_stok_barang'">
+                <div class="col-md-4 mb-0 stretch-card transparent" style="cursor: pointer;" onclick="location.href='<?php echo base_url()?>/pegawai/halaman_stok_barang'">
                     <div class="card card-tale">
                         <div class="card-body">
                             <p class="mb-4">&nbsp;</p>
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-0 stretch-card transparent" style="cursor: pointer;" onclick="location.href='/pegawai/halaman_input_permintaan'">
+                <div class="col-md-4 mb-0 stretch-card transparent" style="cursor: pointer;" onclick="location.href='<?php echo base_url()?>/pegawai/halaman_input_permintaan'">
                     <div class="card card-dark-blue">
                         <div class="card-body">
                             <p class="mb-4">&nbsp;</p>
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-0 stretch-card transparent" style="cursor: pointer;" onclick="location.href='/pegawai/halaman_permintaan'">
+                <div class="col-md-4 mb-0 stretch-card transparent" style="cursor: pointer;" onclick="location.href='<?php echo base_url()?>/pegawai/halaman_permintaan'">
                     <div class="card card-light-danger">
                         <div class="card-body">
                             <p class="mb-4">&nbsp;</p>

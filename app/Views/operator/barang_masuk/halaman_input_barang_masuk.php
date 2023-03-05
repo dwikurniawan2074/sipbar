@@ -1,6 +1,20 @@
-<?= $this->extend('template/dashboard_user'); ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<?= $this->extend('template/dashboard_user'); ?>   
+
 <?= $this->section('content'); ?>
+<style type="text/css">
+    .select2-selection__rendered {
+        line-height: 25px !important;
+        margin-left:-10px;
+        margin-top:-5px;
+        padding-left:0px;
+    }
+    .select2-container .select2-selection--single {
+        height: 50px !important;
+    }
+    .select2-selection__arrow {
+        height: 34px !important;
+    }
+</style>
 <div class="content-wrapper">
     <div class="row">
         <div class="col-12 grid-margin stretch-card">
@@ -19,8 +33,8 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputName1">Nama Barang</label>
-                            <select class="form-control" id="nama_barang" name="nama_barang" required>
-                                <option value="" disabled selected>--Pilih Kode Barang--</option>
+                            <select class="form-control select2-nama_barang" id="nama_barang" name="nama_barang" style="width:100%;"required>
+                                <option value="" disable selected> Pilih Barang </option>
                                 <?php foreach ($data_barang as $value) : ?>
                                     <option value="<?=$value['id']; ?>"><?= $value['nama_barang']; ?></option>
                                 <?php endforeach ?>
@@ -51,7 +65,10 @@
     </div>
 </div>
 <script>
-    $('#nama_barang').change(function (e) { 
+    $(document).ready(function() {
+           $('.select2-nama_barang').select2();
+
+     $('#nama_barang').change(function (e) { 
         e.preventDefault();
         var id= $(this).val();
         var barang = <?php echo json_encode($data_barang); ?>;
@@ -89,6 +106,7 @@
                 $('#stok_barang').val(name);
             }
         }
+    });
     });
 </script>
 <?= $this->endSection(); ?>
