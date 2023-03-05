@@ -56,13 +56,13 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="DeleteLabel">HReset Opname Data Barang</h1>
+                                                            <h5 class="modal-title" id="DeleteLabel">Reset Opname Data Barang</h1>
                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span></button>
                                                         </div>
                                                         <?= form_open('/operator/reset_opname') ?>
                                                         <?= csrf_field(); ?>
-                                                        <form action="/operator/reset_opname" method="POST">
+                                                        <form action="<?php echo base_url()?>/operator/reset_opname" method="POST">
                                                             <div class="modal-body">
                                                                 <p>Apakah Anda Yakin Ingin Mereset Data ini?</p>
                                                             </div>
@@ -78,8 +78,9 @@
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <div class="table-responsive">
                                         <div class="col-sm-12">
-                                            <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
+                                            <table id="order-listing" class="table table-bordered" role="grid" aria-describedby="order-listing_info">
                                                 <thead>
                                                     <tr role="row">
                                                         <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1">No.</th>
@@ -87,7 +88,7 @@
                                                         <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1">Nama Barang</th>
                                                         <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1">Satuan</th>
                                                         <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1">Stok Awal</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1">Stok Menjadi</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1">Stok Saat Ini</th>
                                                         <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1">Tanggal</th>
                                                         <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-sort="descending">Status</th>
                                                         <th class="sorting_desc" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-sort="descending" style="width: 126.016px;">Actions</th>
@@ -95,7 +96,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                    $no = 1 + (10 * ($currentPage - 1));
+                                                    $no = 1;
                                                     foreach ($barang as $br) : ?>
                                                         <tr>
                                                             <td><?= $no ?></td>
@@ -119,7 +120,7 @@
                                                             </td>
                                                             <td class="sorting_1">
                                                                 <div class="container-fluid" style="display: flex;">
-                                                                    <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#staticBackdrop<?= $br['id'] ?>" style="height: 30px"><i class="ti-pencil-alt"></i></button>
+                                                                    <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#staticBackdrop<?= $br['id'] ?>" style="height: 40px"><i class="ti-pencil-alt"></i></button>
                                                                     <div class="modal fade bd-example-modal-xl" id="staticBackdrop<?= $br['id'] ?>" tabindex="-1" aria-labelledby="myLargeModalLabel" role="dialog">
                                                                         <div class="modal-dialog modal-xl">
                                                                             <div class="modal-content">
@@ -130,7 +131,7 @@
                                                                                 </div>
                                                                                 <?= form_open('/operator/update_data_barang/' . $br['id']) ?>
                                                                                 <?= csrf_field(); ?>
-                                                                                <form action="/operator/update_data_barang/<?= $br['id'] ?>" method="POST" enctype="multipart/form-data">
+                                                                                <form action="<?php echo base_url()?>/operator/update_data_barang/<?= $br['id'] ?>" method="POST" enctype="multipart/form-data">
                                                                                     <div class="modal-body">
                                                                                         <div class="form-group">
                                                                                             <label for="exampleInputName1">Kode Barang</label>
@@ -170,10 +171,9 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                        </div>
                                     </div>
-                                   
-                                        <?= $pager->links('data_barang','pager_sistem');?>
-                                        
+                 
                                 </div>
                             </div>
                         </div>
@@ -184,8 +184,14 @@
     </div>
 </div>
 <script language="JavaScript" type="text/javascript">
-    function checkReset() {
-        return confirm('Anda ingin Meresetnya?');
-    }
+      $(document).ready(function() {
+            function checkReset() {
+                return confirm('Anda ingin Meresetnya?');
+            }
+            let x = new DataTable('#order-listing',{
+              
+            });
+        });
+
 </script>
 <?= $this->endSection(); ?>

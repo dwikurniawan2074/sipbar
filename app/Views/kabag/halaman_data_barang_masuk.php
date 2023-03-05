@@ -42,7 +42,7 @@ function tanggal_indonesia($tanggal)
 
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
+                                            <table id="order-listing" class="table table-bordered" role="grid" aria-describedby="order-listing_info">
                                                 <thead>
                                                     <tr role="row">
                                                         <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1">No.</th>
@@ -55,21 +55,21 @@ function tanggal_indonesia($tanggal)
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                     $no = 1 + (10 * ($currentPage - 1));
-                                                    foreach ($barang as $brg) : ?>
+                                                    $no = 1;
+                                                    foreach ($barang->getResult() as $key => $br) : ?>
                                                         <tr>
                                                             <td><?= $no ?></td>
-                                                            <td><?= $brg['kode_barang'] ?></td>
-                                                            <td><?= $brg['nama_barang'] ?></td>
-                                                            <td><?= $brg['satuan'] ?></td>
-                                                            <td><?= $brg['jumlah_barangMasuk'] ?></td>
+                                                            <td><?= $br->kode_barang ?></td>
+                                                            <td><?= $br->nama_barang ?></td>
+                                                            <td><?= $br->satuan ?></td>
+                                                            <td><?= $br->jumlah_barangMasuk ?></td>
                                                             <td>
                                                                 <?php if (
-                                                                    $brg['tanggal_barangMasuk'] == null
+                                                                    $br->tanggal_barangMasuk == null
                                                                 ) { ?>
                                                                     -
                                                                 <?php } else { ?>
-                                                                    <?php echo tanggal_indonesia($brg['tanggal_barangMasuk']) ?>
+                                                                    <?php echo tanggal_indonesia($br->tanggal_barangMasuk) ?>
                                                                 <?php } ?>
                                                             </td>
                                                         </tr>
@@ -80,7 +80,6 @@ function tanggal_indonesia($tanggal)
                                             </table>
                                         </div>
                                     </div>
-                                    <?= $pager->links('data_barang_masuk','pager_sistem');?>
                                 </div>
                             </div>
                         </div>
@@ -91,8 +90,14 @@ function tanggal_indonesia($tanggal)
     </div>
 </div>
 <script language="JavaScript" type="text/javascript">
-    function checkDelete() {
-        return confirm('Anda ingin Menghapusnya?');
-    }
+      $(document).ready(function() {
+            function checkDelete() {
+                return confirm('Anda ingin Menghapusnya?');
+            }
+            let x = new DataTable('#order-listing',{
+            });
+        });
+
 </script>
+
 <?= $this->endSection(); ?>
