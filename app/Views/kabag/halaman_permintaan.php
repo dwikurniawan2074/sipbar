@@ -55,45 +55,45 @@ function tanggal_indonesia($tanggal)
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $no = 1 + (10 * ($currentPage - 1));
-                                            foreach ($permintaan as $pr) : ?>
+                                            $no = 1;
+                                            foreach ($permintaan->getResult() as $key => $pr) : ?>
                                                 <tr>
                                                     <td><?= $no ?></td>
-                                                    <td><?= $pr['nama_pegawai'] ?></td>
-                                                    <td><?= $pr['nama_bidang'] ?></td>
-                                                    <td><?= $pr['nama_barang'] ?></td>
-                                                    <td><?= $pr['jumlah_permintaan'] ?> <?= $pr['satuan']  ?></td>
-                                                    <td><?= $pr['keterangan']  ?></td>
-                                                    <td><?php echo tanggal_indonesia($pr['tanggal_permintaan']) ?></td>
+                                                    <td><?= $pr->nama_pegawai ?></td>
+                                                    <td><?= $pr->nama_bidang ?></td>
+                                                    <td><?= $pr->nama_barang ?></td>
+                                                    <td><?= $pr->jumlah_permintaan ?> <?= $pr->satuan  ?></td>
+                                                    <td><?= $pr->keterangan  ?></td>
+                                                    <td><?php echo tanggal_indonesia($pr->tanggal_permintaan) ?></td>
                                                     <td>
                                                         <?php if (
-                                                            $pr['jumlah_disetujui']  == null
+                                                            $pr->jumlah_disetujui  == null
                                                         ) { ?>
                                                             -
                                                         <?php } else { ?>
-                                                            <?= $pr['jumlah_disetujui']  ?>
+                                                            <?= $pr->jumlah_disetujui  ?>
                                                         <?php } ?>
                                                     </td>
                                                     <td>
                                                         <?php if (
-                                                            $pr['tanggal_disetujui'] == null
+                                                            $pr->tanggal_disetujui == null
                                                         ) { ?>
                                                             -
                                                         <?php } else { ?>
-                                                            <?php echo tanggal_indonesia($pr['tanggal_disetujui']) ?>
+                                                            <?php echo tanggal_indonesia($pr->tanggal_disetujui) ?>
                                                         <?php } ?>
                                                     </td>
                                                     <td>
                                                         <?php if (
-                                                            $pr['status'] == '0'
+                                                            $pr->status == '0'
                                                         ) { ?>
                                                             <label class="badge badge-danger">Tidak di Setujui</label>
                                                         <?php } else if (
-                                                            $pr['status'] == '1'
+                                                            $pr->status == '1'
                                                         ) { ?>
                                                             <label class="badge badge-info">On Proses</label>
                                                         <?php } elseif (
-                                                            $pr['status'] == '2'
+                                                            $pr->status == '2'
                                                         ) { ?>
                                                             <label class="badge badge-success">di Setujui</label>
 
@@ -108,7 +108,7 @@ function tanggal_indonesia($tanggal)
                                     </table>
                                 </div>
                             </div>
-                            <?= $pager->links('barang_permintaan','pager_sistem');?>
+
                         </div>
                     </div>
                 </div>
