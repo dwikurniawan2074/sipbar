@@ -47,7 +47,7 @@
 
                                             </div>
                                         </div>
-                                        <div class="col-sm-12 col-md-2" href="">
+                                        <div class="col-sm-12 col-md-2 mb-3" href="">
                                             <button class="btn btn-danger btn-icon-text" data-toggle="modal" data-target="#Reset">
                                                 <i class="ti-trash btn-icon"></i>
                                                 Reset Opname
