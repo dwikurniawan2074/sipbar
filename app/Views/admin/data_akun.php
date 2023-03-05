@@ -98,7 +98,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php $no = 1; ?>
+                                            <?php $no = 1 + (10 * ($currentPage - 1)); ?>
                                             <?php foreach ($pegawai as $peg) : ?>
                                                 <tr>
                                                     <td>
@@ -224,6 +224,9 @@
                                     </table>
                                 </div>
                             </div>
+                            
+                                <?= $pager->links('pegawai','pager_sistem');?>
+                               
                             
                         </div>
                     </div>

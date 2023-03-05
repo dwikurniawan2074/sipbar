@@ -55,21 +55,21 @@ function tanggal_indonesia($tanggal)
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                    $no = 1;
-                                                    foreach ($barang->getResult() as $key => $br) : ?>
+                                                     $no = 1 + (10 * ($currentPage - 1));
+                                                    foreach ($barang as $brg) : ?>
                                                         <tr>
                                                             <td><?= $no ?></td>
-                                                            <td><?= $br->kode_barang ?></td>
-                                                            <td><?= $br->nama_barang ?></td>
-                                                            <td><?= $br->satuan ?></td>
-                                                            <td><?= $br->jumlah_barangMasuk ?></td>
+                                                            <td><?= $brg['kode_barang'] ?></td>
+                                                            <td><?= $brg['nama_barang'] ?></td>
+                                                            <td><?= $brg['satuan'] ?></td>
+                                                            <td><?= $brg['jumlah_barangMasuk'] ?></td>
                                                             <td>
                                                                 <?php if (
-                                                                    $br->tanggal_barangMasuk == null
+                                                                    $brg['tanggal_barangMasuk'] == null
                                                                 ) { ?>
                                                                     -
                                                                 <?php } else { ?>
-                                                                    <?php echo tanggal_indonesia($br->tanggal_barangMasuk) ?>
+                                                                    <?php echo tanggal_indonesia($brg['tanggal_barangMasuk']) ?>
                                                                 <?php } ?>
                                                             </td>
                                                         </tr>
@@ -80,20 +80,7 @@ function tanggal_indonesia($tanggal)
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-5">
-                                            <div class="dataTables_info" id="order-listing_info" role="status" aria-live="polite"></div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-7">
-                                            <div class="dataTables_paginate paging_simple_numbers" id="order-listing_paginate">
-                                                <ul class="pagination">
-                                                    <!-- <li class="paginate_button page-item previous disabled" id="order-listing_previous"><a href="#" aria-controls="order-listing" data-dt-idx="0" tabindex="0" class="page-link"></a></li>
-                                                <li class="paginate_button page-item active"><a href="#" aria-controls="order-listing" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                                                <li class="paginate_button page-item next disabled" id="order-listing_next"><a href="#" aria-controls="order-listing" data-dt-idx="2" tabindex="0" class="page-link">Next</a></li> -->
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <?= $pager->links('data_barang_masuk','pager_sistem');?>
                                 </div>
                             </div>
                         </div>
