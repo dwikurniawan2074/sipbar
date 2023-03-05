@@ -85,15 +85,15 @@ function tanggal_indonesia($tanggal)
                                                     </td>
                                                     <td>
                                                         <?php if (
-                                                            $pr['status' == '0']
+                                                            $pr['status'] == '0'
                                                         ) { ?>
                                                             <label class="badge badge-danger">Tidak di Setujui</label>
                                                         <?php } else if (
-                                                            $pr['status' == '1']
+                                                            $pr['status'] == '1'
                                                         ) { ?>
                                                             <label class="badge badge-info">On Proses</label>
                                                         <?php } elseif (
-                                                            $pr['status' == '2']
+                                                            $pr['status'] == '2'
                                                         ) { ?>
                                                             <label class="badge badge-success">di Setujui</label>
 
