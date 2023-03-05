@@ -30,7 +30,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    $no = 1;
+                                    $no = 1 + (10 * ($currentPage - 1));
                                     foreach ($barang as $br) : 
                                 ?>
                                 <tr>
@@ -47,7 +47,7 @@
                                         <?= $br['satuan'] ?>
                                     </td>
                                     <td>
-                                        <?php if ( $br['stok_menjadi'] > 0 ){  ?>   
+                                    <?php if ( $br['stok_menjadi'] > 0 ){  ?>   
                                         <?= $br['stok_menjadi'] ?>
                                         <?php } else if ($br['stok_menjadi'] == 0 ){?>
                                          Stok Kosong
@@ -61,6 +61,7 @@
                         </table>
                     </div>
                 </div>
+                <?= $pager->links('data_barang','pager_sistem');?>
             </div>
         </div>
     </div>
