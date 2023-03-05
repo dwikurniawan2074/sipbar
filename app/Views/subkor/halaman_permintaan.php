@@ -65,17 +65,11 @@ function tanggal_indonesia($tanggal)
                                                     <td><?= $pr['jumlah_permintaan'] ?> <?= $pr['satuan'] ?></td>
                                                     <td><?= $pr['keterangan']  ?></td>
                                                     <td>
-                                                        <?php if (
-                                                            $pr['tanggal_permintaan'] == null
-                                                        ) { ?>
-                                                            -
-                                                        <?php } else { ?>
-                                                            <?php echo tanggal_indonesia($pr['tanggal_permintaan']) ?>
-                                                        <?php } ?>
+                                                        <?php echo tanggal_indonesia($pr['tanggal_permintaan']) ?>
                                                     </td>
                                                     <td>
                                                         <?php if (
-                                                            $pr['jumlah_disetujui'  == null]
+                                                            $pr['jumlah_disetujui'] == null
                                                         ) { ?>
                                                             -
                                                         <?php } else { ?>
@@ -84,7 +78,7 @@ function tanggal_indonesia($tanggal)
                                                     </td>
                                                     <td>
                                                         <?php if (
-                                                            $pr['tanggal_disetujui' == null]
+                                                            $pr['tanggal_disetujui'] == null
                                                         ) { ?>
                                                             -
                                                         <?php } else { ?>
@@ -93,15 +87,15 @@ function tanggal_indonesia($tanggal)
                                                     </td>
                                                     <td>
                                                         <?php if (
-                                                            $pr['status' == '0']
+                                                            $pr['status'] == '0'
                                                         ) { ?>
                                                             <label class="badge badge-danger">Tidak di Setujui</label>
                                                         <?php } else if (
-                                                            $pr['status' == '1']
+                                                            $pr['status'] == '1'
                                                         ) { ?>
                                                             <label class="badge badge-info">On Proses</label>
                                                         <?php } elseif (
-                                                            $pr['status' == '2']
+                                                            $pr['status'] == '2'
                                                         ) { ?>
                                                             <label class="badge badge-success">di Setujui</label>
 
@@ -110,7 +104,7 @@ function tanggal_indonesia($tanggal)
                                                     </td>
                                                     <td class="sorting_1">
                                                         <div class="container-fluid" style="display: flex;">
-                                                            <?php if ($pr['status' == "0"]) { ?>
+                                                            <?php if ($pr['status'] == "0") { ?>
                                                                 <a class="disabled btn btn-warning mr-2" href="/keluar/edit/<?= $pr['id'] ?>" style="height: 30px"><i class="ti-pencil-alt"></i></a>
                                                                 <form action="/pegawai/delete_permintaan/<?= $pr['id'] ?>" method="post">
                                                                     <input type="hidden" name="_method" value="DELETE">
@@ -120,7 +114,7 @@ function tanggal_indonesia($tanggal)
                                                                     <input type="hidden" name="_method" value="DELETE">
                                                                     <button type="submit" class="btn btn-danger" style="height: 30px" disabled><i class="ti-close"></i></button>
                                                                 </form>
-                                                            <?php } else if ($pr['status' == "1"]) { ?>
+                                                            <?php } else if ($pr['status'] == "1") { ?>
                                                                 <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#staticBackdrop<?= $pr['id'] ?>" style="height: 30px"><i class="ti-pencil-alt"></i></button>
                                                                 <div class="modal fade bd-example-modal-xl" id="staticBackdrop<?= $pr['id'] ?>" tabindex="-1" aria-labelledby="myLargeModalLabel" role="dialog">
                                                                     <div class="modal-dialog modal-xl">
@@ -215,7 +209,7 @@ function tanggal_indonesia($tanggal)
                                                                 </div>
                                                                 </form>
                                                                 <?= form_close(); ?>
-                                                            <?php } else if ($pr['status' == "2"]) { ?>
+                                                            <?php } else if ($pr['status'] == "2") { ?>
                                                                 <a class="disabled btn btn-warning mr-2" href="/keluar/edit/<?= $pr['id'] ?>" style="height: 30px"><i class="ti-pencil-alt"></i></a>
                                                                 <form action="/pegawai/delete_permintaan/<?= $pr['id'] ?>" method="post">
                                                                     <input type="hidden" name="_method" value="DELETE">
