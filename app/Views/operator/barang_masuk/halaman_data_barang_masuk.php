@@ -41,7 +41,7 @@
                     <h4 class="card-title">Data Barang Masuk</h4>
                     <div class="row">
                         <div class="col-10"></div>
-                        <div class="col-2">
+                        <div class="col-2 mb-3">
                             <a class="btn btn-info mr-2" href="<?php echo base_url()?>/operator/halaman_cetak_barang_masuk" style="height:30x">
                                 <i class="ti-printer"></i>
                                 Cetak Barang Masuk
