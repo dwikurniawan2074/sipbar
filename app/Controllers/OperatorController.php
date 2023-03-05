@@ -68,15 +68,11 @@ class OperatorController extends BaseController
     public function halaman_data_barang()
     {
         $data_barang = new ModelBarang();
-        $barang = $data_barang->paginate(10,'data_barang');
-        $pager = $data_barang->pager;
-        $curentPage = $this ->request->getVar('page_data_barang') ? $this->request->getVar('page_data_barang') : 1;
+        $barang = $data_barang->findAll();
 
         $data = [
             'title' => 'Data Barang',
-            'barang' => $barang,
-            'pager' => $pager,
-            'currentPage' => $curentPage
+            'barang' => $barang
         ];
         return view('/operator/master_data/halaman_data_barang', $data);
     }
@@ -131,25 +127,14 @@ class OperatorController extends BaseController
 
     public function halaman_data_barang_masuk()
     {
-        $data_barang = new ModelBarang();
-        $data_barang_masuk = new ModelBarangMasuk();
-        
-        $barang = $data_barang_masuk->select('*')
-            ->join('data_barang', 'data_barang_masuk.id_barang=data_barang.id','left')
-            ->paginate(10,'data_barang_masuk');
+        $data_barang = new ModelBarangMasuk();
+        $barang = $data_barang->select('*')
+            ->join('data_barang', 'data_barang_masuk.id_barang=data_barang.id')
+            ->get();
 
-        $pager = $data_barang_masuk->pager;
-
-        $StokBarang = $data_barang->findAll();
-
-        $curentPage = $this ->request->getVar('page_data_barang_masuk') ? $this->request->getVar('page_data_barang_masuk') : 1;
-    
         $data = [
             'title' => 'Data Barang',
-            'barang' => $barang,
-            'stok' => $StokBarang,
-            'pager' => $pager,
-            'currentPage' => $curentPage
+            'barang' => $barang
         ];
         return view('operator/barang_masuk/halaman_data_barang_masuk', $data);
     }

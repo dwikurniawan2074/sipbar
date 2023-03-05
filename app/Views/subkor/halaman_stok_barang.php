@@ -30,7 +30,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    $no = 1 + (10 * ($currentPage - 1));
+                                    $no = 1;
                                     foreach ($barang as $br) : 
                                 ?>
                                 <tr>
@@ -61,7 +61,6 @@
                         </table>
                     </div>
                 </div>
-                <?= $pager->links('data_barang','pager_sistem');?>
             </div>
         </div>
     </div>

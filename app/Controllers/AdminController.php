@@ -30,26 +30,20 @@ class AdminController extends BaseController
             ->join('pangkat', 'pangkat.id=pegawai.id_pangkat', 'left')
             ->join('role', 'role.id=pegawai.id_role', 'left')
             ->join('jabatan', 'jabatan.id=pegawai.id_jabatan', 'left')
-            ->paginate(10,'pegawai');
+            ->findAll();
 
-
-        $pager = $pegawaiModel->pager;
-        
         $jabatan = $jabatanModel->findAll();
         $bidang = $bidangModel->findAll();
         $pangkat = $pangkatModel->findAll();
         $role = $roleModel->findAll();
- 
-        $curentPage = $this ->request->getVar('page_pegawai') ? $this->request->getVar('page_pegawai') : 1;
+
         $data = [
             'title' => 'Pegawai',
             'pegawai' => $pegawai,
             'jabatan' => $jabatan,
             'bidang' => $bidang,
             'pangkat' => $pangkat,
-            'role' => $role,
-            'pager' => $pager,
-            'currentPage' => $curentPage
+            'role' => $role
         ];
 
         return view('admin/data_akun', $data);
