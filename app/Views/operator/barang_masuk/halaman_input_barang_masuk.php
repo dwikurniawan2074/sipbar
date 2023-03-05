@@ -32,8 +32,13 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="exampleInputName1">Stok Barang</label>
+                            <input type="text" class="form-control" id="stok_barang" placeholder="Stok Barang" name="stok_barang" readonly>
+                        </div>
+
+                        <div class="form-group">
                             <label for="exampleInputName1">Stok Masuk</label>
-                            <input type="text" class="form-control" id="stok_masuk" placeholder="Stok Masuk" name="stok_masuk" required>
+                            <input type="number" class="form-control" id="stok_masuk" placeholder="Stok Masuk" name="stok_masuk" min="1" required>
                         </div>
  
                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
@@ -81,7 +86,7 @@
             if (barang[i].id == id) {
                 var name = barang[i].stok_menjadi;
                 console.log(name);
-                $('#stok_masuk').val(name);
+                $('#stok_barang').val(name);
             }
         }
     });

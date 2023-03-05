@@ -189,11 +189,15 @@ class PegawaiController extends BaseController
     public function halaman_stok_barang()
     {
         $data_barang = new ModelBarang();
-        $barang = $data_barang->findAll();
+        $barang = $data_barang->paginate(10,'data_barang');
+        $pager = $data_barang->pager;
+        $curentPage = $this ->request->getVar('page_data_barang') ? $this->request->getVar('page_data_barang') : 1;
 
         $data = [
             'title' => 'Data Barang',
-            'barang' => $barang
+            'barang'=> $barang,
+            'pager' => $pager,
+            'currentPage' => $curentPage
         ];
         return view('pegawai/halaman_stok_barang', $data);
     }
